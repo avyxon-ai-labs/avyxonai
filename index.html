@@ -6,6 +6,13 @@
 <title>Avyxon AI Labs — Agentic Automation & 1-Week MVPs</title>
 <meta name="description" content="Avyxon AI Labs builds production-ready MVPs in as little as 1 week. Agentic AI, enterprise automation, and org transformation for engineering leaders, executives, and founders.">
 
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
 <!-- Fonts: Instrument Serif (editorial elegance) + Plus Jakarta Sans (modern clarity) + JetBrains Mono (technical) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2531,10 +2538,13 @@ footer {
           <h2 class="contact-h2">Let's build something <em>extraordinary</em></h2>
           <p class="contact-sub">Discuss your MVP, POC, or enterprise automation needs. We respond within 12 hours — often much faster.</p>
           <div class="contact-socials">
-            <a href="#" class="s-btn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="s-btn"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="s-btn"><i class="fab fa-github"></i></a>
-            <a href="#" class="s-btn"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/company/avyxon-ai/about" target="_blank" rel="noopener" class="s-btn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://x.com/AvyxonAi" target="_blank" rel="noopener" class="s-btn"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@AvyxonAILabs" target="_blank" rel="noopener" class="s-btn"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div class="contact-resp" style="margin-bottom:16px">
+            <i class="fas fa-envelope"></i>
+            <span>Write to us: <a href="mailto:info@avyxon.ai" style="color:var(--cyan-bright);text-decoration:underline;text-underline-offset:3px;font-weight:600">info@avyxon.ai</a></span>
           </div>
           <div class="contact-resp">
             <i class="fas fa-clock"></i>
@@ -2755,8 +2765,7 @@ footer {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
-  // ── Replace with your deployed Google Apps Script web app URL ──
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyLJz0EtIZ3Us59I4842cIflVAhyEOYzpq0wQWdyKTvYCV34fTwx4VpfdZtMFq9jjkicw/exec';
 
   const btn    = form.querySelector('.btn-submit');
   const msgBox = document.getElementById('form-msg');
@@ -2773,51 +2782,42 @@ footer {
     btn.disabled = false;
   }
 
-  function isConfigured() {
-    return APPS_SCRIPT_URL.indexOf('YOUR_SCRIPT_ID') === -1;
-  }
-
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    // If URL not yet configured, show email fallback immediately
-    if (!isConfigured()) {
-      showMsg('error',
-        '<i class="fas fa-envelope"></i>' +
-        '<span>Form not connected yet. Email us at <a href="mailto:info@avyxon.ai">info@avyxon.ai</a> — we reply fast.</span>'
-      );
-      return;
-    }
-
-    const data = {};
-    new FormData(form).forEach((v, k) => { data[k] = v; });
+    const data = {
+      name:    form.querySelector('[name="name"]')?.value    || '',
+      email:   form.querySelector('[name="email"]')?.value   || '',
+      company: form.querySelector('[name="company"]')?.value || '',
+      budget:  form.querySelector('[name="budget"]')?.value  || '',
+      message: form.querySelector('[name="message"]')?.value || '',
+      source:  'avyxon.ai',
+      page:    window.location.pathname
+    };
 
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending\u2026';
     btn.disabled = true;
     msgBox.style.display = 'none';
 
     try {
-      // Google Apps Script: mode no-cors is required.
-      // A real 404 or network error throws; an opaque success does not.
       const res = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
 
-      // Opaque (type==='opaque') = request reached server = treat as success
+      // With no-cors, a successful request returns type==='opaque'
       if (res.type === 'opaque' || res.ok) {
         btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
         showMsg('success',
           '<i class="fas fa-check-circle"></i>' +
-          '<span>Message received \u2014 we\'ll reply within <strong>12 hours</strong>.</span>'
+          '<span>Message received \u2014 we\'ll be in touch within <strong>12 hours</strong>. Looking forward to building together.</span>'
         );
+        form.reset();
         setTimeout(() => {
           resetBtn();
-          form.reset();
           setTimeout(() => { msgBox.style.display = 'none'; }, 400);
-        }, 4500);
+        }, 5000);
       } else {
         throw new Error('HTTP ' + res.status);
       }
@@ -2826,7 +2826,7 @@ footer {
       resetBtn();
       showMsg('error',
         '<i class="fas fa-exclamation-circle"></i>' +
-        '<span>Couldn\'t reach the server. Drop us a line at <a href="mailto:info@avyxon.ai">info@avyxon.ai</a> \u2014 faster reply guaranteed.</span>'
+        '<span>Something went wrong on our end. Email us directly at <a href="mailto:info@avyxon.ai">info@avyxon.ai</a> \u2014 we reply fast.</span>'
       );
     }
   });
