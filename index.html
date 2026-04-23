@@ -319,6 +319,21 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transform: translateY(0);
   pointer-events: auto;
 }
+@media (max-width: 768px) {
+  #nav .nav-cta {
+    background: transparent;
+    color: var(--cyan);
+    border: 1.5px solid var(--cyan);
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  #nav .nav-cta:hover {
+    background: var(--cyan);
+    color: var(--white);
+    box-shadow: none;
+    transform: none;
+  }
+}
 #nav.solid {
   background: rgba(247,246,242,0.92);
   backdrop-filter: blur(24px) saturate(1.8);
@@ -587,6 +602,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: 0;
   opacity: 0;
   animation: fadeUp 0.85s 0.5s var(--ease-out) forwards;
+}
+@media (max-width: 480px) {
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
 }
 
 /* Right: stats proof panel */
