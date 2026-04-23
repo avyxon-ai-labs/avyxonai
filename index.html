@@ -301,6 +301,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   transition: background 0.4s var(--ease-out), border-color 0.4s, box-shadow 0.4s;
   border-bottom: 1px solid transparent;
 }
+#nav .nav-cta {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+#nav .nav-cta.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 #nav.solid {
   background: rgba(247,246,242,0.92);
   backdrop-filter: blur(24px) saturate(1.8);
@@ -2024,8 +2035,8 @@ footer {
       <li><a href="#faq">FAQ</a></li>
     </ul>
 
-    <a href="#contact" class="btn btn-primary">
-      Let's Build
+    <a href="#contact" class="btn btn-primary nav-cta">
+      Book a Call
       <i class="fas fa-arrow-right arrow"></i>
     </a>
   </div>
@@ -2836,6 +2847,16 @@ footer {
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+})();
+
+/* ── Navbar CTA — show only after hero scrolls out of view ── */
+(function() {
+  const cta  = document.querySelector('#nav .nav-cta');
+  const hero = document.getElementById('hero');
+  if (!cta || !hero) return;
+  new IntersectionObserver(function(entries) {
+    cta.classList.toggle('visible', !entries[0].isIntersecting);
+  }, { threshold: 0 }).observe(hero);
 })();
 
 /* ── Scroll Animation System ──
