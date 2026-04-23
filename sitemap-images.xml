@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Image sitemap — all crawlable images with metadata.
+  Helps Google Images index brand assets and the social preview card.
+  Add new images here as the site grows (team photos, case study visuals, etc.)
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://avyxon.ai/</loc>
+    <image:image>
+      <image:loc>https://avyxon.ai/og-image.png</image:loc>
+      <image:title>Avyxon AI Labs — Agentic Automation &amp; 1-Week MVPs</image:title>
+      <image:caption>Ship faster. Automate deeper. Lead with AI. Production-ready MVPs in 1–4 weeks from an agent-first engineering studio. Key stats: 1-week fastest MVP, 70% faster than agencies, 10K+ centers managed, 99.5% SLA adherence.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://avyxon.ai/android-chrome-512x512.png</image:loc>
+      <image:title>Avyxon AI Labs Logo</image:title>
+      <image:caption>Avyxon AI Labs — Agent-First Engineering studio logo</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

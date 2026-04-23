@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pages sitemap — all indexable URLs with hreflang geo annotations.
+
+  Hreflang strategy:
+    en          → English for all regions (site is English-only)
+    x-default   → fallback for unmatched regions / language negotiation
+    en-IN       → English for India (primary market, DPDP-compliant, HQ)
+
+  When regional landing pages are added for specific markets (e.g. US, UK, EU),
+  add corresponding <xhtml:link> entries for each URL in this file.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ═══════════════════════════════════════
+       Homepage — primary commercial page
+  ══════════════════════════════════════════ -->
+  <url>
+    <loc>https://avyxon.ai/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://avyxon.ai/"/>
+    <xhtml:link rel="alternate" hreflang="en-IN"   href="https://avyxon.ai/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://avyxon.ai/"/>
+  </url>
+
+  <!-- ═══════════════════════════════════════
+       Privacy Policy
+  ══════════════════════════════════════════ -->
+  <url>
+    <loc>https://avyxon.ai/privacy.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://avyxon.ai/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en-IN"   href="https://avyxon.ai/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://avyxon.ai/privacy.html"/>
+  </url>
+
+  <!-- ═══════════════════════════════════════
+       Terms of Service
+  ══════════════════════════════════════════ -->
+  <url>
+    <loc>https://avyxon.ai/terms.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://avyxon.ai/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="en-IN"   href="https://avyxon.ai/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://avyxon.ai/terms.html"/>
+  </url>
+
+</urlset>
