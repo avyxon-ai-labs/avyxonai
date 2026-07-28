@@ -257,6 +257,31 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 .sec-dark.ctaband h2 em { color:var(--cyan-bright); }
 .ctaband p { font-size:var(--text-base); color:var(--muted); max-width:520px; margin:0 auto 30px; }
 .sec-dark.ctaband p { color:var(--dk-muted); }
+
+/* ============================================================
+   RESPONSIVE — tighten vertical rhythm + offering components on
+   tablet/mobile. Consistent with the site's #hero / .hero-ctas
+   conventions (reduced padding, CTAs stack full-width ≤480px).
+   ============================================================ */
+@media (max-width: 768px) {
+  :root { --section-v: 84px; }
+  .dhero { padding: 100px 0 56px; }
+  .bridge { padding: 32px 26px; }
+  .sec-head { margin-bottom: 40px; }
+}
+@media (max-width: 560px) {
+  .pillar { padding: 24px 22px; }
+  .contrast-col { padding: 26px 22px; }
+  .split-visual { padding: 26px 22px; }
+  .metric { padding: 26px 24px; }
+  .metric .v { font-size: 40px; }
+}
+@media (max-width: 480px) {
+  .dhero-ctas { flex-direction: column; align-items: stretch; }
+  .dhero-ctas .btn { width: 100%; justify-content: center; }
+  .bridge { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .bridge .btn { width: 100%; justify-content: center; }
+}
 </style>
 
 <!-- Schema.org: Service — Forward Deployed Engineers (distinct citable entity) -->
