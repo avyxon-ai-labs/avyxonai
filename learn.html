@@ -216,9 +216,28 @@ a { text-decoration:none; color:inherit; }
 
 /* card body (progressive disclosure) */
 .card-body { max-height:0; overflow:hidden; transition:max-height .55s var(--ease-out); }
-.card.open .card-body { max-height:4200px; }
+.card.open .card-body { max-height:6500px; }
 .card-body-inner { padding:4px 22px 26px; border-top:1px dashed var(--border-med); margin:0 0 0; }
 .card.open .card-body-inner { padding-top:22px; }
+
+/* ---- mobile: un-stick the toolbar (so card titles aren't hidden behind it) + compact controls ---- */
+@media (max-width:768px){
+  .toolbar { position:static; top:auto; padding:14px; margin:24px 0 8px; }
+  .toolbar-top { gap:10px; }
+  .search { min-width:0; width:100%; flex:1 1 100%; }
+  .tool-actions { width:100%; gap:8px; }
+  .tool-actions .mini-btn { flex:1 1 auto; justify-content:center; padding:10px 10px; }
+  /* filter chips: one horizontal-scroll row instead of five stacked rows */
+  .chips { flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; margin:12px -14px 0; padding:2px 14px 6px; scrollbar-width:none; -ms-overflow-style:none; }
+  .chips::-webkit-scrollbar { display:none; }
+  .chip { flex:0 0 auto; white-space:nowrap; }
+  .progress-row { flex-wrap:wrap; gap:12px; }
+  .reset-link { margin-left:0; }
+  .group-head { flex-wrap:wrap; gap:10px; scroll-margin-top:80px; }
+  .card-head { padding:16px 15px; gap:12px; }
+  .card-body-inner { padding-left:15px; padding-right:15px; }
+  .card-num { min-width:32px; padding:5px 7px; }
+}
 
 .blk { margin-top:20px; }
 .blk:first-child { margin-top:6px; }
