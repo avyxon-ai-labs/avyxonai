@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avyxon AI Labs — Agentic Automation & 1-Week MVPs</title>
-<meta name="description" content="Avyxon AI Labs builds production-ready MVPs in as little as 1 week. Agentic AI, enterprise automation, and org transformation for engineering leaders, executives, and founders.">
+<title>Avyxon AI Labs — AI Consulting, Automation & Forward Deployed Engineers</title>
+<meta name="description" content="AI consulting, enterprise automation, agentic workflows, voice agents, and forward deployed engineers who embed in your team — production AI shipped in 1–4 weeks, measured in ROI.">
 
 <!-- SEO: Canonical + Robots -->
 <link rel="canonical" href="https://avyxon.ai/">
@@ -14,8 +14,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://avyxon.ai/">
 <meta property="og:site_name" content="Avyxon AI Labs">
-<meta property="og:title" content="Avyxon AI Labs — Agentic Automation & 1-Week MVPs">
-<meta property="og:description" content="Avyxon AI Labs builds production-ready MVPs in as little as 1 week. Agentic AI, enterprise automation, and org transformation for engineering leaders, executives, and founders.">
+<meta property="og:title" content="Avyxon AI Labs — AI Consulting, Automation & Forward Deployed Engineers">
+<meta property="og:description" content="AI consulting, enterprise automation, agentic workflows, voice agents, and forward deployed engineers who embed in your team — production AI shipped in 1–4 weeks, measured in ROI.">
 <meta property="og:image" content="https://avyxon.ai/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,8 +24,8 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@AvyxonAi">
-<meta name="twitter:title" content="Avyxon AI Labs — Agentic Automation & 1-Week MVPs">
-<meta name="twitter:description" content="Avyxon AI Labs builds production-ready MVPs in as little as 1 week. Agentic AI, enterprise automation, and org transformation for engineering leaders, executives, and founders.">
+<meta name="twitter:title" content="Avyxon AI Labs — AI Consulting, Automation & Forward Deployed Engineers">
+<meta name="twitter:description" content="AI consulting, enterprise automation, agentic workflows, voice agents, and forward deployed engineers — production AI shipped in 1–4 weeks, measured in ROI.">
 <meta name="twitter:image" content="https://avyxon.ai/og-image.png">
 <meta name="twitter:image:alt" content="Avyxon AI Labs — Ship AI-powered MVPs in 1 week">
 
@@ -418,6 +418,73 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 @media (max-width: 900px) { .nav-links { display: none; } }
 
+/* Mobile menu — hamburger + full-screen overlay */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 40px; height: 40px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.nav-burger span {
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease-out), opacity 0.25s;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 900px) { .nav-burger { display: flex; } }
+
+#mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 790;
+  background: rgba(247,246,242,0.98);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 84px 32px 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
+}
+#mobile-menu.open { opacity: 1; pointer-events: auto; }
+.mm-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin: 22px 0 6px;
+}
+.mm-label:first-child { margin-top: 0; }
+a.mm-link {
+  font-family: 'Instrument Serif', serif;
+  font-size: 26px;
+  line-height: 1.25;
+  color: var(--ink);
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+a.mm-link i { font-size: 14px; color: var(--subtle); }
+a.mm-link:active, a.mm-link:hover { color: var(--cyan); }
+#mobile-menu .btn { margin-top: 28px; justify-content: center; }
+body.menu-lock { overflow: hidden; }
+
 /* ============================================================
    HERO — split layout: left copy + right proof panel
    ============================================================ */
@@ -606,6 +673,40 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (max-width: 480px) {
   .hero-ctas { flex-direction: column; }
   .hero-ctas .btn { width: 100%; justify-content: center; }
+}
+
+/* Service quick-links — what we sell, visible in the first viewport */
+.hero-services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+  max-width: 560px;
+  opacity: 0;
+  animation: fadeUp 0.85s 0.6s var(--ease-out) forwards;
+}
+.hero-services .chip {
+  transition: background 0.25s var(--ease-out), color 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
+}
+.hero-services .chip:hover {
+  background: var(--cyan);
+  color: var(--white);
+  border-color: var(--cyan);
+}
+.chip.chip-ink {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+.hero-services .chip-ink:hover {
+  background: var(--violet);
+  border-color: var(--violet);
+}
+@media (max-width: 480px) {
+  .hero-h1 { font-size: clamp(38px, 10.5vw, 48px); }
+  .hero-sub { font-size: var(--text-base); margin-bottom: 32px; }
+  #hero { padding: 88px 0 56px; }
+  .hero-services { margin-top: 22px; }
 }
 
 /* Right: stats proof panel */
@@ -2113,8 +2214,9 @@ footer {
   "legalName": "Avyxon AI Labs LLP",
   "url": "https://avyxon.ai",
   "logo": "https://avyxon.ai/android-chrome-512x512.png",
-  "description": "Agent-first engineering studio delivering production-ready MVPs, agentic AI platforms, enterprise automation, and cloud-native infrastructure in 1–4 weeks.",
+  "description": "Agent-first engineering studio offering AI consulting, enterprise automation, agentic workflows, voice agents, and forward deployed engineers (FDE) who embed in client teams — production AI shipped in 1–4 weeks.",
   "email": "info@avyxon.ai",
+  "knowsAbout": ["AI consulting", "enterprise automation", "agentic workflows", "voice agents", "forward deployed engineers", "legacy system integration", "multi-agent orchestration", "MVP development"],
   "sameAs": [
     "https://www.linkedin.com/company/avyxon-ai/about",
     "https://x.com/AvyxonAi",
@@ -2136,18 +2238,20 @@ footer {
   "@type": "ProfessionalService",
   "name": "Avyxon AI Labs",
   "url": "https://avyxon.ai",
-  "description": "Agent-first engineering studio delivering production-ready MVPs, agentic AI platforms, enterprise automation, and cloud-native infrastructure in 1–4 weeks.",
+  "description": "Agent-first engineering studio offering AI consulting, enterprise automation, agentic workflows, voice agents, and forward deployed engineers — production AI shipped in 1–4 weeks.",
   "areaServed": "Worldwide",
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "AI Engineering Services",
     "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Consulting", "url": "https://avyxon.ai/consulting.html#ai-consulting"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Enterprise Automation", "url": "https://avyxon.ai/consulting.html#automation"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Agentic Workflows", "url": "https://avyxon.ai/consulting.html#agentic-workflows"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Voice Agents", "url": "https://avyxon.ai/consulting.html#voice-agents"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Forward Deployed Engineers", "url": "https://avyxon.ai/fde.html"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "1-Week MVP Development", "url": "https://avyxon.ai/#mvp"}},
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Software & Mobile Development"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Agentic AI & Workflow Automation"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "ML Modelling & Training"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Org Transformation"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cloud Native & Infrastructure"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Enterprise Automation"}}
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "ML Modelling & Training"}}
     ]
   }
 }
@@ -2267,8 +2371,24 @@ footer {
       Book a Call
       <i class="fas fa-arrow-right arrow"></i>
     </a>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" role="dialog" aria-label="Site menu">
+  <div class="mm-label">Services</div>
+  <a class="mm-link" href="consulting.html">AI Consulting <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="fde.html">Forward Deployed Engineers <i class="fas fa-arrow-right"></i></a>
+  <div class="mm-label">Explore</div>
+  <a class="mm-link" href="#capabilities">Capabilities <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="#mvp">1-Week MVPs <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="#faq">FAQ <i class="fas fa-arrow-right"></i></a>
+  <a href="#contact" class="btn btn-primary">Book a Call <i class="fas fa-arrow-right arrow"></i></a>
+</div>
 
 <!-- ══════════════════════════════════════════
      HERO
@@ -2300,7 +2420,7 @@ footer {
         </h1>
 
         <p class="hero-sub">
-          From idea to production in <strong>1–4 weeks</strong> — agentic platforms, enterprise automation, and MVPs without the overhead of traditional consultancies.
+          <strong>AI consulting, enterprise automation, agentic workflows, and voice agents</strong> — plus forward deployed engineers who embed in your team. Idea to production in <strong>1–4 weeks</strong>.
         </p>
 
         <div class="hero-ctas">
@@ -2314,6 +2434,14 @@ footer {
             See 1-Week MVPs
           </a>
         </div>
+
+        <nav class="hero-services" aria-label="Our services">
+          <a class="chip" href="consulting.html#ai-consulting">AI Consulting</a>
+          <a class="chip" href="consulting.html#automation">Automation</a>
+          <a class="chip" href="consulting.html#agentic-workflows">Agentic Workflows</a>
+          <a class="chip" href="consulting.html#voice-agents">Voice Agents</a>
+          <a class="chip chip-ink" href="fde.html">Forward Deployed Engineers →</a>
+        </nav>
       </div>
 
       <!-- RIGHT: Proof panel -->
@@ -2429,64 +2557,6 @@ footer {
 </div>
 
 <!-- ══════════════════════════════════════════
-     CAPABILITIES
-══════════════════════════════════════════ -->
-<section id="capabilities">
-  <div class="wrap">
-    <div class="cap-layout">
-      <div class="cap-sticky section-reveal">
-        <div class="section-label">What we do</div>
-        <h2 class="section-h2">Engineering <em>autonomous</em> operations end-to-end</h2>
-        <p class="section-body mt-6">Software, agents, infrastructure, and transformation — unified under one roof. No hand-offs, no black boxes.</p>
-        <a href="#contact" class="btn btn-primary mt-10">
-          Let's Build
-          <i class="fas fa-arrow-right arrow" style="font-size:12px"></i>
-        </a>
-      </div>
-
-      <div class="cap-grid section-reveal stagger">
-        <div class="cap-card">
-          <div class="cap-num">01</div>
-          <div class="cap-icon"><i class="fas fa-code"></i></div>
-          <div class="cap-title">Software &amp; Mobile Dev</div>
-          <div class="cap-desc">Custom platforms, cross-platform mobile, and high-performance backends built to scale from day one.</div>
-        </div>
-        <div class="cap-card">
-          <div class="cap-num">02</div>
-          <div class="cap-icon"><i class="fas fa-robot"></i></div>
-          <div class="cap-title">Agentic AI &amp; Workflows</div>
-          <div class="cap-desc">Multi-agent orchestration, LLM ops, and 24/7 workers that learn, adapt, and self-heal.</div>
-        </div>
-        <div class="cap-card">
-          <div class="cap-num">03</div>
-          <div class="cap-icon"><i class="fas fa-chart-line"></i></div>
-          <div class="cap-title">ML Modelling &amp; Training</div>
-          <div class="cap-desc">Predictive analytics, computer vision, and MLOps pipelines trained on your proprietary data.</div>
-        </div>
-        <div class="cap-card">
-          <div class="cap-num">04</div>
-          <div class="cap-icon"><i class="fas fa-users-gear"></i></div>
-          <div class="cap-title">Org Transformation</div>
-          <div class="cap-desc">Team building, engineering culture, alignment, and architectural excellence — embedded, not advised.</div>
-        </div>
-        <div class="cap-card">
-          <div class="cap-num">05</div>
-          <div class="cap-icon"><i class="fas fa-cloud-arrow-up"></i></div>
-          <div class="cap-title">Cloud Native &amp; Infra</div>
-          <div class="cap-desc">Kubernetes, serverless, auto-scaling, real-time observability, and multi-cloud deployments.</div>
-        </div>
-        <div class="cap-card">
-          <div class="cap-num">06</div>
-          <div class="cap-icon"><i class="fas fa-gears"></i></div>
-          <div class="cap-title">Enterprise Automation</div>
-          <div class="cap-desc">Workflow automation, legacy integration, and 24/7 resilient pipelines that never miss a beat.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
      CONSULTING  ·  the front door (rich section → consulting.html)
 ══════════════════════════════════════════ -->
 <section id="consulting" class="sec sec-white">
@@ -2575,6 +2645,64 @@ footer {
         Explore Forward Deployed Engineers
         <i class="fas fa-arrow-right arrow"></i>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CAPABILITIES
+══════════════════════════════════════════ -->
+<section id="capabilities">
+  <div class="wrap">
+    <div class="cap-layout">
+      <div class="cap-sticky section-reveal">
+        <div class="section-label">What we do</div>
+        <h2 class="section-h2">Engineering <em>autonomous</em> operations end-to-end</h2>
+        <p class="section-body mt-6">Software, agents, infrastructure, and transformation — unified under one roof. No hand-offs, no black boxes.</p>
+        <a href="#contact" class="btn btn-primary mt-10">
+          Let's Build
+          <i class="fas fa-arrow-right arrow" style="font-size:12px"></i>
+        </a>
+      </div>
+
+      <div class="cap-grid section-reveal stagger">
+        <div class="cap-card">
+          <div class="cap-num">01</div>
+          <div class="cap-icon"><i class="fas fa-code"></i></div>
+          <div class="cap-title">Software &amp; Mobile Dev</div>
+          <div class="cap-desc">Custom platforms, cross-platform mobile, and high-performance backends built to scale from day one.</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-num">02</div>
+          <div class="cap-icon"><i class="fas fa-robot"></i></div>
+          <div class="cap-title">Agentic AI &amp; Workflows</div>
+          <div class="cap-desc">Multi-agent orchestration, LLM ops, and 24/7 workers that learn, adapt, and self-heal.</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-num">03</div>
+          <div class="cap-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="cap-title">ML Modelling &amp; Training</div>
+          <div class="cap-desc">Predictive analytics, computer vision, and MLOps pipelines trained on your proprietary data.</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-num">04</div>
+          <div class="cap-icon"><i class="fas fa-users-gear"></i></div>
+          <div class="cap-title">Org Transformation</div>
+          <div class="cap-desc">Team building, engineering culture, alignment, and architectural excellence — embedded, not advised.</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-num">05</div>
+          <div class="cap-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+          <div class="cap-title">Cloud Native &amp; Infra</div>
+          <div class="cap-desc">Kubernetes, serverless, auto-scaling, real-time observability, and multi-cloud deployments.</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-num">06</div>
+          <div class="cap-icon"><i class="fas fa-gears"></i></div>
+          <div class="cap-title">Enterprise Automation</div>
+          <div class="cap-desc">Workflow automation, legacy integration, and 24/7 resilient pipelines that never miss a beat.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -3169,6 +3297,22 @@ footer {
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+})();
+
+/* ── Mobile menu — hamburger toggle ── */
+(function() {
+  const burger = document.getElementById('nav-burger');
+  const menu   = document.getElementById('mobile-menu');
+  if (!burger || !menu) return;
+  function setOpen(open) {
+    burger.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    document.body.classList.toggle('menu-lock', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  burger.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
 })();
 
 /* ── Navbar CTA — show only after hero scrolls out of view ── */

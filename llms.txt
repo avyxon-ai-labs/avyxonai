@@ -1,0 +1,20 @@
+# Avyxon AI Labs
+
+> Avyxon AI Labs is an agent-first AI engineering studio. Services: AI consulting, enterprise automation, agentic workflows, voice agents, and Forward Deployed Engineers (FDE) — senior architects who embed in client teams to solve complex enterprise legacy problems with AI, measured in ROI rather than token spend. Production systems ship in 1–4 weeks. SOC2 and ISO 27001 aligned; deploys into client clouds (AWS, Azure, GCP); deep experience with SAP, Oracle, Salesforce, and custom ERPs. Delivery teams operate from India serving clients worldwide in English.
+
+Key facts:
+- "Avyxon Forward Deployed Engineers" is the premium offering: embedded senior architects accountable for a business metric, with high-scale distributed-systems and legacy-integration depth.
+- Consulting practices: AI Consulting (strategy → roadmap → POC), Enterprise Automation, Agentic Workflows (multi-agent orchestration for production), Voice Agents (support, sales, operations).
+- Engagement model: 30-minute discovery call → scoped fixed-price proposal → build and ship. Fractional-CTO and retainer options available.
+- Contact: info@avyxon.ai
+
+## Pages
+
+- [Homepage](https://avyxon.ai/): Services overview, capabilities, 1-week MVP promise, platform, FAQ, contact
+- [AI Consulting](https://avyxon.ai/consulting.html): The four consulting practices — AI consulting, automation, agentic workflows, voice agents — with engagement model and FAQ
+- [Forward Deployed Engineers](https://avyxon.ai/fde.html): The FDE offering — embedded senior architects for enterprise legacy problems, how it works, proof, FAQ
+
+## Legal
+
+- [Privacy Policy](https://avyxon.ai/privacy.html): DPDP Act, GDPR compliance
+- [Terms of Service](https://avyxon.ai/terms.html)

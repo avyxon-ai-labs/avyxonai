@@ -115,6 +115,24 @@ a { text-decoration:none; color:inherit; }
 .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
 @media (max-width:900px) { .nav-links { display:none; } }
 
+/* Mobile menu — hamburger + full-screen overlay */
+.nav-burger { display:none; flex-direction:column; align-items:center; justify-content:center; gap:5px; width:40px; height:40px; padding:0; border:none; background:transparent; cursor:pointer; flex-shrink:0; }
+.nav-burger span { display:block; width:20px; height:2px; background:var(--ink); border-radius:2px; transition:transform 0.3s var(--ease-out), opacity 0.25s; }
+.nav-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity:0; }
+.nav-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+@media (max-width:900px) { .nav-burger { display:flex; } }
+#mobile-menu { position:fixed; inset:0; z-index:790; background:rgba(247,246,242,0.98); -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px); display:flex; flex-direction:column; justify-content:center; padding:84px 32px 40px; opacity:0; pointer-events:none; transition:opacity 0.3s var(--ease-out); }
+#mobile-menu.open { opacity:1; pointer-events:auto; }
+.mm-label { font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin:22px 0 6px; }
+.mm-label:first-child { margin-top:0; }
+a.mm-link { font-family:'Instrument Serif', serif; font-size:26px; line-height:1.25; color:var(--ink); padding:9px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+a.mm-link i { font-size:14px; color:var(--subtle); }
+a.mm-link:active, a.mm-link:hover { color:var(--cyan); }
+#mobile-menu .btn { margin-top:28px; justify-content:center; }
+body.menu-lock { overflow:hidden; }
+.pillar[id] { scroll-margin-top: 84px; }
+
 /* Section primitives */
 .section-label { display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:20px; }
 .section-label::before { content:''; width:24px; height:1.5px; background:currentColor; flex-shrink:0; }
@@ -331,6 +349,17 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   ]
 }
 </script>
+<!-- Schema.org: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://avyxon.ai/"},
+    {"@type": "ListItem", "position": 2, "name": "AI Consulting", "item": "https://avyxon.ai/consulting.html"}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -360,8 +389,24 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
       Book a Call
       <i class="fas fa-arrow-right arrow"></i>
     </a>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" role="dialog" aria-label="Site menu">
+  <div class="mm-label">Services</div>
+  <a class="mm-link" href="consulting.html">AI Consulting <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="fde.html">Forward Deployed Engineers <i class="fas fa-arrow-right"></i></a>
+  <div class="mm-label">Explore</div>
+  <a class="mm-link" href="index.html#capabilities">Capabilities <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="index.html#mvp">1-Week MVPs <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="#faq">FAQ <i class="fas fa-arrow-right"></i></a>
+  <a href="index.html#contact" class="btn btn-primary">Book a Call <i class="fas fa-arrow-right arrow"></i></a>
+</div>
 
 <!-- ══════════ HERO ══════════ -->
 <section class="dhero">
@@ -385,25 +430,25 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
       <h2 class="section-h2">Everything you need to go from <em>idea to production</em></h2>
     </div>
     <div class="pillars">
-      <div class="pillar">
+      <div class="pillar" id="ai-consulting">
         <div class="pillar-ico"><i class="fas fa-brain"></i></div>
         <h3>AI Consulting</h3>
         <p>Where to apply AI, which models, what to build vs buy, and how to de-risk it — with a roadmap you can execute.</p>
         <span class="tag">strategy · roadmap · POC</span>
       </div>
-      <div class="pillar">
+      <div class="pillar" id="automation">
         <div class="pillar-ico"><i class="fas fa-gears"></i></div>
         <h3>Automation</h3>
         <p>Identify high-cost manual processes and automate them end-to-end with reliable, observable systems.</p>
         <span class="tag">process · workflow · RPA+AI</span>
       </div>
-      <div class="pillar">
+      <div class="pillar" id="agentic-workflows">
         <div class="pillar-ico"><i class="fas fa-diagram-project"></i></div>
         <h3>Agentic Workflows</h3>
         <p>Design and ship multi-agent systems that plan, act, and recover — built for production scale, not demos.</p>
         <span class="tag">orchestration · tools · guardrails</span>
       </div>
-      <div class="pillar">
+      <div class="pillar" id="voice-agents">
         <div class="pillar-ico"><i class="fas fa-microphone-lines"></i></div>
         <h3>Voice Agents</h3>
         <p>Low-latency voice AI for support, sales, and operations — with your data, your guardrails, your brand.</p>
@@ -513,6 +558,22 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 
 <script>
 'use strict';
+/* ── Mobile menu — hamburger toggle ── */
+(function() {
+  const burger = document.getElementById('nav-burger');
+  const menu   = document.getElementById('mobile-menu');
+  if (!burger || !menu) return;
+  function setOpen(open) {
+    burger.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    document.body.classList.toggle('menu-lock', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  burger.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+})();
+
 /* ── FAQ accordion — one open at a time ── */
 (function() {
   const items = document.querySelectorAll('.faq-item');
