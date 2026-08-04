@@ -275,6 +275,28 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 .ctaband p { font-size:var(--text-base); color:var(--muted); max-width:520px; margin:0 auto 30px; }
 .sec-dark.ctaband p { color:var(--dk-muted); }
 
+
+/* ============================================================
+   MOTION — scroll reveal + progress (mirrors index.html)
+   ============================================================ */
+.section-reveal { opacity:0; transform:translateY(36px); transition:opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+.section-reveal.visible { opacity:1; transform:translateY(0); }
+.section-reveal.hidden { opacity:0; transform:translateY(36px); }
+.stagger > * { opacity:0; transform:translateY(20px); transition:opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+.stagger.go > *:nth-child(1) { transition-delay:0.00s; }
+.stagger.go > *:nth-child(2) { transition-delay:0.07s; }
+.stagger.go > *:nth-child(3) { transition-delay:0.14s; }
+.stagger.go > *:nth-child(4) { transition-delay:0.21s; }
+.stagger.go > *:nth-child(5) { transition-delay:0.28s; }
+.stagger.go > *:nth-child(6) { transition-delay:0.35s; }
+.stagger.go > * { opacity:1; transform:translateY(0); }
+.stagger.hide > * { opacity:0; transform:translateY(20px); transition-delay:0s !important; }
+#scroll-progress { position:fixed; top:0; left:0; height:2px; width:0; background:linear-gradient(90deg, var(--cyan), var(--violet-mid)); z-index:900; pointer-events:none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  .section-reveal, .stagger > * { opacity:1 !important; transform:none !important; transition:none !important; animation:none !important; }
+}
+
 /* ============================================================
    RESPONSIVE — tighten vertical rhythm + offering components on
    tablet/mobile. Consistent with the site's #hero / .hero-ctas
@@ -355,6 +377,8 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 </script>
 </head>
 <body>
+<noscript><style>.section-reveal, .stagger > * { opacity:1 !important; transform:none !important; }</style></noscript>
+<div id="scroll-progress" aria-hidden="true"></div>
 
 <!-- ══════════ NAV ══════════ -->
 <nav id="nav">
@@ -419,12 +443,12 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 <!-- ══════════ THE PROBLEM ══════════ -->
 <section class="sec sec-dark" style="padding-top:64px">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head section-reveal">
       <div class="section-label">The problem</div>
       <h2 class="section-h2">Most AI spend burns budget, <em>not blockers</em></h2>
       <p class="section-body">The gap is rarely the model. It's the messy, high-stakes legacy systems the model has to work inside.</p>
     </div>
-    <div class="contrast">
+    <div class="contrast section-reveal stagger">
       <div class="contrast-col contrast-bad"><h4>What usually happens</h4><ul>
         <li><i class="fas fa-xmark"></i> A slick POC that stalls before production</li>
         <li><i class="fas fa-xmark"></i> Token and compute bills with no ROI attached</li>
@@ -444,7 +468,7 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 <!-- ══════════ WHAT AN FDE IS ══════════ -->
 <section class="sec sec-dark" style="border-top:1px solid rgba(255,255,255,0.05)">
   <div class="wrap">
-    <div class="split">
+    <div class="split section-reveal">
       <div>
         <div class="section-label">What an FDE is</div>
         <h2 class="section-h2">Not a contractor. <em>An owner.</em></h2>
@@ -474,8 +498,8 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 <!-- ══════════ HOW IT WORKS ══════════ -->
 <section class="sec sec-dark" id="how" style="border-top:1px solid rgba(255,255,255,0.05)">
   <div class="wrap">
-    <div class="sec-head center"><div class="section-label">How it works</div><h2 class="section-h2">From audit to <em>measured ROI</em></h2></div>
-    <div class="steps">
+    <div class="sec-head center section-reveal"><div class="section-label">How it works</div><h2 class="section-h2">From audit to <em>measured ROI</em></h2></div>
+    <div class="steps section-reveal stagger">
       <div class="step"><div class="n">01</div><h4>Discovery &amp; audit</h4><p>We map the problem, the legacy terrain, and the metric that matters.</p></div>
       <div class="step"><div class="n">02</div><h4>Embed the FDE</h4><p>A senior engineer joins your team and gets deep on your systems.</p></div>
       <div class="step"><div class="n">03</div><h4>Ship to production</h4><p>Real systems, deployed in your cloud, integrated with legacy.</p></div>
@@ -492,10 +516,10 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
      └─────────────────────────────────────────────────────────────────────────┘ -->
 <section class="sec sec-dark" style="border-top:1px solid rgba(255,255,255,0.05)">
   <div class="wrap">
-    <div class="sec-head center"><div class="section-label">Proof</div><h2 class="section-h2">Outcomes we've <em>actually shipped</em></h2></div>
-    <div class="metrics">
-      <div class="metric"><div class="v"><em>83</em>%</div><div class="l">manual ops effort removed in month one (logistics enterprise, anonymized) <!-- [[FILL: confirm real anonymized figure]] --></div></div>
-      <div class="metric"><div class="v"><em>10k+</em></div><div class="l">centers run on a single multi-tenant platform we built and maintain <!-- [[FILL: confirm real anonymized figure]] --></div></div>
+    <div class="sec-head center section-reveal"><div class="section-label">Proof</div><h2 class="section-h2">Outcomes we've <em>actually shipped</em></h2></div>
+    <div class="metrics section-reveal stagger">
+      <div class="metric"><div class="v"><em data-count="83">83</em>%</div><div class="l">manual ops effort removed in month one (logistics enterprise, anonymized) <!-- [[FILL: confirm real anonymized figure]] --></div></div>
+      <div class="metric"><div class="v"><em data-count="10" data-suffix="k+">10k+</em></div><div class="l">centers run on a single multi-tenant platform we built and maintain <!-- [[FILL: confirm real anonymized figure]] --></div></div>
       <div class="metric"><div class="v">4mo→<em>2wk</em></div><div class="l">delivery time vs the client's previous vendor <!-- [[FILL: confirm real anonymized figure]] --></div></div>
     </div>
   </div>
@@ -504,8 +528,8 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 <!-- ══════════ FAQ ══════════ -->
 <section id="faq">
   <div class="wrap">
-    <div class="sec-head center"><div class="section-label">FAQ</div><h2 class="section-h2">FDE, <em>answered</em></h2></div>
-    <div class="faq-narrow">
+    <div class="sec-head center section-reveal"><div class="section-label">FAQ</div><h2 class="section-h2">FDE, <em>answered</em></h2></div>
+    <div class="faq-narrow section-reveal">
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-btn">How is an FDE different from hiring a contractor? <span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
@@ -529,7 +553,7 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 </section>
 
 <!-- ══════════ CTA BAND ══════════ -->
-<section class="ctaband sec-dark">
+<section class="ctaband sec-dark section-reveal">
   <div class="wrap">
     <h2 style="color:#fff">Put a senior architect <em>on the problem</em></h2>
     <p>Tell us the metric that matters. We'll tell you how an FDE moves it.</p>
@@ -579,6 +603,65 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   }
   burger.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+})();
+
+/* ── Scroll reveal — mirrors index.html behaviour ── */
+(function() {
+  const revealIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      if (entry.isIntersecting) {
+        el.classList.remove('hidden'); el.classList.add('visible');
+        if (el.classList.contains('stagger')) { el.classList.remove('hide'); setTimeout(() => el.classList.add('go'), 60); }
+      } else {
+        el.classList.remove('visible'); el.classList.add('hidden');
+        if (el.classList.contains('stagger')) { el.classList.remove('go'); el.classList.add('hide'); }
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('.section-reveal').forEach(el => revealIO.observe(el));
+})();
+
+/* ── Scroll progress bar ── */
+(function() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  let ticking = false;
+  function update() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+})();
+
+/* ── Count-up numbers — animate [data-count] when scrolled into view ── */
+(function() {
+  const els = document.querySelectorAll('[data-count]');
+  if (!els.length) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      io.unobserve(el);
+      if (reduced) return;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const decimals = (el.dataset.count.split('.')[1] || '').length;
+      const dur = 1400, t0 = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }, { threshold: 0.6 });
+  els.forEach(el => io.observe(el));
 })();
 
 /* ── FAQ accordion — one open at a time ── */
