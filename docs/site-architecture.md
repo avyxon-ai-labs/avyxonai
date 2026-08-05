@@ -70,4 +70,4 @@ Rules when graduating:
 - [ ] About page with founders + Person schema (E-E-A-T)
 - [ ] LinkedIn/X posting cadence linking back to insights articles
 - [ ] Google Business Profile (Delhi HQ) → local pack + knowledge panel
-- [ ] Deploy automation (site publishes on merge) so freshness signals are real
+- [x] Deploy automation (Vercel deploy + live-site verification on push to `main`)

@@ -1,0 +1,139 @@
+# Deploys the static site to Vercel production on every push to main,
+# then verifies the live site actually serves the new build.
+#
+# One-time setup — add these three repository secrets
+# (Settings → Secrets and variables → Actions → New repository secret):
+#   VERCEL_TOKEN       Vercel → Account Settings → Tokens → Create
+#   VERCEL_ORG_ID      from `.vercel/project.json` after `vercel link`, or
+#   VERCEL_PROJECT_ID  Vercel → Project → Settings → General
+# Full walkthrough: docs/deployment.md
+#
+# NOTE: if Vercel's own Git integration is already connected to this repo,
+# this workflow deploys a second time on each push. Pick one — either turn
+# off the Vercel Git integration for `main`, or delete this workflow.
+
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'apps-script/**'
+      - '.github/**'
+  workflow_dispatch:
+
+concurrency:
+  group: vercel-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull production environment
+        run: vercel pull --yes --environment=production --token="${{ secrets.VERCEL_TOKEN }}"
+
+      - name: Deploy
+        id: deploy
+        run: |
+          url=$(vercel deploy --prod --token="${{ secrets.VERCEL_TOKEN }}")
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "Deployed: $url"
+
+      - name: Summary
+        run: |
+          {
+            echo "### Deployed to production"
+            echo ""
+            echo "- Deployment: ${{ steps.deploy.outputs.url }}"
+            echo "- Live site: https://avyxon.ai/"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  verify:
+    name: Verify live site
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for CDN propagation
+        run: sleep 25
+
+      - name: All public pages return 200
+        run: |
+          set -euo pipefail
+          fail=0
+          for path in "" "consulting.html" "fde.html" "privacy.html" "terms.html" \
+                      "llms.txt" "robots.txt" "sitemap.xml" "sitemap-pages.xml" \
+                      "logo-email.png"; do
+            code=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "https://avyxon.ai/${path}" || echo 000)
+            if [ "$code" = "200" ]; then
+              echo "  ok   /${path} -> ${code}"
+            else
+              echo "  FAIL /${path} -> ${code}"
+              fail=1
+            fi
+          done
+          exit $fail
+
+      - name: Live HTML contains the current build
+        run: |
+          set -euo pipefail
+          home=$(curl -sS -m 20 https://avyxon.ai/)
+          consulting=$(curl -sS -m 20 https://avyxon.ai/consulting.html)
+          fde=$(curl -sS -m 20 https://avyxon.ai/fde.html)
+
+          fail=0
+          check() {  # check <label> <haystack-var> <needle>
+            if printf '%s' "$2" | grep -q -- "$3"; then
+              echo "  ok   $1"
+            else
+              echo "  FAIL $1 (missing: $3)"
+              fail=1
+            fi
+          }
+
+          check "home: service chips in hero"   "$home"       'hero-services'
+          check "home: mobile menu"             "$home"       'nav-burger'
+          check "home: scroll progress"         "$home"       'scroll-progress'
+          check "home: FDE named in metadata"   "$home"       'Forward Deployed Engineers'
+          check "consulting: pillar anchors"    "$consulting" 'id="ai-consulting"'
+          check "consulting: motion system"     "$consulting" 'section-reveal'
+          check "fde: count-up metrics"         "$fde"        'data-count'
+          check "fde: Service schema"           "$fde"        'Avyxon Forward Deployed Engineers'
+
+          exit $fail
+
+      - name: Contact backend is the current version
+        continue-on-error: true
+        run: |
+          # doGet on the Apps Script web app reports which backend is deployed.
+          # Informational only — a stale backend must not fail the site deploy.
+          url=$(grep -o 'https://script.google.com/macros/s/[^'"'"']*' index.html | head -1 || true)
+          if [ -z "$url" ]; then echo "No APPS_SCRIPT_URL found"; exit 0; fi
+          body=$(curl -sSL -m 25 "$url" || echo '')
+          echo "Response: ${body:-<empty>}"
+          if printf '%s' "$body" | grep -q '"service":"avyxon-contact"'; then
+            echo "✅ New contact backend is deployed."
+          else
+            echo "⚠️  Old/unknown contact backend — acknowledgement emails are NOT live."
+            echo "    Deploy apps-script/Code.gs (see apps-script/README.md)."
+          fi

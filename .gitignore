@@ -1,0 +1,7 @@
+# Vercel CLI (written by `vercel link` / `vercel pull`)
+.vercel/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp

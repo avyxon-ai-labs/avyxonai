@@ -6,6 +6,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A static marketing website for Avyxon AI Labs. The main page is `index.html` (self-contained HTML/CSS/JS); detail pages `consulting.html` and `fde.html` mirror its design tokens, nav, and motion system. `apps-script/` holds the Google Apps Script contact-form backend (deployed manually — see its README). `docs/site-architecture.md` is the multipage growth plan. There is no build system, no package manager, no test suite, and no CI/CD pipeline.
 
+## Deployment
+
+Hosted on **Vercel**. `.github/workflows/deploy.yml` deploys `main` to production
+on push, then verifies the live site serves the new build (URL 200s + build
+markers). Requires the `VERCEL_TOKEN` / `VERCEL_ORG_ID` / `VERCEL_PROJECT_ID`
+repo secrets — see `docs/deployment.md`. `vercel.json` sets cache headers only
+(HTML revalidates every request), no URL rewriting.
+
+The contact form backend is **deployed separately** to Google Apps Script and is
+not touched by a site deploy — see `apps-script/README.md`.
+
 ## Development Workflow
 
 Open `index.html` directly in a browser. No server, build step, or install is required. Changes are visible immediately on refresh.
