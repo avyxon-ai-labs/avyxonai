@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-A single-file static marketing website for Avyxon AI Labs. The entire application — HTML structure, CSS styles, and JavaScript — lives in one file: `index.html` (≈ 2,836 lines). There is no build system, no package manager, no test suite, and no CI/CD pipeline.
+A static marketing website for Avyxon AI Labs. The main page is `index.html` (self-contained HTML/CSS/JS); detail pages `consulting.html` and `fde.html` mirror its design tokens, nav, and motion system. `apps-script/` holds the Google Apps Script contact-form backend (deployed manually — see its README). `docs/site-architecture.md` is the multipage growth plan. There is no build system, no package manager, no test suite, and no CI/CD pipeline.
 
 ## Development Workflow
 
@@ -50,7 +50,7 @@ Add `class="section-reveal"` to any element to opt into the scroll-in animation.
 
 ## Contact Form
 
-Submissions are `fetch` POST requests in `no-cors` mode to a hardcoded Google Apps Script URL (line 2768). Because `no-cors` returns an opaque response, the code treats any response as success. The destination Apps Script (and its backing Google Sheet) is external to this repo — updating the endpoint URL in the `APPS_SCRIPT_URL` constant is the only change needed to point at a different backend.
+Submissions POST to the Apps Script web app in `APPS_SCRIPT_URL` as `text/plain` JSON (avoids CORS preflight; the JSON response is readable, so success/failure is real). The backend source lives in `apps-script/Code.gs` — it appends to the "Avyxon Site Enqueries" sheet (Leads tab), emails the sender a personal acknowledgement, and notifies info@avyxon.ai. Deploy steps in `apps-script/README.md`. A hidden `website` field is a honeypot.
 
 ## Branching
 

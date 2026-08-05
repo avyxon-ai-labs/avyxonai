@@ -2020,6 +2020,28 @@ footer {
   .cookie-btn-accept, .cookie-btn-decline { flex: 1; text-align: center; }
 }
 
+/* Scroll progress — thin brand line across the very top */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, var(--cyan), var(--violet-mid));
+  z-index: 900;
+  pointer-events: none;
+}
+
+/* Reduced motion — show everything, skip the theatrics */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .section-reveal, .stagger > *, .split-left, .split-right, .scale-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 /* ============================================================
    OFFERINGS — shared components (Consulting + FDE)
    Reuses design tokens only — no new colors or fonts.
@@ -2205,6 +2227,17 @@ footer {
 }
 </style>
 
+<!-- Schema.org: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Avyxon AI Labs",
+  "url": "https://avyxon.ai",
+  "publisher": {"@type": "Organization", "name": "Avyxon AI Labs", "url": "https://avyxon.ai"}
+}
+</script>
+
 <!-- Schema.org: Organization -->
 <script type="application/ld+json">
 {
@@ -2345,6 +2378,8 @@ footer {
 <!-- ══════════════════════════════════════════
      NAVIGATION
 ══════════════════════════════════════════ -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
 <nav id="nav">
   <div class="nav-wrap">
     <a href="#" class="nav-logo">
@@ -2455,19 +2490,19 @@ footer {
           </div>
           <div class="hero-stats-grid">
             <div class="hstat">
-              <div class="hstat-val"><span class="acc">1</span> wk</div>
+              <div class="hstat-val"><span class="acc" data-count="1">1</span> wk</div>
               <div class="hstat-lbl">Fastest MVP</div>
             </div>
             <div class="hstat">
-              <div class="hstat-val"><span class="acc">70</span>%</div>
+              <div class="hstat-val"><span class="acc" data-count="70">70</span>%</div>
               <div class="hstat-lbl">Faster than agencies</div>
             </div>
             <div class="hstat">
-              <div class="hstat-val"><span class="acc">10</span>K+</div>
+              <div class="hstat-val"><span class="acc" data-count="10">10</span>K+</div>
               <div class="hstat-lbl">Centers managed</div>
             </div>
             <div class="hstat">
-              <div class="hstat-val"><span class="acc">99.5</span>%</div>
+              <div class="hstat-val"><span class="acc" data-count="99.5">99.5</span>%</div>
               <div class="hstat-lbl">SLA adherence</div>
             </div>
           </div>
@@ -3216,6 +3251,8 @@ footer {
 
         <div class="contact-right">
           <form id="contact-form">
+            <!-- Honeypot: humans never see this; bots fill it and get silently dropped -->
+            <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0">
             <div class="form-row-2">
               <div class="field">
                 <label>Full Name</label>
@@ -3446,6 +3483,48 @@ footer {
   });
 })();
 
+/* ── Scroll progress bar ── */
+(function() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  let ticking = false;
+  function update() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+})();
+
+/* ── Count-up numbers — animate [data-count] when scrolled into view ── */
+(function() {
+  const els = document.querySelectorAll('[data-count]');
+  if (!els.length) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      io.unobserve(el);
+      if (reduced) return; // markup already holds the final value
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const decimals = (el.dataset.count.split('.')[1] || '').length;
+      const dur = 1400, t0 = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }, { threshold: 0.6 });
+  els.forEach(el => io.observe(el));
+})();
+
 /* ── Contact form — Google Apps Script integration ── */
 (function() {
   const form = document.getElementById('contact-form');
@@ -3477,6 +3556,7 @@ footer {
       company: form.querySelector('[name="company"]')?.value || '',
       budget:  form.querySelector('[name="budget"]')?.value  || '',
       message: form.querySelector('[name="message"]')?.value || '',
+      website: form.querySelector('[name="website"]')?.value || '', // honeypot
       source:  'avyxon.ai',
       page:    window.location.pathname
     };
@@ -3486,14 +3566,16 @@ footer {
     msgBox.style.display = 'none';
 
     try {
+      // text/plain avoids the CORS preflight Apps Script can't answer,
+      // while still letting us read the real JSON response ({ok:true/false}).
       const res = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(data)
       });
+      const out = await res.json().catch(() => null);
 
-      // With no-cors, a successful request returns type==='opaque'
-      if (res.type === 'opaque' || res.ok) {
+      if (res.ok && (!out || out.ok !== false)) {
         btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
         showMsg('success',
           '<i class="fas fa-check-circle"></i>' +
@@ -3505,7 +3587,7 @@ footer {
           setTimeout(() => { msgBox.style.display = 'none'; }, 400);
         }, 5000);
       } else {
-        throw new Error('HTTP ' + res.status);
+        throw new Error(out && out.error ? out.error : 'HTTP ' + res.status);
       }
 
     } catch (err) {
