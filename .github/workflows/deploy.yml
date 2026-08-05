@@ -39,6 +39,34 @@ jobs:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
+      - name: Check required secrets are configured
+        run: |
+          missing=""
+          [ -n "${{ secrets.VERCEL_TOKEN }}" ]      || missing="$missing VERCEL_TOKEN"
+          [ -n "${{ secrets.VERCEL_ORG_ID }}" ]     || missing="$missing VERCEL_ORG_ID"
+          [ -n "${{ secrets.VERCEL_PROJECT_ID }}" ] || missing="$missing VERCEL_PROJECT_ID"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secret(s):$missing"
+            {
+              echo "### ❌ Deploy not configured yet"
+              echo ""
+              echo "Missing repository secret(s): **$missing**"
+              echo ""
+              echo "Add them under **Settings → Secrets and variables → Actions**:"
+              echo ""
+              echo "| Secret | Where to find it |"
+              echo "|---|---|"
+              echo "| \`VERCEL_TOKEN\` | Vercel → Account Settings → Tokens → Create Token |"
+              echo "| \`VERCEL_ORG_ID\` | Vercel → Team/Account Settings → General → Team ID |"
+              echo "| \`VERCEL_PROJECT_ID\` | Vercel → avyxon project → Settings → General → Project ID |"
+              echo ""
+              echo "Then re-run: **Actions → Deploy to Vercel → Run workflow**."
+              echo "Full guide: \`docs/deployment.md\`"
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          echo "All three Vercel secrets are present."
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
