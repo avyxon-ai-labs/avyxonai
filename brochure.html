@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avyxon AI Labs — Company Profile</title>
+<meta name="description" content="Company profile of Avyxon AI Labs — an agent-first engineering studio delivering AI consulting, enterprise automation, agentic workflows, voice agents and forward deployed engineers.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BROCHURE DESIGN TOKENS — derived from the Avyxon brand system
+   ============================================================ */
+:root {
+  --bg:        #F7F6F2;
+  --paper:     #FCFBF9;
+  --white:     #FFFFFF;
+  --ink:       #0E0F11;
+  --ink-soft:  #3A3D45;
+  --muted:     #72767F;
+  --subtle:    #A8ABB3;
+  --border:    rgba(0,0,0,0.10);
+  --hairline:  rgba(0,0,0,0.14);
+  --cyan:      #0891B2;
+  --cyan-soft: rgba(8,145,178,0.08);
+  --violet:    #2E1065;
+  --gold:      #B8966A;
+  --dk:        #0E0F11;
+  --dk-line:   rgba(255,255,255,0.14);
+  --dk-muted:  rgba(255,255,255,0.55);
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans:  'Plus Jakarta Sans', -apple-system, sans-serif;
+  --mono:  'JetBrains Mono', monospace;
+
+  --pad-x: 16mm;
+  --pad-y: 15mm;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--sans);
+  background: #E9E7E1;
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+/* ── Sheets ── */
+.sheet {
+  width: 210mm;
+  min-height: 296mm;
+  margin: 10mm auto;
+  background: var(--paper);
+  padding: var(--pad-y) var(--pad-x) 22mm;
+  position: relative;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.10);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.sheet.dark { background: var(--dk); color: #fff; }
+
+/* Running footer */
+.pfoot {
+  position: absolute;
+  left: var(--pad-x); right: var(--pad-x); bottom: 9mm;
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-top: 1px solid var(--hairline);
+  padding-top: 3mm;
+  font-family: var(--mono);
+  font-size: 7.5pt;
+  letter-spacing: 0.08em;
+  color: var(--subtle);
+  text-transform: uppercase;
+}
+.dark .pfoot { border-top-color: var(--dk-line); color: var(--dk-muted); }
+
+/* ── Type scale ── */
+.kicker {
+  font-family: var(--mono);
+  font-size: 8.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  display: flex; align-items: center; gap: 4mm;
+  margin-bottom: 7mm;
+}
+.kicker::after { content: ''; flex: 1; height: 1px; background: var(--hairline); }
+.dark .kicker::after { background: var(--dk-line); }
+
+h1 { font-family: var(--serif); font-weight: 400; font-size: 34pt; line-height: 1.08; letter-spacing: -0.01em; }
+h2 { font-family: var(--serif); font-weight: 400; font-size: 23pt; line-height: 1.12; letter-spacing: -0.01em; margin-bottom: 5mm; }
+h2 em, h1 em { font-style: italic; color: var(--cyan); }
+h3 { font-size: 11pt; font-weight: 700; letter-spacing: -0.01em; }
+.lead { font-size: 11pt; line-height: 1.65; color: var(--ink-soft); max-width: 150mm; }
+.dark .lead { color: var(--dk-muted); }
+p.body, li.body { font-size: 9.5pt; line-height: 1.6; color: var(--ink-soft); }
+.small { font-size: 8.5pt; line-height: 1.55; color: var(--muted); }
+.footnote { font-size: 7.5pt; line-height: 1.5; color: var(--subtle); margin-top: auto; padding-top: 4mm; }
+
+/* ── Primitives ── */
+.rule { height: 1px; background: var(--hairline); border: 0; margin: 6mm 0; }
+.grid { display: grid; gap: 4mm; }
+.cols-2 { grid-template-columns: 1fr 1fr; }
+.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.card {
+  border: 1px solid var(--border);
+  background: var(--white);
+  padding: 5mm;
+  border-radius: 2.5mm;
+}
+.dark .card { background: rgba(255,255,255,0.04); border-color: var(--dk-line); }
+
+.tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 7pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid rgba(8,145,178,0.35);
+  border-radius: 10mm;
+  padding: 0.8mm 2.6mm;
+}
+
+/* Metric block */
+.metric .n {
+  font-family: var(--serif);
+  font-size: 24pt;
+  line-height: 1;
+  color: var(--ink);
+}
+.metric .n em { font-style: italic; color: var(--cyan); }
+.dark .metric .n { color: #fff; }
+.metric .l { font-size: 8pt; color: var(--muted); margin-top: 1.5mm; line-height: 1.4; }
+.dark .metric .l { color: var(--dk-muted); }
+
+/* Flow arrows */
+.flow { display: flex; align-items: stretch; gap: 0; }
+.flow .step { flex: 1; }
+.arrow-r {
+  align-self: center; flex: 0 0 auto;
+  width: 6mm; text-align: center; color: var(--subtle);
+  font-size: 10pt;
+}
+
+/* Logo lockup */
+.lockup { display: flex; align-items: center; gap: 3.2mm; }
+.lockup svg { width: 9mm; height: 9mm; }
+.lockup .word { font-weight: 800; font-size: 12.5pt; letter-spacing: -0.02em; }
+.lockup .word .a { color: var(--cyan); }
+.lockup .word .b { color: var(--violet); }
+.dark .lockup .word .b { color: #B9A6E8; }
+
+/* Layer diagram */
+.layer {
+  border: 1px solid var(--hairline);
+  background: var(--white);
+  border-radius: 2mm;
+  padding: 3.2mm 5mm;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 6mm;
+}
+.layer b { font-size: 9.5pt; letter-spacing: -0.01em; white-space: nowrap; }
+.layer span { font-size: 8pt; color: var(--muted); text-align: right; }
+.layer.accent { background: var(--ink); border-color: var(--ink); }
+.layer.accent b { color: #fff; }
+.layer.accent span { color: rgba(255,255,255,0.6); }
+.vjoin { width: 1px; height: 3mm; background: var(--subtle); margin: 0 auto; }
+
+/* Tables */
+table.cmp { width: 100%; border-collapse: collapse; font-size: 8.5pt; }
+.cmp th { font-family: var(--mono); font-size: 7pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; text-align: left; padding: 2.2mm 2.5mm; border-bottom: 1px solid var(--hairline); }
+.cmp td { padding: 2.2mm 2.5mm; border-bottom: 1px solid var(--border); color: var(--ink-soft); vertical-align: top; }
+.cmp td.us { color: var(--ink); font-weight: 600; background: var(--cyan-soft); }
+.cmp .yes { color: var(--cyan); font-weight: 700; }
+.cmp .no { color: var(--subtle); }
+
+/* Pictograms — one consistent 1.5px-stroke geometric family */
+.pict { width: 6.5mm; height: 6.5mm; color: var(--cyan); flex-shrink: 0; }
+.pict-row { display: flex; gap: 3mm; align-items: flex-start; }
+
+/* Quote */
+.quote {
+  border-left: 2px solid var(--cyan);
+  padding: 1mm 0 1mm 5mm;
+}
+.quote p { font-family: var(--serif); font-size: 12.5pt; line-height: 1.4; color: var(--ink); }
+.quote .who { font-family: var(--mono); font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 2.5mm; }
+
+/* Screen-only helper bar */
+#printbar {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--ink); color: rgba(255,255,255,0.85);
+  font-size: 12px; padding: 9px 16px; text-align: center;
+}
+#printbar b { color: #fff; }
+#printbar .k { font-family: var(--mono); background: rgba(255,255,255,0.12); border-radius: 4px; padding: 1px 6px; }
+
+/* ── Print ── */
+@page { size: A4; margin: 0; }
+@media print {
+  body { background: none; }
+  #printbar { display: none; }
+  .sheet {
+    margin: 0; box-shadow: none;
+    width: 210mm; height: 296.5mm; min-height: 0;
+    page-break-after: always;
+  }
+  .sheet:last-child { page-break-after: auto; }
+  a { color: inherit; text-decoration: none; }
+}
+
+/* ── Small screens: readable, not paginated ── */
+@media screen and (max-width: 860px) {
+  .sheet { width: 100%; min-height: 0; margin: 0 0 4mm; padding: 8mm 6mm 16mm; }
+  h1 { font-size: 26pt; }
+  .cols-3, .cols-4 { grid-template-columns: 1fr 1fr; }
+  .flow { flex-direction: column; }
+  .arrow-r { transform: rotate(90deg); align-self: flex-start; margin-left: 4mm; }
+}
+</style>
+</head>
+<body>
+
+<div id="printbar">
+  To save as PDF: press <span class="k">Ctrl/Cmd + P</span> → destination <b>Save as PDF</b> → enable <b>Background graphics</b>.
+</div>
+
+<!-- ═══════════ 01 · COVER ═══════════ -->
+<section class="sheet" style="justify-content:space-between">
+  <svg viewBox="0 0 500 500" fill="none" aria-hidden="true"
+       style="position:absolute;right:-30mm;top:52mm;width:150mm;height:150mm;opacity:0.055;pointer-events:none">
+    <path d="M196.056 114.199C208.952 113.551 218.425 114.901 230.443 120.394C243.882 126.536 258.49 141.666 263.312 155.794C262.105 158.656 259.395 162.165 257.682 164.977C253.602 171.665 249.445 178.305 245.21 184.897C243.151 188.142 239.395 194.291 237.123 197.065C233.833 192.272 230.91 184.245 227.802 179.118C224.271 173.194 218.336 167.039 211.503 165.363C200.674 162.669 189.067 166.659 182.786 176.056C179.092 181.583 175.811 188.891 172.737 194.988L155.795 228.633L139.543 260.276C131.193 276.649 122.854 290.356 131.844 308.786C132.435 309.996 132.999 311.081 133.717 312.229C138.239 319.526 145.509 324.694 153.886 326.569C182.583 332.981 192.709 305.584 204.263 286.129L273.965 166.946C276.892 161.936 279.72 156.34 283.022 151.618C295.672 133.542 321.527 134.041 333.285 153.03C335.002 155.689 336.402 160.045 336.637 163.197C337.11 169.511 336.56 174.296 333.79 180.035C330.01 187.866 325.045 195.179 320.615 202.628L250.812 320.261L238.82 340.564C235.495 346.126 231.512 352.941 227.234 357.889C215.859 371.049 199.792 380.066 182.925 384.026C179.003 384.949 174.255 385.286 170.294 385.621C145.94 387.691 122.261 379.974 103.783 363.714C86.7253 348.559 77.5371 326.319 75.5748 303.864C74.5886 292.576 76.3148 279.101 79.5986 268.261C82.5456 258.531 88.2638 248.07 92.8818 238.96L110.976 203.531L128.228 169.303C131.352 163.103 134.361 156.827 137.754 150.769C149.569 129.67 171.912 115.717 196.056 114.199Z" fill="#0891B2"/>
+    <path d="M329.052 222.644C332.17 222.375 335.402 223.026 337.42 225.64C340.862 230.096 343.53 235.539 346.25 240.508C349.96 247.256 353.722 253.975 357.537 260.664L411.63 355.846C415.31 362.399 419.322 368.819 422.99 375.384C424.28 377.696 425.92 381.564 423.33 383.681C422.407 384.446 421.292 384.941 420.107 385.111C415.787 385.719 408.167 385.111 403.612 385.186C399.367 385.259 394.26 385.679 390.145 385.341C381.135 385.164 372.582 386.634 363.632 384.609C354.005 382.431 351.037 376.156 346.617 368.401L338.21 353.724L312.385 308.356C306.6 298.041 299.857 285.676 293.632 275.694C293.945 274.934 294.35 273.981 294.755 273.266C299.565 264.776 304.977 256.474 309.965 248.115L318.152 234.574C321.425 229.111 322.515 224.696 329.052 222.644Z" fill="#2E1065"/>
+  </svg>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <div class="lockup">
+      <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avyxon logo">
+        <path d="M196.056 114.199C208.952 113.551 218.425 114.901 230.443 120.394C243.882 126.536 258.49 141.666 263.312 155.794C262.105 158.656 259.395 162.165 257.682 164.977C253.602 171.665 249.445 178.305 245.21 184.897C243.151 188.142 239.395 194.291 237.123 197.065C233.833 192.272 230.91 184.245 227.802 179.118C224.271 173.194 218.336 167.039 211.503 165.363C200.674 162.669 189.067 166.659 182.786 176.056C179.092 181.583 175.811 188.891 172.737 194.988L155.795 228.633L139.543 260.276C131.193 276.649 122.854 290.356 131.844 308.786C132.435 309.996 132.999 311.081 133.717 312.229C138.239 319.526 145.509 324.694 153.886 326.569C182.583 332.981 192.709 305.584 204.263 286.129L273.965 166.946C276.892 161.936 279.72 156.34 283.022 151.618C295.672 133.542 321.527 134.041 333.285 153.03C335.002 155.689 336.402 160.045 336.637 163.197C337.11 169.511 336.56 174.296 333.79 180.035C330.01 187.866 325.045 195.179 320.615 202.628L250.812 320.261L238.82 340.564C235.495 346.126 231.512 352.941 227.234 357.889C215.859 371.049 199.792 380.066 182.925 384.026C179.003 384.949 174.255 385.286 170.294 385.621C145.94 387.691 122.261 379.974 103.783 363.714C86.7253 348.559 77.5371 326.319 75.5748 303.864C74.5886 292.576 76.3148 279.101 79.5986 268.261C82.5456 258.531 88.2638 248.07 92.8818 238.96L110.976 203.531L128.228 169.303C131.352 163.103 134.361 156.827 137.754 150.769C149.569 129.67 171.912 115.717 196.056 114.199Z" fill="#0891B2"/>
+        <path d="M329.052 222.644C332.17 222.375 335.402 223.026 337.42 225.64C340.862 230.096 343.53 235.539 346.25 240.508C349.96 247.256 353.722 253.975 357.537 260.664L411.63 355.846C415.31 362.399 419.322 368.819 422.99 375.384C424.28 377.696 425.92 381.564 423.33 383.681C422.407 384.446 421.292 384.941 420.107 385.111C415.787 385.719 408.167 385.111 403.612 385.186C399.367 385.259 394.26 385.679 390.145 385.341C381.135 385.164 372.582 386.634 363.632 384.609C354.005 382.431 351.037 376.156 346.617 368.401L338.21 353.724L312.385 308.356C306.6 298.041 299.857 285.676 293.632 275.694C293.945 274.934 294.35 273.981 294.755 273.266C299.565 264.776 304.977 256.474 309.965 248.115L318.152 234.574C321.425 229.111 322.515 224.696 329.052 222.644Z" fill="#2E1065"/>
+      </svg>
+      <span class="word"><span class="a">Avyxon</span> <span class="b">AI Labs</span></span>
+    </div>
+    <div style="font-family:var(--mono);font-size:8pt;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)">Company Profile · 2026</div>
+  </div>
+
+  <div>
+    <div style="font-family:var(--mono);font-size:9pt;letter-spacing:0.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:8mm">Agent-first engineering</div>
+    <h1 style="font-size:46pt;max-width:165mm">Production AI,<br>measured in <em>business outcomes</em>.</h1>
+    <p class="lead" style="margin-top:9mm;max-width:120mm">
+      Avyxon designs, builds and operates intelligent systems that take real work
+      off enterprise teams — shipped to production in weeks, run inside your own
+      cloud, and judged by the numbers they move.
+    </p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;border-top:1px solid var(--hairline);padding-top:6mm">
+    <div class="small">AI Consulting</div>
+    <div class="small">Enterprise Automation</div>
+    <div class="small">Agentic Workflows &amp; Voice</div>
+    <div class="small">Forward Deployed Engineers</div>
+  </div>
+
+  <div class="pfoot"><span>Avyxon AI Labs LLP</span><span>avyxon.ai</span></div>
+</section>
+
+<!-- ═══════════ 02 · EXECUTIVE STATEMENT ═══════════ -->
+<section class="sheet">
+  <div class="kicker">Executive summary</div>
+  <h2 style="font-size:27pt;max-width:160mm">We build the systems that do the work — <em>not slideware about them.</em></h2>
+  <p class="lead" style="margin-bottom:8mm">
+    Avyxon AI Labs is an engineering studio for organisations that want working
+    software, not another strategy document. We advise where AI genuinely pays,
+    then build and run the automation ourselves: multi-agent platforms, voice
+    agents, and deep integrations into the systems a business already runs on.
+  </p>
+
+  <div class="grid cols-2" style="margin-bottom:8mm">
+    <div class="card">
+      <h3 style="margin-bottom:2mm">Who we help</h3>
+      <p class="body">Founders who need a product live in weeks, and enterprise
+      operators whose costs live in manual process — exam operations, logistics,
+      field operations, supply chain and IoT-heavy businesses among them.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:2mm">What changes</h3>
+      <p class="body">Follow-ups, monitoring, and routine decisions move from
+      people to supervised software. Teams keep the judgement work; the platform
+      absorbs the volume. Progress is tracked against a business metric, not a
+      feature list.</p>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-bottom:5mm;margin-top:auto">Five ways we engage</div>
+  <div class="grid" style="grid-template-columns:repeat(5,1fr)">
+    <div>
+      <div style="font-family:var(--serif);font-size:16pt;color:var(--cyan)">01</div>
+      <h3 style="font-size:9.5pt;margin:1.5mm 0 1mm">AI Consulting</h3>
+      <p class="small">Where to apply AI, what to build versus buy, and a roadmap you can execute.</p>
+    </div>
+    <div>
+      <div style="font-family:var(--serif);font-size:16pt;color:var(--cyan)">02</div>
+      <h3 style="font-size:9.5pt;margin:1.5mm 0 1mm">Automation</h3>
+      <p class="small">High-cost manual processes automated end-to-end, with monitoring built in.</p>
+    </div>
+    <div>
+      <div style="font-family:var(--serif);font-size:16pt;color:var(--cyan)">03</div>
+      <h3 style="font-size:9.5pt;margin:1.5mm 0 1mm">Agentic Workflows</h3>
+      <p class="small">Multi-agent systems that plan, act and recover — built for production scale.</p>
+    </div>
+    <div>
+      <div style="font-family:var(--serif);font-size:16pt;color:var(--cyan)">04</div>
+      <h3 style="font-size:9.5pt;margin:1.5mm 0 1mm">Voice Agents</h3>
+      <p class="small">Low-latency voice for support, sales and operations, on your data and guardrails.</p>
+    </div>
+    <div>
+      <div style="font-family:var(--serif);font-size:16pt;color:var(--gold)">05</div>
+      <h3 style="font-size:9.5pt;margin:1.5mm 0 1mm">Forward Deployed Engineers</h3>
+      <p class="small">Senior architects embedded in your team, accountable for an outcome.</p>
+    </div>
+  </div>
+
+  <p class="footnote">Avyxon AI Labs LLP · Registered in India · Delivery teams operate from India, serving clients across North America, Europe, the Middle East and APAC in English.</p>
+  <div class="pfoot"><span>Company Profile</span><span>02</span></div>
+</section>
+
+<!-- ═══════════ 03 · THE PROBLEM ═══════════ -->
+<section class="sheet dark">
+  <div class="kicker">The problem we exist for</div>
+  <h2 style="color:#fff;font-size:26pt;max-width:160mm">Most enterprise AI spend burns budget, <em>not blockers.</em></h2>
+  <p class="lead" style="margin-bottom:9mm;max-width:155mm">
+    The gap is rarely the model. It is the messy, high-stakes environment the
+    model has to work inside — legacy systems, manual handoffs, and processes
+    nobody fully owns. Four patterns account for most of the waste:
+  </p>
+
+  <div class="grid cols-2" style="gap:5mm;margin-bottom:9mm">
+    <div class="card">
+      <h3 style="color:#fff;margin-bottom:1.5mm">Pilots that never ship</h3>
+      <p class="body" style="color:var(--dk-muted)">A demo impresses in a meeting, then stalls at security review, integration, or hand-over. Budget is spent; nothing runs.</p>
+    </div>
+    <div class="card">
+      <h3 style="color:#fff;margin-bottom:1.5mm">Spend without a metric</h3>
+      <p class="body" style="color:var(--dk-muted)">Model and compute bills grow monthly while no business number — cost, speed, conversion — is assigned or moved.</p>
+    </div>
+    <div class="card">
+      <h3 style="color:#fff;margin-bottom:1.5mm">Vendors blind to legacy</h3>
+      <p class="body" style="color:var(--dk-muted)">The real constraints live in ERP, CRM and custom systems built over a decade. Most suppliers never learn them.</p>
+    </div>
+    <div class="card">
+      <h3 style="color:#fff;margin-bottom:1.5mm">Knowledge that walks out</h3>
+      <p class="body" style="color:var(--dk-muted)">When the contract ends, understanding of the system leaves with the contractor — and dependency stays.</p>
+    </div>
+  </div>
+
+  <div style="border:1px solid var(--dk-line);border-radius:2.5mm;padding:7mm 8mm;display:flex;gap:8mm;align-items:center;margin-top:auto;margin-bottom:4mm">
+    <div style="font-family:var(--serif);font-size:15pt;color:#fff;flex:1">
+      Our answer: engineers who own a business metric, working inside your
+      systems — <em style="color:#22B8D4">not around them.</em>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>Company Profile</span><span>03</span></div>
+</section>
+
+<!-- ═══════════ 04 · AT A GLANCE ═══════════ -->
+<section class="sheet">
+  <div class="kicker">Avyxon at a glance</div>
+  <h2>Built in weeks. Run for years.</h2>
+
+  <div class="grid cols-4" style="margin:6mm 0 7mm">
+    <div class="metric card"><div class="n">1 <em>wk</em></div><div class="l">Fastest production MVP shipped — focused scopes; complex builds 2–4 weeks</div></div>
+    <div class="metric card"><div class="n">70<em>%</em></div><div class="l">Faster than traditional consultancies, on reusable agentic cores</div></div>
+    <div class="metric card"><div class="n">10<em>k+</em></div><div class="l">Exam centers operated on a single multi-tenant platform we built</div></div>
+    <div class="metric card"><div class="n">99.99<em>%</em></div><div class="l">Uptime held by self-healing agents on high-scale infrastructure</div></div>
+  </div>
+
+  <div class="grid cols-2" style="gap:6mm">
+    <div>
+      <div class="kicker" style="margin-bottom:4mm">Where we operate</div>
+      <table class="cmp">
+        <tr><td style="width:38%"><b>Exam operations</b></td><td>National-scale logistics of secure materials, approvals, vendor ecosystems</td></tr>
+        <tr><td><b>Logistics &amp; last-mile</b></td><td>Fleets, riders, reverse pickups, SLA intelligence on daily routes</td></tr>
+        <tr><td><b>Field operations</b></td><td>Ground teams — IT ops, housekeeping, security — on one dashboard</td></tr>
+        <tr><td><b>Supply chain</b></td><td>Procurement to dispatch to reverse logistics, integrated with legacy ERP</td></tr>
+        <tr><td><b>IoT &amp; edge</b></td><td>MQTT, CoAP and LoRa devices with real-time analytics at scale</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="kicker" style="margin-bottom:4mm">How we run</div>
+      <div style="display:flex;flex-direction:column;gap:3mm">
+        <div class="pict-row">
+          <svg class="pict" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12v9M12 12L4 7.5M12 12l8-4.5"/></svg>
+          <p class="body"><b>Your cloud, your data.</b> Deployments run inside client AWS, Azure or GCP accounts — you keep control of data and infrastructure.</p>
+        </div>
+        <div class="pict-row">
+          <svg class="pict" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z"/></svg>
+          <p class="body"><b>Security posture.</b> SOC2 and DPDP compliant; ISO 27001 aligned. Encryption in transit and at rest; access limited to authorised personnel.</p>
+        </div>
+        <div class="pict-row">
+          <svg class="pict" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 9h8M8 13h5"/><path d="M21 12a9 9 0 1 1-4-7.5"/></svg>
+          <p class="body"><b>No black boxes.</b> We embed with your team and transfer knowledge as we build — the system stays understandable after we leave.</p>
+        </div>
+        <div class="pict-row">
+          <svg class="pict" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <p class="body"><b>12-hour response.</b> Every enquiry receives a considered reply within 12 hours — usually much faster.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="footnote">Figures above are Avyxon delivery metrics as published at avyxon.ai.</p>
+  <div class="pfoot"><span>Company Profile</span><span>04</span></div>
+</section>
+
+<!-- ═══════════ 05 · OPERATING MODEL ═══════════ -->
+<section class="sheet">
+  <div class="kicker">Operating model</div>
+  <h2>Three ways in — <em>one delivery engine.</em></h2>
+  <p class="lead" style="margin-bottom:8mm">
+    Every engagement starts from a business problem, not a technology preference.
+    Clients enter through whichever door fits, and can move between them as
+    needs grow.
+  </p>
+
+  <div class="grid cols-3" style="gap:5mm;margin-bottom:8mm">
+    <div class="card" style="border-top:3px solid var(--cyan)">
+      <div class="tag" style="margin-bottom:3mm">Front door</div>
+      <h3 style="margin-bottom:2mm">Consult</h3>
+      <p class="body" style="margin-bottom:3mm">Strategy that ends in shipped software. We map where AI pays in your operation, make build-versus-buy calls, and leave you with a roadmap you can execute — with us or without us.</p>
+      <p class="small">Best first step for: leadership teams weighing AI investment.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--violet)">
+      <div class="tag" style="margin-bottom:3mm;color:var(--violet);border-color:rgba(46,16,101,0.3)">Build engine</div>
+      <h3 style="margin-bottom:2mm">Build</h3>
+      <p class="body" style="margin-bottom:3mm">Web, backend and mobile shipped as one sprint — working product in as little as one week for focused scopes. Cloud-native from the first commit, with CI/CD and observability included.</p>
+      <p class="small">Best first step for: founders and product teams under time pressure.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--gold)">
+      <div class="tag" style="margin-bottom:3mm;color:var(--gold);border-color:rgba(184,150,106,0.45)">Premium tier</div>
+      <h3 style="margin-bottom:2mm">Embed</h3>
+      <p class="body" style="margin-bottom:3mm">A Forward Deployed Engineer — a senior architect who joins your team, learns your legacy estate, and takes accountability for moving one business metric. Not a ticket queue; an owner.</p>
+      <p class="small">Best first step for: enterprises with complex, high-stakes systems.</p>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-bottom:4mm;margin-top:auto">The typical one-week build sprint</div>
+  <div class="flow">
+    <div class="step card" style="border-radius:2mm 0 0 2mm;border-right:0">
+      <div style="font-family:var(--mono);font-size:7pt;color:var(--cyan);letter-spacing:0.08em">MONDAY</div>
+      <h3 style="font-size:9pt;margin:1mm 0">Discovery &amp; architecture</h3>
+      <p class="small">Requirements, stack decisions, schema design</p>
+    </div>
+    <div class="step card" style="border-radius:0;border-right:0">
+      <div style="font-family:var(--mono);font-size:7pt;color:var(--cyan);letter-spacing:0.08em">DAYS 2–3</div>
+      <h3 style="font-size:9pt;margin:1mm 0">Core backend &amp; APIs</h3>
+      <p class="small">Auth, database, business logic, integrations</p>
+    </div>
+    <div class="step card" style="border-radius:0;border-right:0">
+      <div style="font-family:var(--mono);font-size:7pt;color:var(--cyan);letter-spacing:0.08em">DAYS 3–4</div>
+      <h3 style="font-size:9pt;margin:1mm 0">Frontend &amp; mobile</h3>
+      <p class="small">Polished interface on the live API</p>
+    </div>
+    <div class="step card" style="border-radius:0;border-right:0">
+      <div style="font-family:var(--mono);font-size:7pt;color:var(--cyan);letter-spacing:0.08em">FRIDAY</div>
+      <h3 style="font-size:9pt;margin:1mm 0">Deploy &amp; handoff</h3>
+      <p class="small">Live on cloud, CI/CD configured, docs delivered</p>
+    </div>
+    <div class="step card" style="border-radius:0 2mm 2mm 0;background:var(--ink);border-color:var(--ink)">
+      <div style="font-family:var(--mono);font-size:7pt;color:#22B8D4;letter-spacing:0.08em">DAY 7</div>
+      <h3 style="font-size:9pt;margin:1mm 0;color:#fff">You are live</h3>
+      <p class="small" style="color:rgba(255,255,255,0.6)">Real users, real feedback, real momentum</p>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>Company Profile</span><span>05</span></div>
+</section>
+
+<!-- ═══════════ 06 · SOLUTION PORTFOLIO ═══════════ -->
+<section class="sheet">
+  <div class="kicker">Solution portfolio</div>
+  <h2>What each offering does — <em>and what it changes.</em></h2>
+
+  <table class="cmp" style="margin-top:5mm">
+    <tr>
+      <th style="width:19%">Offering</th>
+      <th style="width:27%">The problem it addresses</th>
+      <th style="width:27%">What it actually does</th>
+      <th>What changes for you</th>
+    </tr>
+    <tr>
+      <td><b>AI Consulting</b></td>
+      <td>AI budgets committed before anyone knows where the value is.</td>
+      <td>Maps your operation, scores candidate use-cases by payback, sets build-vs-buy direction, de-risks with a proof of concept.</td>
+      <td>An executable roadmap; investment goes where evidence points.</td>
+    </tr>
+    <tr>
+      <td><b>Enterprise Automation</b></td>
+      <td>High-volume manual work: follow-ups, reconciliation, status chasing.</td>
+      <td>Automates the process end-to-end with reliable, observable pipelines that alert before they fail.</td>
+      <td>Manual effort falls; throughput rises without added headcount.</td>
+    </tr>
+    <tr>
+      <td><b>Agentic Workflows</b></td>
+      <td>Work that needs judgement across steps — too complex for scripts.</td>
+      <td>Multi-agent systems that plan, act, and recover from failure, with guardrails and human checkpoints where they belong.</td>
+      <td>Complex operational flows run continuously, supervised not staffed.</td>
+    </tr>
+    <tr>
+      <td><b>Voice Agents</b></td>
+      <td>Phone-based work — confirmations, follow-ups, status calls — that doesn't scale with people.</td>
+      <td>Low-latency voice agents on your data and guardrails, integrated with telephony and your records.</td>
+      <td>Every call answered; routine conversations handled around the clock.</td>
+    </tr>
+    <tr>
+      <td><b>Forward Deployed Engineers</b></td>
+      <td>Problems buried deep in legacy systems that vendors never learn.</td>
+      <td>A senior architect embeds in your team, works inside SAP, Oracle, Salesforce and custom estates, and owns a metric.</td>
+      <td>A named owner for the outcome; capability that stays in-house.</td>
+    </tr>
+    <tr>
+      <td><b>1-Week MVP</b></td>
+      <td>Product ideas losing months to vendor cycles.</td>
+      <td>Web, backend and mobile shipped in one sprint — deployed, documented, app-store ready.</td>
+      <td>Live product in front of real users while the market window is open.</td>
+    </tr>
+  </table>
+
+  <p class="footnote">Also in the toolkit: ML modelling &amp; training, cloud-native infrastructure, and organisational transformation — embedded in engagements rather than sold as separate line items.</p>
+  <div class="pfoot"><span>Company Profile</span><span>06</span></div>
+</section>
+
+<!-- ═══════════ 07 · FDE SPOTLIGHT ═══════════ -->
+<section class="sheet dark">
+  <div class="kicker">Premium tier</div>
+  <h2 style="color:#fff">Forward Deployed Engineers: <em>not a contractor. An owner.</em></h2>
+  <p class="lead" style="margin-bottom:8mm;max-width:155mm">
+    The hardest enterprise problems live where documentation ends — inside
+    decade-old ERP customisations and processes held together by institutional
+    memory. Our FDEs are senior architects who embed in your team, learn that
+    terrain, and are accountable for a business result.
+  </p>
+
+  <div class="grid cols-2" style="gap:5mm;margin-bottom:8mm">
+    <div class="card">
+      <div style="font-family:var(--mono);font-size:7.5pt;letter-spacing:0.1em;text-transform:uppercase;color:#F0997B;margin-bottom:3mm">A typical engagement fails when…</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:2.5mm">
+        <li class="body" style="color:var(--dk-muted)">— the pilot stalls before production</li>
+        <li class="body" style="color:var(--dk-muted)">— compute bills grow with no result attached</li>
+        <li class="body" style="color:var(--dk-muted)">— the supplier never learns your constraints</li>
+        <li class="body" style="color:var(--dk-muted)">— expertise leaves when the contract ends</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:rgba(8,145,178,0.5);background:rgba(8,145,178,0.08)">
+      <div style="font-family:var(--mono);font-size:7.5pt;letter-spacing:0.1em;text-transform:uppercase;color:#22B8D4;margin-bottom:3mm">An Avyxon FDE instead…</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:2.5mm">
+        <li class="body" style="color:rgba(255,255,255,0.85)">— ships to production inside your legacy estate</li>
+        <li class="body" style="color:rgba(255,255,255,0.85)">— is measured against one agreed business metric</li>
+        <li class="body" style="color:rgba(255,255,255,0.85)">— brings high-scale, distributed-systems depth</li>
+        <li class="body" style="color:rgba(255,255,255,0.85)">— transfers knowledge to your team as they go</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-bottom:4mm">From audit to measured result</div>
+  <div class="flow" style="gap:3mm">
+    <div class="step card"><div style="font-family:var(--serif);font-size:14pt;color:#22B8D4">01</div><h3 style="font-size:9pt;color:#fff;margin:1mm 0">Discovery &amp; audit</h3><p class="small" style="color:var(--dk-muted)">Map the problem, the legacy terrain, and the metric that matters.</p></div>
+    <div class="step card"><div style="font-family:var(--serif);font-size:14pt;color:#22B8D4">02</div><h3 style="font-size:9pt;color:#fff;margin:1mm 0">Embed</h3><p class="small" style="color:var(--dk-muted)">A senior engineer joins your team and gets deep on your systems.</p></div>
+    <div class="step card"><div style="font-family:var(--serif);font-size:14pt;color:#22B8D4">03</div><h3 style="font-size:9pt;color:#fff;margin:1mm 0">Ship to production</h3><p class="small" style="color:var(--dk-muted)">Real systems, deployed in your cloud, integrated with legacy.</p></div>
+    <div class="step card"><div style="font-family:var(--serif);font-size:14pt;color:#22B8D4">04</div><h3 style="font-size:9pt;color:#fff;margin:1mm 0">Measure</h3><p class="small" style="color:var(--dk-muted)">Outcomes tracked against the agreed metric — not activity.</p></div>
+  </div>
+
+  <p class="footnote" style="color:var(--dk-muted)">Fractional-CTO and post-launch retainer arrangements available — continuous delivery, SLA-backed support, and 24/7 monitoring with self-healing agents.</p>
+  <div class="pfoot"><span>Company Profile</span><span>07</span></div>
+</section>
+
+<!-- ═══════════ 08 · PLATFORM & ARCHITECTURE ═══════════ -->
+<section class="sheet">
+  <div class="kicker">Platform &amp; architecture</div>
+  <h2>Technical enough for a CTO. <em>Legible to a CEO.</em></h2>
+  <p class="lead" style="margin-bottom:7mm">
+    Every Avyxon system follows the same architectural spine: signals come in,
+    intelligence decides, automation acts inside your existing systems, and
+    everything that happens is measured.
+  </p>
+
+  <div style="display:flex;flex-direction:column">
+    <div class="layer"><b>Channels &amp; signals</b><span>Email · SMS · WhatsApp · voice · web · IoT devices (MQTT / CoAP / LoRa)</span></div>
+    <div class="vjoin"></div>
+    <div class="layer"><b>Data</b><span>Client-owned stores — PostgreSQL and warehouse systems, in your cloud account</span></div>
+    <div class="vjoin"></div>
+    <div class="layer accent"><b>Intelligence</b><span>LLM reasoning, ML models trained on your data, real-time SLA-breach prediction</span></div>
+    <div class="vjoin"></div>
+    <div class="layer accent"><b>Orchestration</b><span>Multi-agent planning with guardrails, human checkpoints, and recovery on failure</span></div>
+    <div class="vjoin"></div>
+    <div class="layer"><b>Automation &amp; action</b><span>Follow-ups, escalations, updates and transactions executed across channels</span></div>
+    <div class="vjoin"></div>
+    <div class="layer"><b>Business systems</b><span>SAP · Oracle · Salesforce · custom ERPs — read and written without rip-and-replace</span></div>
+    <div class="vjoin"></div>
+    <div class="layer"><b>Observability</b><span>Live dashboards, anomaly detection, self-healing infrastructure, audit trails</span></div>
+  </div>
+
+  <div class="grid cols-3" style="margin-top:7mm">
+    <div class="metric"><div class="n">85<em>%</em></div><div class="l">Reduction in manual effort on the orchestration platform</div></div>
+    <div class="metric"><div class="n">99.5<em>%</em></div><div class="l">SLA adherence rate across monitored workflows</div></div>
+    <div class="metric"><div class="n">&lt;2<em>s</em></div><div class="l">Average agent response, monitored 24/7 with self-healing</div></div>
+  </div>
+
+  <p class="footnote">Platform metrics as published at avyxon.ai. Deployed cloud-native on AWS, Azure or GCP with Kubernetes or serverless runtimes and CI/CD from the first commit.</p>
+  <div class="pfoot"><span>Company Profile</span><span>08</span></div>
+</section>
+
+<!-- ═══════════ 09 · FIELD RECORD ═══════════ -->
+<section class="sheet">
+  <div class="kicker">Field record</div>
+  <h2>Platforms running <em>real-world operations.</em></h2>
+  <p class="lead" style="margin-bottom:6mm">Six production systems, built and operated by Avyxon:</p>
+
+  <div class="grid cols-2" style="gap:4mm">
+    <div class="card">
+      <div class="tag" style="margin-bottom:2.5mm">Supply chain</div>
+      <h3 style="margin-bottom:1.5mm">National exam stationery platform</h3>
+      <p class="body">10,000+ centers on one multi-tenant architecture — complete approval cycles and a full vendor ecosystem, managed from a single platform.</p>
+    </div>
+    <div class="card">
+      <div class="tag" style="margin-bottom:2.5mm">Last-mile delivery</div>
+      <h3 style="margin-bottom:1.5mm">Logistics orchestration</h3>
+      <p class="body">Fleet owners, riders and reverse pickups with real-time SLA intelligence across thousands of daily delivery routes.</p>
+    </div>
+    <div class="card">
+      <div class="tag" style="margin-bottom:2.5mm">Field operations</div>
+      <h3 style="margin-bottom:1.5mm">On-ground operations management</h3>
+      <p class="body">IT ops, housekeeping, frisking, biometric and electrical teams unified into one intelligent dashboard.</p>
+    </div>
+    <div class="card">
+      <div class="tag" style="margin-bottom:2.5mm">IoT / Edge</div>
+      <h3 style="margin-bottom:1.5mm">Multi-protocol IoT platform</h3>
+      <p class="body">MQTT, CoAP and LoRa device support with real-time analytics and edge processing at global scale.</p>
+    </div>
+    <div class="card">
+      <div class="tag" style="margin-bottom:2.5mm">SCM</div>
+      <h3 style="margin-bottom:1.5mm">Supply chain management</h3>
+      <p class="body">Procurement to dispatch to reverse logistics — multi-department workflows with deep legacy ERP integration.</p>
+    </div>
+    <div class="card">
+      <div class="tag" style="margin-bottom:2.5mm">Platform engineering</div>
+      <h3 style="margin-bottom:1.5mm">High-scale infrastructure observability</h3>
+      <p class="body">Auto-scaling, real-time anomaly detection and self-healing agents holding 99.99% uptime.</p>
+    </div>
+  </div>
+
+  <div class="quote" style="margin-top:7mm">
+    <p>"They delivered a fully working SCM dashboard with multi-department workflows in under 2 weeks. What took our previous vendor 4 months."</p>
+    <div class="who">Rajesh M. — CTO, logistics enterprise · client statement as published at avyxon.ai</div>
+  </div>
+
+  <div class="pfoot"><span>Company Profile</span><span>09</span></div>
+</section>
+
+<!-- ═══════════ 10 · BUSINESS IMPACT FRAMEWORK ═══════════ -->
+<section class="sheet">
+  <div class="kicker">Business impact</div>
+  <h2>Where the value shows up in <em>your numbers.</em></h2>
+  <p class="lead" style="margin-bottom:7mm">
+    Every engagement is anchored to one of five value levers, agreed before work
+    begins. This is how a technology project becomes a line you can point to in
+    an operating review.
+  </p>
+
+  <table class="cmp">
+    <tr><th style="width:14%">Lever</th><th style="width:43%">Mechanism</th><th>Typical Avyxon capability applied</th></tr>
+    <tr><td><b>Cost</b></td><td>Manual, repetitive work moves to supervised automation; teams redeploy to judgement work.</td><td>Enterprise automation · agentic workflows · voice agents</td></tr>
+    <tr><td><b>Speed</b></td><td>Responses, follow-ups and process cycles compress from days to minutes.</td><td>Multi-channel orchestration · &lt;2s agent response</td></tr>
+    <tr><td><b>Revenue</b></td><td>Faster launches and always-on follow-up capture opportunities that lapse today.</td><td>1-week MVPs · voice &amp; follow-up agents</td></tr>
+    <tr><td><b>Quality</b></td><td>Consistent execution, SLA breach prediction, and escalation before customers notice.</td><td>SLA monitoring · observability · self-healing infrastructure</td></tr>
+    <tr><td><b>Scale</b></td><td>More volume, customers and workflows without proportional headcount growth.</td><td>Multi-tenant platforms · cloud-native architecture</td></tr>
+  </table>
+
+  <div style="margin-top:7mm;border:1.5px dashed var(--subtle);border-radius:2.5mm;padding:5mm 6mm;background:var(--bg)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3.5mm">
+      <h3>How the economics work</h3>
+      <span class="tag" style="color:var(--gold);border-color:rgba(184,150,106,0.5)">Illustrative model — not client data</span>
+    </div>
+    <div class="flow" style="gap:3mm">
+      <div class="step">
+        <div style="font-family:var(--mono);font-size:7pt;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase">Today</div>
+        <p class="body" style="margin-top:1mm">Process volume × manual handling time × people cost = a recurring operating expense that grows with the business.</p>
+      </div>
+      <div class="arrow-r">→</div>
+      <div class="step">
+        <div style="font-family:var(--mono);font-size:7pt;letter-spacing:0.08em;color:var(--cyan);text-transform:uppercase">With automation</div>
+        <p class="body" style="margin-top:1mm">The routine share of that volume is handled by software; exceptions route to people with full context attached.</p>
+      </div>
+      <div class="arrow-r">→</div>
+      <div class="step">
+        <div style="font-family:var(--mono);font-size:7pt;letter-spacing:0.08em;color:var(--violet);text-transform:uppercase">Result</div>
+        <p class="body" style="margin-top:1mm">Direct cost saving, released team capacity, and faster response — each measurable against the baseline captured in discovery.</p>
+      </div>
+    </div>
+    <p class="small" style="margin-top:3mm">During discovery we baseline your actual volumes and costs, so the value case is built on your numbers — not ours.</p>
+  </div>
+
+  <div class="pfoot"><span>Company Profile</span><span>10</span></div>
+</section>
+
+<!-- ═══════════ 11 · BEFORE / WITH AVYXON ═══════════ -->
+<section class="sheet dark">
+  <div class="kicker">The transformation</div>
+  <h2 style="color:#fff">Same operation. <em>Different physics.</em></h2>
+
+  <div class="grid cols-2" style="gap:6mm;margin:7mm 0">
+    <div>
+      <div style="font-family:var(--mono);font-size:8pt;letter-spacing:0.12em;text-transform:uppercase;color:#F0997B;margin-bottom:4mm">Before</div>
+      <div style="display:flex;flex-direction:column;gap:2.5mm">
+        <div class="card"><p class="body" style="color:var(--dk-muted)"><b style="color:#fff">Fragmented.</b> Customer signals scattered across email, phone, spreadsheets and systems that don't talk.</p></div>
+        <div class="card"><p class="body" style="color:var(--dk-muted)"><b style="color:#fff">Manual.</b> Follow-ups, reconciliation and status-chasing consume skilled people's days.</p></div>
+        <div class="card"><p class="body" style="color:var(--dk-muted)"><b style="color:#fff">Reactive.</b> Problems surface when a customer complains, not when the data first showed them.</p></div>
+        <div class="card"><p class="body" style="color:var(--dk-muted)"><b style="color:#fff">Opaque.</b> Nobody can say, today, where every order, ticket or shipment actually stands.</p></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:var(--mono);font-size:8pt;letter-spacing:0.12em;text-transform:uppercase;color:#22B8D4;margin-bottom:4mm">With Avyxon</div>
+      <div style="display:flex;flex-direction:column;gap:2.5mm">
+        <div class="card" style="border-color:rgba(8,145,178,0.4)"><p class="body" style="color:rgba(255,255,255,0.85)"><b style="color:#fff">Connected.</b> One platform orchestrates every channel and reads and writes your existing systems.</p></div>
+        <div class="card" style="border-color:rgba(8,145,178,0.4)"><p class="body" style="color:rgba(255,255,255,0.85)"><b style="color:#fff">Automated.</b> Routine work runs continuously under supervision; people handle exceptions and judgement.</p></div>
+        <div class="card" style="border-color:rgba(8,145,178,0.4)"><p class="body" style="color:rgba(255,255,255,0.85)"><b style="color:#fff">Anticipatory.</b> SLA breaches are predicted and escalated before customers ever notice.</p></div>
+        <div class="card" style="border-color:rgba(8,145,178,0.4)"><p class="body" style="color:rgba(255,255,255,0.85)"><b style="color:#fff">Measurable.</b> Live dashboards tie operational activity to the metric the engagement was scoped against.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-bottom:4mm">Why teams choose us over the alternatives</div>
+  <table class="cmp">
+    <tr>
+      <th></th>
+      <th style="color:#22B8D4">Avyxon</th>
+      <th style="color:var(--dk-muted)">Big consultancies</th>
+      <th style="color:var(--dk-muted)">RPA tools</th>
+      <th style="color:var(--dk-muted)">Freelancers</th>
+    </tr>
+    <tr><td style="color:var(--dk-muted)">Time to first MVP</td><td class="us" style="background:rgba(8,145,178,0.12);color:#fff">1–4 weeks</td><td style="color:var(--dk-muted)">3–9 months</td><td style="color:var(--dk-muted)">n/a</td><td style="color:var(--dk-muted)">Unpredictable</td></tr>
+    <tr><td style="color:var(--dk-muted)">Agentic AI &amp; LLM operations</td><td class="us" style="background:rgba(8,145,178,0.12)"><span class="yes">✓</span></td><td style="color:var(--dk-muted)">Limited</td><td class="no">✕</td><td class="no">✕</td></tr>
+    <tr><td style="color:var(--dk-muted)">Web + mobile + backend in one team</td><td class="us" style="background:rgba(8,145,178,0.12)"><span class="yes">✓</span></td><td style="color:var(--dk-muted)">✓</td><td class="no">✕</td><td style="color:var(--dk-muted)">Partial</td></tr>
+    <tr><td style="color:var(--dk-muted)">Knowledge transfer built in</td><td class="us" style="background:rgba(8,145,178,0.12)"><span class="yes">✓</span></td><td class="no">✕</td><td class="no">✕</td><td style="color:var(--dk-muted)">Varies</td></tr>
+    <tr><td style="color:var(--dk-muted)">Transparent fixed pricing</td><td class="us" style="background:rgba(8,145,178,0.12)"><span class="yes">✓</span></td><td class="no">✕</td><td style="color:var(--dk-muted)">Licensing</td><td style="color:var(--dk-muted)">Hourly only</td></tr>
+    <tr><td style="color:var(--dk-muted)">24/7 self-healing infrastructure</td><td class="us" style="background:rgba(8,145,178,0.12)"><span class="yes">✓</span></td><td style="color:var(--dk-muted)">Add-on</td><td class="no">✕</td><td class="no">✕</td></tr>
+  </table>
+
+  <div class="pfoot"><span>Company Profile</span><span>11</span></div>
+</section>
+
+<!-- ═══════════ 12 · CLIENT VOICES + STANDARDS ═══════════ -->
+<section class="sheet">
+  <div class="kicker">Client voices</div>
+  <h2>What builders say about <em>working with us.</em></h2>
+
+  <div style="display:flex;flex-direction:column;gap:6mm;margin:7mm 0">
+    <div class="quote">
+      <p>"The agentic platform reduced our manual ops effort by 83% in the first month. The self-healing infrastructure alone was worth every rupee."</p>
+      <div class="who">Ananya S. — VP Operations, EdTech firm</div>
+    </div>
+    <div class="quote">
+      <p>"As a pre-seed founder I needed an MVP fast without compromising quality. Avyxon shipped a polished product in 9 days. We closed our first customer week 2."</p>
+      <div class="who">Karan P. — Founder, B2B SaaS startup</div>
+    </div>
+  </div>
+  <p class="small">Client statements as published at avyxon.ai. References available on request.</p>
+
+  <div class="kicker" style="margin-bottom:4mm;margin-top:auto">Standards &amp; governance</div>
+  <div class="grid cols-3">
+    <div class="card">
+      <h3 style="font-size:9.5pt;margin-bottom:1.5mm">Security</h3>
+      <p class="small">SOC2 and DPDP compliant; ISO 27001 aligned. Encryption in transit (TLS 1.2+) and at rest; access controls limited to authorised personnel; regular security reviews.</p>
+    </div>
+    <div class="card">
+      <h3 style="font-size:9.5pt;margin-bottom:1.5mm">Data ownership</h3>
+      <p class="small">Systems deploy entirely within client cloud accounts — AWS, Azure or GCP — so data and infrastructure remain under your control at all times.</p>
+    </div>
+    <div class="card">
+      <h3 style="font-size:9.5pt;margin-bottom:1.5mm">Entity</h3>
+      <p class="small">Avyxon AI Labs LLP, registered in India. Delivery from India; clients served across North America, Europe, the Middle East and APAC in English.</p>
+    </div>
+  </div>
+  <div style="height:4mm"></div>
+
+  <div class="pfoot"><span>Company Profile</span><span>12</span></div>
+</section>
+
+<!-- ═══════════ 13 · ENGAGEMENT & COMMERCIALS ═══════════ -->
+<section class="sheet">
+  <div class="kicker">Working with Avyxon</div>
+  <h2>Clear scope. Clear price. <em>No surprises.</em></h2>
+  <p class="lead" style="margin-bottom:8mm">
+    Every engagement begins with a 30-minute discovery call and ends the first
+    week with a transparent, milestone-based quote. Three commercial models
+    cover most situations:
+  </p>
+
+  <div class="grid cols-3" style="gap:5mm;margin-bottom:9mm">
+    <div class="card">
+      <h3 style="margin-bottom:2mm">Fixed price</h3>
+      <p class="body">For scoped builds — MVPs, defined automations, platform modules. One quote, clear milestones, no metering anxiety.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:2mm">Time &amp; materials</h3>
+      <p class="body">For larger, evolving programmes where scope is discovered as legacy terrain is mapped.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:2mm">Outcome-based pilots</h3>
+      <p class="body">For engagements anchored to a measurable result — aligned incentives from day one.</p>
+    </div>
+  </div>
+
+  <div class="kicker" style="margin-bottom:4mm">The first two weeks</div>
+  <div class="flow" style="gap:3mm">
+    <div class="step card">
+      <div style="font-family:var(--serif);font-size:14pt;color:var(--cyan)">01</div>
+      <h3 style="font-size:9pt;margin:1mm 0">Discovery call</h3>
+      <p class="small">30 minutes on goals, constraints and the metric that matters. No pitch decks required.</p>
+    </div>
+    <div class="arrow-r">→</div>
+    <div class="step card">
+      <div style="font-family:var(--serif);font-size:14pt;color:var(--cyan)">02</div>
+      <h3 style="font-size:9pt;margin:1mm 0">Scoped proposal</h3>
+      <p class="small">A written scope with fixed quote and milestones — typically within days, not weeks.</p>
+    </div>
+    <div class="arrow-r">→</div>
+    <div class="step card">
+      <div style="font-family:var(--serif);font-size:14pt;color:var(--cyan)">03</div>
+      <h3 style="font-size:9pt;margin:1mm 0">Build begins</h3>
+      <p class="small">For focused scopes, a working system can be live inside the same fortnight.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:auto;margin-bottom:4mm" class="card">
+    <h3 style="margin-bottom:2mm">After launch</h3>
+    <p class="body">Optional retainers cover continuous delivery, SLA-backed support tiers, and 24/7 monitoring with self-healing agents. Startup-friendly terms available for pre-seed teams.</p>
+  </div>
+
+  <div class="pfoot"><span>Company Profile</span><span>13</span></div>
+</section>
+
+<!-- ═══════════ 14 · CLOSING / CTA ═══════════ -->
+<section class="sheet dark" style="justify-content:space-between">
+  <div class="lockup" style="margin-bottom:10mm">
+    <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Avyxon logo">
+      <path d="M196.056 114.199C208.952 113.551 218.425 114.901 230.443 120.394C243.882 126.536 258.49 141.666 263.312 155.794C262.105 158.656 259.395 162.165 257.682 164.977C253.602 171.665 249.445 178.305 245.21 184.897C243.151 188.142 239.395 194.291 237.123 197.065C233.833 192.272 230.91 184.245 227.802 179.118C224.271 173.194 218.336 167.039 211.503 165.363C200.674 162.669 189.067 166.659 182.786 176.056C179.092 181.583 175.811 188.891 172.737 194.988L155.795 228.633L139.543 260.276C131.193 276.649 122.854 290.356 131.844 308.786C132.435 309.996 132.999 311.081 133.717 312.229C138.239 319.526 145.509 324.694 153.886 326.569C182.583 332.981 192.709 305.584 204.263 286.129L273.965 166.946C276.892 161.936 279.72 156.34 283.022 151.618C295.672 133.542 321.527 134.041 333.285 153.03C335.002 155.689 336.402 160.045 336.637 163.197C337.11 169.511 336.56 174.296 333.79 180.035C330.01 187.866 325.045 195.179 320.615 202.628L250.812 320.261L238.82 340.564C235.495 346.126 231.512 352.941 227.234 357.889C215.859 371.049 199.792 380.066 182.925 384.026C179.003 384.949 174.255 385.286 170.294 385.621C145.94 387.691 122.261 379.974 103.783 363.714C86.7253 348.559 77.5371 326.319 75.5748 303.864C74.5886 292.576 76.3148 279.101 79.5986 268.261C82.5456 258.531 88.2638 248.07 92.8818 238.96L110.976 203.531L128.228 169.303C131.352 163.103 134.361 156.827 137.754 150.769C149.569 129.67 171.912 115.717 196.056 114.199Z" fill="#0891B2"/>
+      <path d="M329.052 222.644C332.17 222.375 335.402 223.026 337.42 225.64C340.862 230.096 343.53 235.539 346.25 240.508C349.96 247.256 353.722 253.975 357.537 260.664L411.63 355.846C415.31 362.399 419.322 368.819 422.99 375.384C424.28 377.696 425.92 381.564 423.33 383.681C422.407 384.446 421.292 384.941 420.107 385.111C415.787 385.719 408.167 385.111 403.612 385.186C399.367 385.259 394.26 385.679 390.145 385.341C381.135 385.164 372.582 386.634 363.632 384.609C354.005 382.431 351.037 376.156 346.617 368.401L338.21 353.724L312.385 308.356C306.6 298.041 299.857 285.676 293.632 275.694C293.945 274.934 294.35 273.981 294.755 273.266C299.565 264.776 304.977 256.474 309.965 248.115L318.152 234.574C321.425 229.111 322.515 224.696 329.052 222.644Z" fill="#B9A6E8"/>
+    </svg>
+    <span class="word"><span class="a">Avyxon</span> <span class="b">AI Labs</span></span>
+  </div>
+
+  <div>
+    <h1 style="color:#fff;font-size:38pt;max-width:160mm">Tell us the metric that matters.<br><em>We'll show you how to move it.</em></h1>
+    <p class="lead" style="margin-top:8mm;max-width:130mm">
+      Start with a 30-minute discovery call. You'll leave with an honest view of
+      where intelligent automation can create measurable value in your business —
+      and what it would take to capture it.
+    </p>
+  </div>
+
+  <div>
+    <div class="grid cols-3" style="border-top:1px solid var(--dk-line);padding-top:6mm">
+      <div>
+        <div style="font-family:var(--mono);font-size:7.5pt;letter-spacing:0.12em;text-transform:uppercase;color:var(--dk-muted);margin-bottom:1.5mm">Email</div>
+        <a href="mailto:info@avyxon.ai" style="color:#22B8D4;text-decoration:none;font-weight:600;font-size:10.5pt">info@avyxon.ai</a>
+        <p class="small" style="color:var(--dk-muted);margin-top:1mm">Replies within 12 hours</p>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:7.5pt;letter-spacing:0.12em;text-transform:uppercase;color:var(--dk-muted);margin-bottom:1.5mm">Web</div>
+        <a href="https://avyxon.ai" style="color:#fff;text-decoration:none;font-weight:600;font-size:10.5pt">avyxon.ai</a>
+        <p class="small" style="color:var(--dk-muted);margin-top:1mm">Services · FDE · contact</p>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:7.5pt;letter-spacing:0.12em;text-transform:uppercase;color:var(--dk-muted);margin-bottom:1.5mm">Social</div>
+        <p style="font-size:9.5pt;color:#fff;font-weight:600">LinkedIn · /company/avyxon-ai</p>
+        <p class="small" style="color:var(--dk-muted);margin-top:1mm">X @AvyxonAi · YouTube @AvyxonAILabs</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pfoot"><span>© 2026 Avyxon AI Labs LLP</span><span>14</span></div>
+</section>
+
+</body>
+</html>
