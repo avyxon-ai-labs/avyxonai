@@ -1,5 +1,10 @@
 # Deployment
 
+> **Current reality:** Vercel's own Git integration deploys `main` on push.
+> The GitHub Action no longer deploys — it only *verifies* the live site
+> (`.github/workflows/verify.yml`) and needs no secrets. The Vercel-token
+> setup below is kept for reference in case you ever move deploys into CI.
+
 The site is static and hosted on **Vercel**. `.github/workflows/deploy.yml`
 deploys `main` to production and then verifies the live site actually serves
 the new build.

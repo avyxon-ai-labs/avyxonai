@@ -166,6 +166,11 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 .footer-links { display:flex; gap:22px; flex-wrap:wrap; }
 .footer-links a { font-size:13px; color:var(--muted); transition:color 0.2s; }
 .footer-links a:hover { color:var(--cyan); }
+/* NAP — name, address, phone. Keep identical across pages and directories. */
+.footer-nap { max-width:var(--container); margin:0 auto; padding:14px var(--gutter) 28px; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:12.5px; color:var(--subtle); }
+.footer-nap a { color:var(--subtle); transition:color 0.2s; }
+.footer-nap a:hover { color:var(--cyan); }
+@media (max-width:768px) { .footer-nap { padding:14px 24px 28px; } }
 
 /* Cookie banner */
 #cookie-banner { position:fixed; bottom:0; left:0; right:0; z-index:9000; background:var(--dk-surface); border-top:1px solid rgba(8,145,178,0.25); padding:18px 40px; display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
@@ -406,6 +411,7 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
       <li><a href="fde.html">FDE</a></li>
       <li><a href="index.html#capabilities">Capabilities</a></li>
       <li><a href="index.html#platform">Platform</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
 
@@ -426,6 +432,7 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   <a class="mm-link" href="consulting.html">AI Consulting <i class="fas fa-arrow-right"></i></a>
   <a class="mm-link" href="fde.html">Forward Deployed Engineers <i class="fas fa-arrow-right"></i></a>
   <div class="mm-label">Explore</div>
+  <a class="mm-link" href="about.html">About <i class="fas fa-arrow-right"></i></a>
   <a class="mm-link" href="index.html#capabilities">Capabilities <i class="fas fa-arrow-right"></i></a>
   <a class="mm-link" href="index.html#mvp">1-Week MVPs <i class="fas fa-arrow-right"></i></a>
   <a class="mm-link" href="#faq">FAQ <i class="fas fa-arrow-right"></i></a>
@@ -561,10 +568,20 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
     <div class="footer-links">
       <a href="consulting.html">Consulting</a>
       <a href="fde.html">Forward Deployed Engineers</a>
+      <a href="about.html">About</a>
+      <a href="learn.html">Field Notes</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
+      <a href="https://wa.me/917899874613" target="_blank" rel="noopener">WhatsApp +91 78998 74613</a>
       <a href="mailto:info@avyxon.ai">info@avyxon.ai</a>
     </div>
+  </div>
+  <div class="footer-nap">
+    <span>Avyxon AI Labs LLP</span>
+    <span aria-hidden="true">·</span>
+    <span>Sangam Vihar, New Delhi &mdash; 110080, India</span>
+    <span aria-hidden="true">·</span>
+    <a href="tel:+917899874613">+91 78998 74613</a>
   </div>
 </footer>
 

@@ -6,13 +6,17 @@ Key facts:
 - "Avyxon Forward Deployed Engineers" is the premium offering: embedded senior architects accountable for a business metric, with high-scale distributed-systems and legacy-integration depth.
 - Consulting practices: AI Consulting (strategy → roadmap → POC), Enterprise Automation, Agentic Workflows (multi-agent orchestration for production), Voice Agents (support, sales, operations).
 - Engagement model: 30-minute discovery call → scoped fixed-price proposal → build and ship. Fractional-CTO and retainer options available.
-- Contact: info@avyxon.ai
+- Contact: info@avyxon.ai · +91 78998 74613 (WhatsApp)
+- Office: Sangam Vihar, New Delhi 110080, India. Avyxon AI Labs LLP, incorporated 27 November 2025.
 
 ## Pages
 
 - [Homepage](https://avyxon.ai/): Services overview, capabilities, 1-week MVP promise, platform, FAQ, contact
 - [AI Consulting](https://avyxon.ai/consulting.html): The four consulting practices — AI consulting, automation, agentic workflows, voice agents — with engagement model and FAQ
 - [Forward Deployed Engineers](https://avyxon.ai/fde.html): The FDE offering — embedded senior architects for enterprise legacy problems, how it works, proof, FAQ
+- [About](https://avyxon.ai/about.html): Who runs Avyxon, how the studio works, and the registered company facts (LLP, incorporation, GSTIN, office)
+- [Field Notes](https://avyxon.ai/learn.html): A reference guide to the 30 core concepts behind AI agents — one idea per screen, with diagrams and curated sources
+- [Company Profile](https://avyxon.ai/brochure.html): A 14-page company profile covering positioning, platform architecture, production track record and engagement models
 
 ## Legal
 

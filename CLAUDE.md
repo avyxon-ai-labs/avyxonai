@@ -4,15 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-A static marketing website for Avyxon AI Labs. The main page is `index.html` (self-contained HTML/CSS/JS); detail pages `consulting.html` and `fde.html` mirror its design tokens, nav, and motion system. `apps-script/` holds the Google Apps Script contact-form backend (deployed manually — see its README). `docs/site-architecture.md` is the multipage growth plan. There is no build system, no package manager, no test suite, and no CI/CD pipeline.
+A static marketing website for Avyxon AI Labs. The main page is `index.html` (self-contained HTML/CSS/JS); detail pages `consulting.html`, `fde.html` and `about.html` mirror its design tokens, nav, and motion system, as do `learn.html` (Field Notes reference), `brochure.html` (print-ready company profile, noindex) and `404.html`. `apps-script/` holds the Google Apps Script contact-form backend (deployed manually — see its README). `docs/site-architecture.md` is the multipage growth plan. There is no build system, no package manager, no test suite, and no CI/CD pipeline.
 
 ## Deployment
 
-Hosted on **Vercel**. `.github/workflows/deploy.yml` deploys `main` to production
-on push, then verifies the live site serves the new build (URL 200s + build
-markers). Requires the `VERCEL_TOKEN` / `VERCEL_ORG_ID` / `VERCEL_PROJECT_ID`
-repo secrets — see `docs/deployment.md`. `vercel.json` sets cache headers only
-(HTML revalidates every request), no URL rewriting.
+Hosted on **Vercel**, deployed by Vercel's own Git integration on every push to
+`main` — no secrets or CI step required. `.github/workflows/verify.yml` runs
+after each push (and weekly) to confirm production serves the current build:
+all public URLs return 200 and the live HTML carries the expected markers. A red
+run means the live site is wrong, not that a credential is missing.
+`vercel.json` sets cache headers only (HTML revalidates every request), no URL
+rewriting.
 
 The contact form backend is **deployed separately** to Google Apps Script and is
 not touched by a site deploy — see `apps-script/README.md`.
@@ -63,6 +65,13 @@ Add `class="section-reveal"` to any element to opt into the scroll-in animation.
 
 Submissions POST to the Apps Script web app in `APPS_SCRIPT_URL` as `text/plain` JSON (avoids CORS preflight; the JSON response is readable, so success/failure is real). The backend source lives in `apps-script/Code.gs` — it appends to the "Avyxon Site Enqueries" sheet (Leads tab), emails the sender a personal acknowledgement, and notifies info@avyxon.ai. Deploy steps in `apps-script/README.md`. A hidden `website` field is a honeypot.
 
+## NAP (keep identical everywhere)
+
+Avyxon AI Labs LLP · Sangam Vihar, New Delhi — 110080, India · +91 78998 74613.
+Published in the footer of every page and in the Organization `PostalAddress`
+schema on `index.html` / `about.html`. Directory listings must match this
+string exactly — inconsistent NAP defeats the purpose of the citations.
+
 ## Branching
 
-Active development branch: `claude/add-claude-documentation-zqhHV`. Main branch is `main`.
+Work on `main`. Vercel deploys it on push.

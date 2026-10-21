@@ -67,7 +67,7 @@ Rules when graduating:
 
 - [ ] Real anonymized metrics for the FDE proof section (still placeholder-flagged)
 - [ ] Case studies page with 2–3 written up (unblocks LLM citability)
-- [ ] About page with founders + Person schema (E-E-A-T)
+- [x] About page with partners + Person schema (bios/photos/LinkedIn still to add)
 - [ ] LinkedIn/X posting cadence linking back to insights articles
-- [ ] Google Business Profile (Delhi HQ) → local pack + knowledge panel
+- [ ] Google Business Profile (Delhi HQ) → local pack + knowledge panel (NAP now published, so this is unblocked)
 - [x] Deploy automation (Vercel deploy + live-site verification on push to `main`)

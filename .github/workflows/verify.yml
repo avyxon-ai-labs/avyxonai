@@ -1,0 +1,89 @@
+# Verifies that the live site is serving the current build.
+#
+# Deployment itself is handled by Vercel's own Git integration, which is
+# connected to this repository and deploys `main` on push — no secrets and
+# no CLI step are needed here. This workflow waits for that deploy to land
+# and then checks production, so a red run means "the live site is wrong",
+# not "a credential is missing".
+
+name: Verify live site
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+      - 'apps-script/**'
+      - '.github/**'
+  workflow_dispatch:
+  schedule:
+    # Monday 06:00 UTC — catches silent breakage between deploys
+    - cron: '0 6 * * 1'
+
+concurrency:
+  group: verify-production
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for the Vercel deploy to land
+        if: github.event_name == 'push'
+        run: sleep 75
+
+      - name: All public URLs return 200
+        run: |
+          set -uo pipefail
+          fail=0
+          for path in "" "about.html" "consulting.html" "fde.html" "learn.html" \
+                      "brochure.html" "privacy.html" "terms.html" \
+                      "llms.txt" "robots.txt" "sitemap.xml" "sitemap-pages.xml" \
+                      "logo-email.png"; do
+            code=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "https://avyxon.ai/${path}" || echo 000)
+            if [ "$code" = "200" ]; then echo "  ok   /${path}"
+            else echo "  FAIL /${path} -> ${code}"; fail=1; fi
+          done
+          exit $fail
+
+      - name: Live HTML contains the current build
+        run: |
+          set -uo pipefail
+          home=$(curl -sS -m 20 https://avyxon.ai/ || true)
+          about=$(curl -sS -m 20 https://avyxon.ai/about.html || true)
+          learn=$(curl -sS -m 20 https://avyxon.ai/learn.html || true)
+
+          fail=0
+          check() {
+            if printf '%s' "$2" | grep -q -- "$3"; then echo "  ok   $1"
+            else echo "  FAIL $1 (missing: $3)"; fail=1; fi
+          }
+
+          check "home: service chips"        "$home"  'hero-services'
+          check "home: mobile menu"          "$home"  'nav-burger'
+          check "home: NAP phone published"  "$home"  'tel:+917899874613'
+          check "home: postal address"       "$home"  'PostalAddress'
+          check "about: page is live"        "$about" 'Avyxon AI Labs LLP'
+          check "learn: indexable"           "$learn" 'content="index, follow"'
+
+          # learn.html must NOT be noindex any more
+          if printf '%s' "$learn" | grep -q 'noindex'; then
+            echo "  FAIL learn.html still carries noindex"; fail=1
+          fi
+          exit $fail
+
+      - name: Contact backend version (informational)
+        continue-on-error: true
+        run: |
+          body=$(curl -sSL -m 25 "https://script.google.com/macros/s/AKfycbyLJz0EtIZ3Us59I4842cIflVAhyEOYzpq0wQWdyKTvYCV34fTwx4VpfdZtMFq9jjkicw/exec" || echo '')
+          if printf '%s' "$body" | grep -q '"service":"avyxon-contact"'; then
+            echo "✅ Current contact backend is deployed."
+          else
+            echo "⚠️  Contact backend is NOT the current version — the form may be failing."
+            echo "    Deploy apps-script/Code.gs (see apps-script/README.md)."
+          fi

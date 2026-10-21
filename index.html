@@ -1852,6 +1852,23 @@ footer {
 }
 .footer-links a:hover { color: var(--cyan); }
 
+/* NAP — name, address, phone. Keep identical across pages and directories. */
+.footer-nap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 14px var(--gutter) 28px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--subtle);
+}
+.footer-nap a { color: var(--subtle); transition: color 0.2s; }
+.footer-nap a:hover { color: var(--cyan); }
+@media (max-width: 768px) { .footer-nap { padding: 14px 24px 28px; } }
+
 /* Under-construction notice */
 .footer-wip {
   border-top: 1px solid var(--border);
@@ -2255,12 +2272,31 @@ footer {
     "https://x.com/AvyxonAi",
     "https://www.youtube.com/@AvyxonAILabs"
   ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "email": "info@avyxon.ai",
-    "contactType": "customer service",
-    "availableLanguage": "English"
-  }
+  "telephone": "+917899874613",
+  "foundingDate": "2025-11-27",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sangam Vihar",
+    "addressRegion": "Delhi",
+    "postalCode": "110080",
+    "addressCountry": "IN"
+  },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "email": "info@avyxon.ai",
+      "telephone": "+917899874613",
+      "contactType": "sales",
+      "availableLanguage": "English",
+      "areaServed": "Worldwide"
+    },
+    {
+      "@type": "ContactPoint",
+      "email": "info@avyxon.ai",
+      "contactType": "customer support",
+      "availableLanguage": "English"
+    }
+  ]
 }
 </script>
 
@@ -2399,6 +2435,7 @@ footer {
       <li><a href="#capabilities">Capabilities</a></li>
       <li><a href="#mvp">1-Week MVPs</a></li>
       <li><a href="#platform">Platform</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
 
@@ -2419,6 +2456,7 @@ footer {
   <a class="mm-link" href="consulting.html">AI Consulting <i class="fas fa-arrow-right"></i></a>
   <a class="mm-link" href="fde.html">Forward Deployed Engineers <i class="fas fa-arrow-right"></i></a>
   <div class="mm-label">Explore</div>
+  <a class="mm-link" href="about.html">About <i class="fas fa-arrow-right"></i></a>
   <a class="mm-link" href="#capabilities">Capabilities <i class="fas fa-arrow-right"></i></a>
   <a class="mm-link" href="#mvp">1-Week MVPs <i class="fas fa-arrow-right"></i></a>
   <a class="mm-link" href="#faq">FAQ <i class="fas fa-arrow-right"></i></a>
@@ -2508,7 +2546,7 @@ footer {
           </div>
           <div class="hero-proof-footer">
             <i class="fas fa-shield-halved"></i>
-            <div class="hpf-text"><strong>SOC2 &amp; DPDP compliant</strong> · ISO 27001 aligned · Enterprise-grade security</div>
+            <div class="hpf-text"><strong>DPDP compliant</strong> · SOC2 &amp; ISO 27001 aligned · Enterprise-grade security</div>
           </div>
         </div>
       </div>
@@ -3304,10 +3342,20 @@ footer {
     <div class="footer-links">
       <a href="consulting.html">Consulting</a>
       <a href="fde.html">Forward Deployed Engineers</a>
+      <a href="about.html">About</a>
+      <a href="learn.html">Field Notes</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
+      <a href="https://wa.me/917899874613" target="_blank" rel="noopener">WhatsApp +91 78998 74613</a>
       <a href="mailto:info@avyxon.ai">info@avyxon.ai</a>
     </div>
+  </div>
+  <div class="footer-nap">
+    <span>Avyxon AI Labs LLP</span>
+    <span aria-hidden="true">·</span>
+    <span>Sangam Vihar, New Delhi &mdash; 110080, India</span>
+    <span aria-hidden="true">·</span>
+    <a href="tel:+917899874613">+91 78998 74613</a>
   </div>
 </footer>
 
