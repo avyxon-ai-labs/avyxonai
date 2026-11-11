@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Forward Deployed Engineers (FDE) — Avyxon AI Labs</title>
-<meta name="description" content="Avyxon Forward Deployed Engineers are senior architects who embed in your team to solve enterprise legacy problems with AI — moving ROI, not burning tokens. Deep high-scale systems experience.">
+<meta name="description" content="Senior architects who embed in your team to solve enterprise legacy problems with AI — accountable for a business metric, not token spend.">
 
 <!-- SEO: Canonical + Robots -->
 <link rel="canonical" href="https://avyxon.ai/fde.html">
@@ -302,6 +302,18 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   .section-reveal, .stagger > * { opacity:1 !important; transform:none !important; transition:none !important; animation:none !important; }
 }
 
+
+/* ── Mobile usability: 44px tap targets + legible label sizes ── */
+@media (max-width:768px) {
+  .footer-links a { padding:12px 0; display:inline-block; }
+  .footer-nap a { padding:10px 0; display:inline-block; }
+  .nav-burger { width:44px; height:44px; }
+  .dhero .back { padding:12px 0; }
+  .section-label { font-size:12px; }
+  .pillar .tag { font-size:11.5px; }
+  .step p, .metric .l { font-size:13.5px; }
+}
+
 /* ============================================================
    RESPONSIVE — tighten vertical rhythm + offering components on
    tablet/mobile. Consistent with the site's #hero / .hero-ctas
@@ -334,6 +346,7 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   "@context": "https://schema.org",
   "@type": "Service",
   "serviceType": "Forward Deployed Engineering",
+  "dateModified": "2026-11-11",
   "name": "Avyxon Forward Deployed Engineers",
   "alternateName": "Avyxon FDE",
   "url": "https://avyxon.ai/fde.html",

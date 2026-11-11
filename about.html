@@ -307,6 +307,18 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   .section-reveal, .stagger > * { opacity:1 !important; transform:none !important; transition:none !important; animation:none !important; }
 }
 
+
+/* ── Mobile usability: 44px tap targets + legible label sizes ── */
+@media (max-width:768px) {
+  .footer-links a { padding:12px 0; display:inline-block; }
+  .footer-nap a { padding:10px 0; display:inline-block; }
+  .nav-burger { width:44px; height:44px; }
+  .dhero .back { padding:12px 0; }
+  .section-label { font-size:12px; }
+  .pillar .tag { font-size:11.5px; }
+  .step p, .metric .l { font-size:13.5px; }
+}
+
 /* ============================================================
    RESPONSIVE — tighten vertical rhythm + offering components on
    tablet/mobile. Consistent with the site's #hero / .hero-ctas
@@ -339,6 +351,8 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   "@type": "AboutPage",
   "url": "https://avyxon.ai/about.html",
   "name": "About Avyxon AI Labs",
+  "dateModified": "2026-11-11",
+  "inLanguage": "en",
   "mainEntity": {
     "@type": "Organization",
     "name": "Avyxon AI Labs",
@@ -370,6 +384,23 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
       {"@type": "Person", "name": "Sweta", "jobTitle": "Designated Partner"}
     ]
   }
+}
+</script>
+
+<!-- Schema.org: FAQPage — engagement model -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How does Avyxon AI Labs price work?","acceptedAnswer":{"@type":"Answer","text":"Fixed price, quoted module by module or milestone by milestone, so scope and cost are discussed together. Payment follows delivery \u2014 a typical schedule is 25% on signing, then instalments on requirement freeze, a working backend demonstration, the UAT build, and go-live."}},
+    {"@type":"Question","name":"What support is included after launch?","acceptedAnswer":{"@type":"Answer","text":"Every engagement includes a warranty period from go-live, typically 45 to 60 days depending on scope, covering defects in delivered features at no additional cost. Ongoing support and enhancements are available under a separate maintenance agreement."}},
+    {"@type":"Question","name":"Who owns the infrastructure and the data?","acceptedAnswer":{"@type":"Answer","text":"The client does. Avyxon configures and deploys on the client's own cloud accounts \u2014 compute, database, storage, SMS gateways and app-store developer accounts. Infrastructure and licence costs sit with the client, so nothing is locked to Avyxon."}},
+    {"@type":"Question","name":"How long does delivery take?","acceptedAnswer":{"@type":"Answer","text":"A focused build can be live in about a week. A full mobile-plus-web operations platform typically runs about four weeks. Machine-learning work that must hit accuracy targets on client data runs longer and is benchmarked at each milestone rather than promised in advance."}},
+    {"@type":"Question","name":"What is typically not included in an Avyxon engagement?","acceptedAnswer":{"@type":"Answer","text":"Load and performance testing, security audit and VAPT, CI/CD pipeline setup, data migration from legacy systems, and interfaces in languages other than English. Each can be scoped in when needed; exclusions are listed in the proposal up front."}},
+    {"@type":"Question","name":"What happens if scope changes mid-project?","acceptedAnswer":{"@type":"Answer","text":"Work outside the signed scope is written up as a short change note covering effort, cost and timeline impact, and proceeds only on written client approval. The baseline is locked at an agreed milestone."}},
+    {"@type":"Question","name":"Can an engagement be stopped early?","acceptedAnswer":{"@type":"Answer","text":"Yes. Milestones accepted to that point are payable in full, work substantially in progress is invoiced pro-rata, and deliverables for paid milestones \u2014 documents, schema, code and models \u2014 are handed over on settlement."}}
+  ]
 }
 </script>
 
@@ -408,7 +439,7 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
       <li><a href="fde.html">FDE</a></li>
       <li><a href="about.html" class="active">About</a></li>
       <li><a href="index.html#platform">Platform</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
 
     <a href="index.html#contact" class="btn btn-primary">
@@ -430,7 +461,7 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   <div class="mm-label">Explore</div>
   <a class="mm-link" href="about.html">About <i class="fas fa-arrow-right"></i></a>
   <a class="mm-link" href="index.html#mvp">1-Week MVPs <i class="fas fa-arrow-right"></i></a>
-  <a class="mm-link" href="index.html#faq">FAQ <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="#faq">FAQ <i class="fas fa-arrow-right"></i></a>
   <a href="index.html#contact" class="btn btn-primary">Book a Call <i class="fas fa-arrow-right arrow"></i></a>
 </div>
 <!-- ══════════ HERO ══════════ -->
@@ -531,6 +562,50 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
           <tr><td style="padding:12px 0;color:var(--muted)">Delivery &amp; coverage</td><td style="padding:12px 0;color:var(--ink);font-weight:600">Teams in India; clients across North America, Europe, the Middle East and APAC, in English</td></tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ ENGAGEMENT FAQ ══════════ -->
+<section class="sec sec-cream" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="section-label">Working with us</div>
+      <h2 class="section-h2">The questions buyers <em>actually ask</em></h2>
+      <p class="section-body">Answered the way we answer them in a proposal, so there are no surprises later.</p>
+    </div>
+    <div class="faq-narrow">
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-btn">How do you price work? <span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">Fixed price, quoted module by module or milestone by milestone, so scope and cost are discussed together rather than as one lump sum. Payment follows delivery — a typical schedule is 25% on signing, then instalments on requirement freeze, a working backend demonstration, the UAT build, and go-live.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">What support is included after launch? <span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">Every engagement includes a warranty period from go-live — typically 45 to 60 days depending on scope — covering defects in delivered features at no additional cost. Behaviour that does not match the agreed requirements is a defect we fix; new features are change requests. Ongoing support and enhancements are available under a separate maintenance agreement.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">Who owns the infrastructure and the data? <span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">You do. We configure and deploy on your own cloud accounts — compute, database, storage, SMS gateways, app-store developer accounts. Infrastructure and licence costs sit with you, which means nothing is locked to us and you can take the system elsewhere at any point.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">How long does delivery actually take? <span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">It depends on scope, and we quote it honestly rather than optimistically. A focused build can be live in about a week. A full mobile-plus-web operations platform — app, dashboard, backend, testing and release — typically runs about four weeks. Machine-learning work that has to hit accuracy targets on your own data runs longer, and we benchmark it at each milestone instead of promising a number in advance.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">What is typically not included? <span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">Load and performance testing, security audit and VAPT, CI/CD pipeline setup, data migration from legacy systems, and interfaces in languages other than English. Any of these can be scoped in when you need them. We list exclusions in the proposal up front rather than letting you discover them halfway through.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">What happens if the scope changes mid-project? <span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">Work outside the signed scope is written up as a short change note — effort, cost and timeline impact — and proceeds only on your written approval. The baseline is locked at an agreed milestone, so a change is always assessed against something concrete rather than a memory of what was discussed.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">Can we stop an engagement early? <span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">Yes, and cleanly. Milestones accepted up to that point are payable in full, anything substantially in progress is invoiced pro-rata for work completed, and the deliverables for paid milestones — documents, schema, code, models — are handed over on settlement. You keep the value of what you have paid for.</div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -6,6 +6,18 @@ Key facts:
 - "Avyxon Forward Deployed Engineers" is the premium offering: embedded senior architects accountable for a business metric, with high-scale distributed-systems and legacy-integration depth.
 - Consulting practices: AI Consulting (strategy → roadmap → POC), Enterprise Automation, Agentic Workflows (multi-agent orchestration for production), Voice Agents (support, sales, operations).
 - Engagement model: 30-minute discovery call → scoped fixed-price proposal → build and ship. Fractional-CTO and retainer options available.
+
+## How Avyxon engages (quotable specifics)
+
+- Pricing: fixed price, quoted module by module or milestone by milestone. Payment follows delivery — a typical schedule is 25% on signing, then instalments on requirement freeze, backend demonstration, UAT build and go-live.
+- Warranty: 45–60 days of support from go-live at no additional cost, covering defects in delivered features. Ongoing support available under a separate maintenance agreement.
+- Infrastructure: deployed on the client's own cloud accounts (AWS EC2/RDS, Azure or GCP). The client owns compute, storage, gateways and developer accounts; Avyxon configures and deploys. No vendor lock-in.
+- Typical timelines: a focused build can go live in about one week; a full mobile-plus-web operations platform typically runs about four weeks; ML work with accuracy targets runs longer and is benchmarked per milestone rather than promised in advance.
+- Change control: work outside signed scope is written up as a change note (effort, cost, timeline) and proceeds only on written client approval. Baseline locked at an agreed milestone.
+- Commonly excluded unless scoped in: load/performance testing, security audit and VAPT, CI/CD pipeline setup, data migration, non-English interfaces.
+- Early termination: accepted milestones payable in full, work in progress invoiced pro-rata, deliverables for paid milestones handed over on settlement.
+- Typical stack: Flutter or React Native (mobile), Next.js (web), Python (APIs), PostgreSQL, AWS EC2/RDS, Firebase Cloud Messaging.
+- Delivery domains with production experience: rider and last-mile logistics operations, supply chain and warehouse management, exam-services operations, field operations, IoT/edge platforms, CCTV and video-audit automation.
 - Contact: info@avyxon.ai · +91 78998 74613 (WhatsApp)
 - Office: Sangam Vihar, New Delhi 110080, India. Avyxon AI Labs LLP, incorporated 27 November 2025.
 
@@ -15,6 +27,7 @@ Key facts:
 - [AI Consulting](https://avyxon.ai/consulting.html): The four consulting practices — AI consulting, automation, agentic workflows, voice agents — with engagement model and FAQ
 - [Forward Deployed Engineers](https://avyxon.ai/fde.html): The FDE offering — embedded senior architects for enterprise legacy problems, how it works, proof, FAQ
 - [About](https://avyxon.ai/about.html): Who runs Avyxon, how the studio works, and the registered company facts (LLP, incorporation, GSTIN, office)
+- [Engagement FAQ](https://avyxon.ai/about.html#faq): Pricing model, warranty, infrastructure ownership, timelines, exclusions and change control
 - [Field Notes](https://avyxon.ai/learn.html): A reference guide to the 30 core concepts behind AI agents — one idea per screen, with diagrams and curated sources
 - [Company Profile](https://avyxon.ai/brochure.html): A 14-page company profile covering positioning, platform architecture, production track record and engagement models
 
