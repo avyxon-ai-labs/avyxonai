@@ -1527,7 +1527,7 @@ body.menu-lock { overflow: hidden; }
 
 .test-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
 @media (max-width: 900px) { .test-grid { grid-template-columns: 1fr; } }
@@ -1547,7 +1547,6 @@ body.menu-lock { overflow: hidden; }
   box-shadow: 0 20px 48px rgba(0,0,0,0.09);
   transform: translateY(-4px);
 }
-.test-stars { color: var(--gold); font-size: 15px; letter-spacing: 2px; margin-bottom: 20px; }
 .test-quote {
   font-family: 'Instrument Serif', serif;
   font-size: 20px;
@@ -3167,18 +3166,6 @@ footer {
     </div>
     <div class="test-grid stagger section-reveal">
       <div class="test-card">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-quote">"They delivered a fully working SCM dashboard with multi-department workflows in under 2 weeks. What took our previous vendor 4 months."</p>
-        <div class="test-author">
-          <div class="test-avatar" style="background:var(--cyan)">R</div>
-          <div>
-            <div class="test-name">Rajesh M.</div>
-            <div class="test-role">CTO, Logistics Enterprise</div>
-          </div>
-        </div>
-      </div>
-      <div class="test-card">
-        <div class="test-stars">★★★★★</div>
         <p class="test-quote">"The agentic platform reduced our manual ops effort by 83% in the first month. The self-healing infrastructure alone was worth every rupee."</p>
         <div class="test-author">
           <div class="test-avatar" style="background:var(--violet-mid)">A</div>
@@ -3189,7 +3176,6 @@ footer {
         </div>
       </div>
       <div class="test-card">
-        <div class="test-stars">★★★★★</div>
         <p class="test-quote">"As a pre-seed founder I needed an MVP fast without compromising quality. Avyxon shipped a polished product in 9 days. We closed our first customer week 2."</p>
         <div class="test-author">
           <div class="test-avatar" style="background:var(--gold)">K</div>
