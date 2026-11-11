@@ -1,7 +1,9 @@
 # Part 0 — Claims audit and disposition
 
-**Status: DRAFT for partner decision.** Nothing here is actioned except the
-two items already removed (noted below). Internal — this file is excluded
+**Status: EXECUTED 11 Nov 2026** on the owner's instruction ("do all rows, fix
+the uptime claim too"). All nine rows actioned and verified live. Three
+further claim groups were found during the sweep that this table had missed —
+they are recorded as rows 10–12 and were actioned with the rest. Internal — this file is excluded
 from the deployment by `.vercelignore`.
 
 Drafted 11 Nov 2026 · Decision owner: _______ · Target: before next deploy
@@ -71,13 +73,13 @@ into "remove", and the replacement copy matters more, not less.
 |---|---|---|---|---|---|
 | 1 | ★★★★★ rating marks | `index.html` ×3 | None — no rating system exists | **Remove** | ✅ **done** |
 | 2 | "under 2 weeks… previous vendor 4 months" | `index.html`, `brochure.html` | None; also a comparative claim about a competitor identifiable from context | **Remove** | ✅ **done** |
-| 3 | "4mo→2wk delivery time vs the client's previous vendor" | `fde.html:546` | Same claim, same exposure, still live, still carrying its `[[FILL]]` marker | **Remove or replace** | ⬜ decide |
-| 4 | "83% manual ops effort removed" | `fde.html:544`, `index.html:3169`, `brochure.html:768` | No baseline, no denominator, no source | **Remove or replace** | ⬜ decide |
-| 5 | "10k+ / 10,000+ centers" | `fde.html:545`, `index.html:2585/2596/3121`, `brochure.html:632` | Plausibly real as a delivery fact, but unverified and never baselined | **Verify → keep as delivery fact, or remove** | ⬜ decide |
-| 6 | "beat industry timelines by 70%" | `index.html:2359` (FAQ), `:3214` (FAQ schema) | No industry baseline exists to beat | **Remove** | ⬜ decide |
-| 7 | "70% faster than traditional consultancies" | `index.html:2845` | Same | **Remove** | ⬜ decide |
-| 8 | "99.99% uptime **guaranteed**" | `index.html:2589/2600/2644/3151`, `brochure.html:384/657` | No SLA document; "guaranteed" is a contractual promise, not a result | **Reword — urgent** | ⬜ decide |
-| 9 | "9 days MVP" (Karan P. testimonial) | `index.html:3179`, `brochure.html:772` | Consistent with the 3-day and 4-week proposals in Drive; plausible | **Substantiate → keep** | ⬜ decide |
+| 3 | "4mo→2wk delivery time vs the client's previous vendor" | `fde.html:546` | Same claim, same exposure, still live, still carrying its `[[FILL]]` marker | **Replaced** with engagement-terms copy | ✅ done |
+| 4 | "83% manual ops effort removed" | `fde.html:544`, `index.html:3169`, `brochure.html:768` | No baseline, no denominator, no source | **Replaced** with engagement-terms copy | ✅ done |
+| 5 | "10k+ / 10,000+ centers" | `fde.html:545`, `index.html:2585/2596/3121`, `brochure.html:632` | Plausibly real as a delivery fact, but unverified and never baselined | **Removed** — could not be verified | ✅ done |
+| 6 | "beat industry timelines by 70%" | `index.html:2359` (FAQ), `:3214` (FAQ schema) | No industry baseline exists to beat | **Removed** | ✅ done |
+| 7 | "70% faster than traditional consultancies" | `index.html:2845` | Same | **Removed** | ✅ done |
+| 8 | "99.99% uptime **guaranteed**" | `index.html:2589/2600/2644/3151`, `brochure.html:384/657` | No SLA document; "guaranteed" is a contractual promise, not a result | **Reworded** to point at the per-engagement SLA | ✅ done |
+| 9 | "9 days MVP" (Karan P. testimonial) | `index.html:3179`, `brochure.html:772` | Consistent with the 3-day and 4-week proposals in Drive; plausible | **Removed** — unverifiable, and Rule 5 bars figures inside quotes | ✅ done |
 
 ### Why #8 is the most urgent of the remaining
 
@@ -95,9 +97,40 @@ Minimum fix, no decision needed about anything else:
 That keeps the engineering claim, drops the unbacked promise, and is more
 credible because it points at a document rather than a number.
 
+### Rows found during execution, not in the original audit
+
+My first pass grepped for the figures I already knew about and so missed
+three groups. Recording them here because the gap is the lesson: an audit
+built from a list of known-bad numbers finds only the numbers you already
+knew were bad.
+
+| # | Claim | Where | Disposition | Status |
+|---|---|---|---|---|
+| 10 | "Live platform metrics": 85% manual effort reduction, 99.5% SLA adherence, <2s agent response — framed as current measurements | `index.html` platform block | Relabelled **"What the platform instruments"**; figures replaced with capabilities (SLA tracked per workflow, 24/7 self-healing monitoring, live anomaly detection, full audit trail) | ✅ done |
+| 11 | Same three figures as brochure metric cards + "Platform metrics as published at avyxon.ai" footnote | `brochure.html` | Same treatment | ✅ done |
+| 12 | og:image sitemap caption carrying "70% faster than agencies, 10K+ centers managed, 99.5% SLA adherence" — a figure appearing nowhere else on the site | `sitemap-images.xml` | Rewritten to the engagement terms | ✅ done |
+
+### Still open — flagged, not actioned
+
+Not part of the nine rows, and changing them was not asked for:
+
+- **"1 week / Fastest MVP shipped"** trust badge (`index.html`). A specific
+  claim about a past delivery, consistent with the 3-day and 4-week proposals
+  in Drive but not recorded anywhere. Confirm or drop.
+- **"SOC2 · DPDP / ISO 27001 aligned"** trust badge and the brochure's
+  security card. "Aligned" is softer than "certified" and probably
+  defensible, but it should be a deliberate choice rather than an inherited
+  phrase.
+- **Two `OPEN ITEM (handoff #2, copy sign-off)` markers** still in
+  `index.html` and `fde.html`, awaiting your sign-off on the hero line.
+- **The "Live" status pills** in the platform visual (Email Agent, WhatsApp
+  Agent, Analytics Engine). These read as a product mock-up rather than a
+  claim about Avyxon's own operations, so they are probably fine — noted in
+  case you read them differently.
+
 ---
 
-## 2. Proposed replacements
+## 2. Replacements applied
 
 Pick per row. None of these needs a client baseline, and the first three need
 no client permission at all.
