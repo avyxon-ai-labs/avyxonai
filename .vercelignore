@@ -1,0 +1,26 @@
+# Files in this repo that must NOT be served at avyxon.ai.
+#
+# The site is deployed by Vercel's Git integration straight from the repo
+# root, and robots.txt is `Allow: /` for every crawler including GPTBot and
+# ClaudeBot. Anything committed here is public and gets ingested unless it is
+# listed below. Verified 2026-11-11: before this file existed,
+# https://avyxon.ai/CLAUDE.md and https://avyxon.ai/docs/*.md all returned 200.
+#
+# Rule of thumb: if it is written for us rather than for a visitor, it goes here.
+
+# Internal process docs, architecture notes, deployment runbook
+docs/
+
+# Agent/contributor instructions
+CLAUDE.md
+
+# Contact-form backend source (deployed separately to Google Apps Script)
+apps-script/
+
+# CI workflow definitions
+.github/
+
+# Client outcome records must never live in this repo at all (see
+# docs/outcome-capture-template.md), but exclude the path as a second guard.
+clients/
+*outcome-record*
