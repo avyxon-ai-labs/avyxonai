@@ -531,19 +531,14 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   </div>
 </section>
 
-<!-- ══════════ PROOF ══════════ -->
-<!-- ┌─────────────────────────────────────────────────────────────────────────┐
-     │ OPEN ITEM (handoff #1, BLOCKER before merge): the three metrics below are │
-     │ placeholders. Owner said "anonymized but real only." Replace each value   │
-     │ with a real anonymized figure (or remove the card) before this ships.     │
-     └─────────────────────────────────────────────────────────────────────────┘ -->
+<!-- ══════════ COMMITMENTS ══════════ -->
 <section class="sec sec-dark" style="border-top:1px solid rgba(255,255,255,0.05)">
   <div class="wrap">
-    <div class="sec-head center section-reveal"><div class="section-label">Proof</div><h2 class="section-h2">Outcomes we've <em>actually shipped</em></h2></div>
+    <div class="sec-head center section-reveal"><div class="section-label">Commitments</div><h2 class="section-h2">What you're <em>actually buying</em></h2></div>
     <div class="metrics section-reveal stagger">
-      <div class="metric"><div class="v"><em data-count="83">83</em>%</div><div class="l">manual ops effort removed in month one (logistics enterprise, anonymized) <!-- [[FILL: confirm real anonymized figure]] --></div></div>
-      <div class="metric"><div class="v"><em data-count="10" data-suffix="k+">10k+</em></div><div class="l">centers run on a single multi-tenant platform we built and maintain <!-- [[FILL: confirm real anonymized figure]] --></div></div>
-      <div class="metric"><div class="v">4mo→<em>2wk</em></div><div class="l">delivery time vs the client's previous vendor <!-- [[FILL: confirm real anonymized figure]] --></div></div>
+      <div class="metric"><div class="v">Fixed</div><div class="l">price per milestone, agreed before work starts &mdash; the number in the proposal is the number on the invoice</div></div>
+      <div class="metric"><div class="v">45&ndash;60</div><div class="l">days of defect warranty after go-live, written into every engagement rather than sold back separately</div></div>
+      <div class="metric"><div class="v">Yours</div><div class="l">the platform runs in your cloud accounts under your keys &mdash; you can take over or replace us without a migration</div></div>
     </div>
   </div>
 </section>
@@ -711,19 +706,34 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 
 /* ── Cookie Consent Banner ── */
 (function() {
-  var KEY = 'avyxon_consent';
-  if (localStorage.getItem(KEY)) return;
-  var banner = document.getElementById('cookie-banner');
-  if (banner) banner.style.display = 'flex';
-  document.getElementById('cookie-accept').addEventListener('click', function() {
-    localStorage.setItem(KEY, 'accepted');
-    banner.style.display = 'none';
-    loadGA4();
-  });
-  document.getElementById('cookie-decline').addEventListener('click', function() {
-    localStorage.setItem(KEY, 'declined');
-    banner.style.display = 'none';
-  });
+  // Runs on DOM ready: on index.html this block sits above the banner markup,
+  // so running it inline left getElementById null and threw before any
+  // listener was attached — the banner never appeared and consent could
+  // never be given, which also meant GA4 never loaded for a first-time
+  // visitor landing on the homepage.
+  function init() {
+    var KEY = 'avyxon_consent';
+    if (localStorage.getItem(KEY)) return;
+    var banner  = document.getElementById('cookie-banner');
+    var accept  = document.getElementById('cookie-accept');
+    var decline = document.getElementById('cookie-decline');
+    if (!banner || !accept || !decline) return;
+    banner.style.display = 'flex';
+    accept.addEventListener('click', function() {
+      localStorage.setItem(KEY, 'accepted');
+      banner.style.display = 'none';
+      loadGA4();
+    });
+    decline.addEventListener('click', function() {
+      localStorage.setItem(KEY, 'declined');
+      banner.style.display = 'none';
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
 </script>
 

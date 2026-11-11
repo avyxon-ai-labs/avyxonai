@@ -523,19 +523,34 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 
 /* ── Cookie Consent Banner ── */
 (function() {
-  var KEY = 'avyxon_consent';
-  if (localStorage.getItem(KEY)) return;
-  var banner = document.getElementById('cookie-banner');
-  if (banner) banner.style.display = 'flex';
-  document.getElementById('cookie-accept').addEventListener('click', function() {
-    localStorage.setItem(KEY, 'accepted');
-    banner.style.display = 'none';
-    loadGA4();
-  });
-  document.getElementById('cookie-decline').addEventListener('click', function() {
-    localStorage.setItem(KEY, 'declined');
-    banner.style.display = 'none';
-  });
+  // Runs on DOM ready: on index.html this block sits above the banner markup,
+  // so running it inline left getElementById null and threw before any
+  // listener was attached — the banner never appeared and consent could
+  // never be given, which also meant GA4 never loaded for a first-time
+  // visitor landing on the homepage.
+  function init() {
+    var KEY = 'avyxon_consent';
+    if (localStorage.getItem(KEY)) return;
+    var banner  = document.getElementById('cookie-banner');
+    var accept  = document.getElementById('cookie-accept');
+    var decline = document.getElementById('cookie-decline');
+    if (!banner || !accept || !decline) return;
+    banner.style.display = 'flex';
+    accept.addEventListener('click', function() {
+      localStorage.setItem(KEY, 'accepted');
+      banner.style.display = 'none';
+      loadGA4();
+    });
+    decline.addEventListener('click', function() {
+      localStorage.setItem(KEY, 'declined');
+      banner.style.display = 'none';
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
 </script>
 
