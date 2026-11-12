@@ -262,13 +262,18 @@ directories read the schema.
 
 ### Still open
 
-- The **named-competitor comparison table** (`index.html`, `brochure.html`):
-  Accenture, Deloitte, UiPath, Automation Anywhere, Upwork, Toptal, with ✕
-  marks and no source for any cell, under a heading reading "Honest
-  comparison". Asserting that two of the largest consultancies do not transfer
-  knowledge is unevidenced and gratuitous. Recommended: keep the table, rename
-  the columns to generic categories, replace every ✕ with a factual
-  descriptor, and footnote it as Avyxon's own view of typical delivery models.
+- ~~The named-competitor comparison table~~ — **done 12 Nov 2026.** Columns are
+  now generic categories (systems integrators, RPA platforms, individual
+  contractors); every ✕ is replaced by a factual descriptor; the self-awarded
+  "recommended" badge is gone; and a footnote states the characterisations are
+  our own view of typical delivery models, not claims about any firm. The
+  heading moved from "Honest comparison" — which raised the bar we were held
+  to — to "Where we fit". A row now reads *"Organisation-wide change
+  programmes — not our model, go to an integrator"*: conceding where someone
+  else is the better choice is what makes the other eight rows believable.
+  The FAQ keeps "What makes Avyxon different from Accenture, Deloitte or
+  UiPath?" because people search it, but the answer now describes only our own
+  model.
 - **Partner bios, photos and LinkedIn URLs** on `about.html` — still absent,
   on the page headed "Who is accountable".
 - **LLPIN `ACT-0061`** does not match the MCA format (`AAA-NNNN`). Worth
