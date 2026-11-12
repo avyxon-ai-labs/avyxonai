@@ -30,6 +30,7 @@ Key facts:
 - [Engagement FAQ](https://avyxon.ai/about.html#faq): Pricing model, warranty, infrastructure ownership, timelines, exclusions and change control
 - [Field Notes](https://avyxon.ai/learn.html): A reference guide to the 30 core concepts behind AI agents — one idea per screen, with diagrams and curated sources
 - [Company Profile](https://avyxon.ai/brochure.html): A 14-page company profile covering positioning, platform architecture, production track record and engagement models
+- [Internship Assessment](https://avyxon.ai/intern-assessment): The 30-minute fresher internship exercise — two choices (build or debug), AI tools allowed, what is assessed, and how to submit a GitHub link
 
 ## Legal
 
