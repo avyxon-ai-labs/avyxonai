@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://avyxon.ai/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Avyxon AI Labs — Ship AI-powered MVPs in 1 week">
+<meta property="og:image:alt" content="Avyxon AI Labs — agent-first engineering studio">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -27,7 +27,7 @@
 <meta name="twitter:title" content="Avyxon AI Labs — AI Consulting, Automation & Forward Deployed Engineers">
 <meta name="twitter:description" content="AI consulting, enterprise automation, agentic workflows, voice agents, and forward deployed engineers — production AI shipped in 1–4 weeks, measured in ROI.">
 <meta name="twitter:image" content="https://avyxon.ai/og-image.png">
-<meta name="twitter:image:alt" content="Avyxon AI Labs — Ship AI-powered MVPs in 1 week">
+<meta name="twitter:image:alt" content="Avyxon AI Labs — agent-first engineering studio">
 
 <!-- Google Analytics — loads only after cookie consent -->
 <script>
@@ -1507,9 +1507,9 @@ body.menu-lock { overflow: hidden; }
 }
 
 /* ============================================================
-   TESTIMONIALS
+   COMMITMENTS
    ============================================================ */
-#testimonials {
+#commitments {
   padding: var(--section-v) 0;
   background: var(--white);
   border-top: 1px solid var(--border);
@@ -1547,28 +1547,20 @@ body.menu-lock { overflow: hidden; }
   box-shadow: 0 20px 48px rgba(0,0,0,0.09);
   transform: translateY(-4px);
 }
-.test-quote {
+.commit-term {
   font-family: 'Instrument Serif', serif;
-  font-size: 20px;
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.55;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.commit-body {
+  font-size: 15px;
+  line-height: 1.65;
   color: var(--ink-soft);
   flex: 1;
-  margin-bottom: 28px;
 }
-.test-author { display: flex; align-items: center; gap: 14px; }
-.test-avatar {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px;
-  font-weight: 800;
-  color: white;
-  flex-shrink: 0;
-}
-.test-name { font-size: var(--text-sm); font-weight: 700; color: var(--ink); }
-.test-role { font-size: 13px; color: var(--muted); }
+@media (max-width: 600px) { .commit-term { font-size: 22px; } }
 
 /* ============================================================
    FAQ
@@ -2267,8 +2259,8 @@ footer {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Avyxon AI Labs",
-  "url": "https://avyxon.ai",
-  "dateModified": "2026-11-11",
+  "url": "https://avyxon.ai/",
+  "dateModified": "2026-11-12",
   "inLanguage": "en",
   "publisher": {"@type": "Organization", "name": "Avyxon AI Labs", "url": "https://avyxon.ai"}
 }
@@ -2279,6 +2271,7 @@ footer {
 {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://avyxon.ai/#organization",
   "name": "Avyxon AI Labs",
   "legalName": "Avyxon AI Labs LLP",
   "url": "https://avyxon.ai",
@@ -2287,7 +2280,7 @@ footer {
   "email": "info@avyxon.ai",
   "knowsAbout": ["AI consulting", "enterprise automation", "agentic workflows", "voice agents", "forward deployed engineers", "legacy system integration", "multi-agent orchestration", "MVP development"],
   "sameAs": [
-    "https://www.linkedin.com/company/avyxon-ai/about",
+    "https://www.linkedin.com/company/avyxon-ai/",
     "https://x.com/AvyxonAi",
     "https://www.youtube.com/@AvyxonAILabs"
   ],
@@ -2295,7 +2288,8 @@ footer {
   "foundingDate": "2025-11-27",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Sangam Vihar",
+    "streetAddress": "Sangam Vihar",
+    "addressLocality": "New Delhi",
     "addressRegion": "Delhi",
     "postalCode": "110080",
     "addressCountry": "IN"
@@ -2324,8 +2318,20 @@ footer {
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": "https://avyxon.ai/#service",
+  "parentOrganization": {"@id": "https://avyxon.ai/#organization"},
   "name": "Avyxon AI Labs",
-  "url": "https://avyxon.ai",
+  "url": "https://avyxon.ai/",
+  "image": "https://avyxon.ai/og-image.png",
+  "telephone": "+917899874613",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Sangam Vihar",
+    "addressLocality": "New Delhi",
+    "addressRegion": "Delhi",
+    "postalCode": "110080",
+    "addressCountry": "IN"
+  },
   "description": "Agent-first engineering studio offering AI consulting, enterprise automation, agentic workflows, voice agents, and forward deployed engineers — production AI shipped in 1–4 weeks.",
   "areaServed": "Worldwide",
   "hasOfferCatalog": {
@@ -2372,7 +2378,7 @@ footer {
       "name": "Do you work with early-stage startups?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Absolutely. Founders love us because we turn napkin sketches into live MVPs while they raise funding or find early customers. We offer flexible payment models for pre-seed startups."
+        "text": "Yes. Early-stage work suits our model — a focused scope, a fixed milestone price, and a working product you can put in front of users or investors. We offer flexible payment models for pre-seed startups."
       }
     },
     {
@@ -2388,7 +2394,7 @@ footer {
       "name": "What is your pricing model?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We offer fixed-price MVPs, time and materials for larger engagements, and outcome-based pilot programs. After a 30-minute discovery call, we provide a transparent quote with clear milestones — no surprises."
+        "text": "Fixed price, quoted milestone by milestone — the number in the proposal is the number on the invoice. Larger programmes where scope is genuinely discovered as we go can run time and materials, and we say so before you sign. Outcome-based pilots are available where a metric can be agreed up front. After a 30-minute discovery call you get a written quote with clear milestones."
       }
     },
     {
@@ -2396,7 +2402,7 @@ footer {
       "name": "Can you integrate with our existing ERP or CRM?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. We have deep experience with SAP, Oracle, Salesforce, and custom ERPs. Our agents can read and write to legacy systems without replacing them — no disruption to existing operations."
+        "text": "Yes. Our engineers have worked inside SAP, Oracle, Salesforce and custom ERPs in prior roles. Our agents can read and write to legacy systems without replacing them — no disruption to existing operations."
       }
     },
     {
@@ -2404,7 +2410,7 @@ footer {
       "name": "What post-launch support do you provide?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We offer 24/7 monitoring with self-healing agents, SLA-backed support tiers, and optional retainer for continuous feature development. Our platforms include built-in observability from day one."
+        "text": "Every engagement includes a defect warranty from go-live — typically 45 to 60 days depending on scope — at no extra cost. Behaviour that does not match the agreed requirements is a defect we fix; new features are change requests. Beyond that, monitoring, support tiers and continuous delivery are available under a separate maintenance agreement. Our platforms include built-in observability from day one."
       }
     },
     {
@@ -2412,7 +2418,7 @@ footer {
       "name": "How do I get started?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Click \"Let's Build\" anywhere on this page. Fill out the short form and we will schedule a 30-minute strategy call within 12 hours. No pitch decks required — just a real conversation about your goals."
+        "text": "Click \"Let's Build\" anywhere on this page. Fill out the short form and we aim to reply within 12 hours on business days and will offer a 30-minute strategy call. No pitch decks required — just a real conversation about your goals."
       }
     }
   ]
@@ -2543,24 +2549,24 @@ footer {
             <div class="hph-dot hph-dot-r"></div>
             <div class="hph-dot hph-dot-y"></div>
             <div class="hph-dot hph-dot-g"></div>
-            <span class="hph-label">Live metrics</span>
+            <span class="hph-label">What we commit to</span>
           </div>
           <div class="hero-stats-grid">
             <div class="hstat">
               <div class="hstat-val"><span class="acc" data-count="1">1</span> wk</div>
-              <div class="hstat-lbl">Fastest MVP</div>
+              <div class="hstat-lbl">Focused-scope MVP; 2&ndash;4 weeks for complex builds</div>
             </div>
             <div class="hstat">
-              <div class="hstat-val"><span class="acc" data-count="70">70</span>%</div>
-              <div class="hstat-lbl">Faster than agencies</div>
+              <div class="hstat-val"><span class="acc">Fixed</span></div>
+              <div class="hstat-lbl">Milestone price, agreed before work starts</div>
             </div>
             <div class="hstat">
-              <div class="hstat-val"><span class="acc" data-count="10">10</span>K+</div>
-              <div class="hstat-lbl">Centers managed</div>
+              <div class="hstat-val"><span class="acc" data-count="45">45</span>&ndash;60 d</div>
+              <div class="hstat-lbl">Defect warranty after go-live</div>
             </div>
             <div class="hstat">
-              <div class="hstat-val"><span class="acc" data-count="99.5">99.5</span>%</div>
-              <div class="hstat-lbl">SLA adherence</div>
+              <div class="hstat-val"><span class="acc">Yours</span></div>
+              <div class="hstat-lbl">Runs in your cloud, under your keys</div>
             </div>
           </div>
           <div class="hero-proof-footer">
@@ -2620,8 +2626,8 @@ footer {
     <div class="trust-item">
       <div class="trust-icon"><i class="fas fa-shield-halved"></i></div>
       <div>
-        <div class="trust-val">DPDP</div>
-        <div class="trust-lbl">Encrypted in transit and at rest</div>
+        <div class="trust-val">Encrypted</div>
+        <div class="trust-lbl">In transit and at rest</div>
       </div>
     </div>
     <div class="trust-item">
@@ -2693,8 +2699,7 @@ footer {
   <div class="wrap">
     <div class="sec-head section-reveal">
       <div class="section-label">Premium tier · Forward Deployed Engineers</div>
-      <!-- OPEN ITEM (handoff #2, copy sign-off): confirm the blunt "not burn tokens" line before merge -->
-      <h2 class="section-h2">Senior architects who move ROI — <em>not burn tokens</em></h2>
+            <h2 class="section-h2">Senior architects who move ROI — <em>not burn tokens</em></h2>
       <p class="section-body mt-6">The hardest enterprise problems live in legacy systems. Our FDEs embed in your team, learn that terrain, and ship measurable outcomes.</p>
     </div>
 
@@ -2712,7 +2717,7 @@ footer {
         <ul>
           <li><i class="fas fa-check"></i> Production systems owned end-to-end</li>
           <li><i class="fas fa-check"></i> Tied to a business metric, measured in ROI</li>
-          <li><i class="fas fa-check"></i> Deep architecture experience on high-scale systems</li>
+          <li><i class="fas fa-check"></i> Engineers with architecture experience on high-scale systems</li>
         </ul>
       </div>
     </div>
@@ -3011,9 +3016,9 @@ footer {
   <div class="wrap">
     <div class="platform-grid">
       <div class="split-left">
-        <div class="section-label">Intelligent Orchestration</div>
+        <div class="section-label">Intelligent orchestration</div>
         <h2 class="section-h2">Agentic operations — <em>from follow-ups to analytics</em></h2>
-        <p class="section-body mt-6">A single platform that automates operational follow-ups, surfaces actionable insights, and ensures SLA compliance across every channel — 24/7.</p>
+        <p class="section-body mt-6">A single platform that automates operational follow-ups, surfaces actionable insights, and tracks SLA adherence across every channel, continuously.</p>
 
         <div class="platform-feats">
           <div class="plat-row">
@@ -3034,7 +3039,7 @@ footer {
             <div class="plat-icon"><i class="fas fa-bell"></i></div>
             <div>
               <div class="plat-title">SLA monitoring &amp; breach prevention</div>
-              <div class="plat-desc">Proactive alerts, root cause analysis, and auto-resolution before customers notice.</div>
+              <div class="plat-desc">Proactive alerts, root-cause analysis and automated remediation, aimed at closing issues before they reach your customers.</div>
             </div>
           </div>
           <div class="plat-row">
@@ -3071,19 +3076,19 @@ footer {
           <div class="pv-channels">
             <div class="pv-ch">
               <div class="pv-ch-l"><i class="fas fa-envelope"></i><span class="pv-ch-name">Email Agent</span></div>
-              <span class="pv-badge live">● Live</span>
+              <span class="pv-badge live">Included</span>
             </div>
             <div class="pv-ch">
               <div class="pv-ch-l"><i class="fab fa-whatsapp"></i><span class="pv-ch-name">WhatsApp Agent</span></div>
-              <span class="pv-badge live">● Live</span>
+              <span class="pv-badge live">Included</span>
             </div>
             <div class="pv-ch">
               <div class="pv-ch-l"><i class="fas fa-phone-volume"></i><span class="pv-ch-name">Voice Agent</span></div>
-              <span class="pv-badge ai">⚡ AI</span>
+              <span class="pv-badge ai">Optional</span>
             </div>
             <div class="pv-ch">
               <div class="pv-ch-l"><i class="fas fa-chart-line"></i><span class="pv-ch-name">Analytics Engine</span></div>
-              <span class="pv-badge live">● Live</span>
+              <span class="pv-badge live">Included</span>
             </div>
           </div>
         </div>
@@ -3099,8 +3104,9 @@ footer {
   <div class="wrap">
     <div class="cases-top">
       <div class="section-reveal">
-        <div class="section-label">Production-Proven</div>
-        <h2 class="section-h2" style="color:white">Platforms that run <em>real-world</em> operations</h2>
+        <div class="section-label">Systems we build</div>
+        <h2 class="section-h2" style="color:white">The platform patterns we <em>build on</em></h2>
+        <p class="section-body">Six system patterns we design and operate &mdash; exam logistics, last-mile delivery, field operations, IoT and edge, supply chain, and platform observability.</p>
       </div>
       <a href="#contact" class="btn btn-outline section-reveal" style="color:rgba(255,255,255,0.55);border-color:rgba(255,255,255,0.15);flex-shrink:0">
         Discuss your project
@@ -3117,7 +3123,7 @@ footer {
       <div class="case-card">
         <div class="case-ico"><i class="fas fa-truck-fast"></i></div>
         <div class="case-title">Logistics Orchestration</div>
-        <div class="case-desc">Fleet owners, riders, reverse pickups, and real-time SLA intelligence across thousands of daily delivery routes.</div>
+        <div class="case-desc">Fleet owners, riders, reverse pickups, and real-time SLA intelligence, architected to carry thousands of daily delivery routes.</div>
         <span class="case-tag">Last-Mile Delivery</span>
       </div>
       <div class="case-card">
@@ -3129,7 +3135,7 @@ footer {
       <div class="case-card">
         <div class="case-ico"><i class="fas fa-microchip"></i></div>
         <div class="case-title">IoT Platform (Multi-Protocol)</div>
-        <div class="case-desc">MQTT, CoAP, and LoRa support with real-time analytics and edge processing at global scale.</div>
+        <div class="case-desc">MQTT, CoAP and LoRa support with real-time analytics and edge processing, designed for geographically distributed fleets.</div>
         <span class="case-tag">IoT / Edge</span>
       </div>
       <div class="case-card">
@@ -3149,44 +3155,27 @@ footer {
 </section>
 
 <!-- ══════════════════════════════════════════
-     TESTIMONIALS
+     COMMITMENTS
 ══════════════════════════════════════════ -->
-<section id="testimonials">
+<section id="commitments">
   <div class="wrap">
     <div class="test-header section-reveal">
       <div class="section-label">Commitments</div>
-      <h2 class="section-h2">What you can <em>hold us to</em></h2>
+      <h2 class="section-h2">Three things we put <em>in the contract</em></h2>
+      <p class="section-body">Most studios will discuss these after you have signed. We would rather you read them first.</p>
     </div>
     <div class="test-grid stagger section-reveal">
       <div class="test-card">
-        <p class="test-quote">The number in the proposal is the number on the invoice.</p>
-        <div class="test-author">
-          <div class="test-avatar" style="background:var(--cyan)"><i class="fas fa-file-invoice"></i></div>
-          <div>
-            <div class="test-name">Fixed-price milestones</div>
-            <div class="test-role">Priced and dated before work starts</div>
-          </div>
-        </div>
+        <div class="commit-term">Fixed price, per milestone</div>
+        <p class="commit-body">Each milestone is priced and dated before work starts. Anything outside the signed scope becomes a written change note &mdash; effort, cost, timeline &mdash; and waits for your approval. There is no route by which the invoice exceeds the proposal without your signature on the difference.</p>
       </div>
       <div class="test-card">
-        <p class="test-quote">If it breaks after go-live, fixing it is already paid for.</p>
-        <div class="test-author">
-          <div class="test-avatar" style="background:var(--violet-mid)"><i class="fas fa-shield-halved"></i></div>
-          <div>
-            <div class="test-name">45&ndash;60 day warranty</div>
-            <div class="test-role">Written into every engagement</div>
-          </div>
-        </div>
+        <div class="commit-term">45&ndash;60 days of warranty</div>
+        <p class="commit-body">From go-live, defects in delivered features are fixed at no cost for 45 to 60 days depending on scope. Behaviour that does not match the agreed requirements is a defect. New features are change requests. The line between them is drawn in the proposal, not after the argument starts.</p>
       </div>
       <div class="test-card">
-        <p class="test-quote">It runs in your cloud, on your accounts, with your keys.</p>
-        <div class="test-author">
-          <div class="test-avatar" style="background:var(--gold)"><i class="fas fa-key"></i></div>
-          <div>
-            <div class="test-name">You own the infrastructure</div>
-            <div class="test-role">No lock-in to us</div>
-          </div>
-        </div>
+        <div class="commit-term">Your cloud, your keys</div>
+        <p class="commit-body">We deploy into your AWS, Azure or GCP accounts. Compute, storage, gateways and developer accounts are yours and billed to you. On the day you take this in-house or hand it to someone else, there is no migration project &mdash; you change the access and keep working.</p>
       </div>
     </div>
   </div>
@@ -3228,7 +3217,7 @@ footer {
             Do you work with early-stage startups?
             <span class="faq-toggle"><i class="fas fa-plus"></i></span>
           </button>
-          <div class="faq-ans"><div class="faq-ans-inner">Absolutely. Founders love us because we turn napkin sketches into live MVPs while they raise funding or find early customers. We offer flexible payment models for pre-seed startups.</div></div>
+          <div class="faq-ans"><div class="faq-ans-inner">Yes. Early-stage work suits our model — a focused scope, a fixed milestone price, and a working product you can put in front of users or investors. We offer flexible payment models for pre-seed startups.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-btn">
@@ -3242,28 +3231,28 @@ footer {
             What is your pricing model?
             <span class="faq-toggle"><i class="fas fa-plus"></i></span>
           </button>
-          <div class="faq-ans"><div class="faq-ans-inner">We offer fixed-price MVPs, time and materials for larger engagements, and outcome-based pilot programs. After a 30-minute discovery call, we provide a transparent quote with clear milestones — no surprises.</div></div>
+          <div class="faq-ans"><div class="faq-ans-inner">Fixed price, quoted milestone by milestone — the number in the proposal is the number on the invoice. Larger programmes where scope is genuinely discovered as we go can run time and materials, and we say so before you sign. Outcome-based pilots are available where a metric can be agreed up front. After a 30-minute discovery call you get a written quote with clear milestones.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-btn">
             Can you integrate with our existing ERP or CRM?
             <span class="faq-toggle"><i class="fas fa-plus"></i></span>
           </button>
-          <div class="faq-ans"><div class="faq-ans-inner">Yes. We have deep experience with SAP, Oracle, Salesforce, and custom ERPs. Our agents can read and write to legacy systems without replacing them — no disruption to existing operations.</div></div>
+          <div class="faq-ans"><div class="faq-ans-inner">Yes. Our engineers have worked inside SAP, Oracle, Salesforce and custom ERPs in prior roles. Our agents can read and write to legacy systems without replacing them — no disruption to existing operations.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-btn">
             What post-launch support do you provide?
             <span class="faq-toggle"><i class="fas fa-plus"></i></span>
           </button>
-          <div class="faq-ans"><div class="faq-ans-inner">We offer 24/7 monitoring with self-healing agents, SLA-backed support tiers, and optional retainer for continuous feature development. Our platforms include built-in observability from day one.</div></div>
+          <div class="faq-ans"><div class="faq-ans-inner">Every engagement includes a defect warranty from go-live — typically 45 to 60 days depending on scope — at no extra cost. Behaviour that does not match the agreed requirements is a defect we fix; new features are change requests. Beyond that, monitoring, support tiers and continuous delivery are available under a separate maintenance agreement. Our platforms include built-in observability from day one.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-btn">
             How do I get started?
             <span class="faq-toggle"><i class="fas fa-plus"></i></span>
           </button>
-          <div class="faq-ans"><div class="faq-ans-inner">Click "Let's Build" anywhere on this page. Fill out the short form and we will schedule a 30-minute strategy call within 12 hours. No pitch decks required — just a real conversation about your goals.</div></div>
+          <div class="faq-ans"><div class="faq-ans-inner">Click "Let's Build" anywhere on this page. Fill out the short form and we aim to reply within 12 hours on business days and will offer a 30-minute strategy call. No pitch decks required — just a real conversation about your goals.</div></div>
         </div>
       </div>
     </div>
@@ -3280,9 +3269,9 @@ footer {
         <div class="contact-left">
           <div class="contact-lbl">Ready to accelerate?</div>
           <h2 class="contact-h2">Let's build something <em>extraordinary</em></h2>
-          <p class="contact-sub">Discuss your MVP, POC, or enterprise automation needs. We respond within 12 hours — often much faster.</p>
+          <p class="contact-sub">Discuss your MVP, POC, or enterprise automation needs. We aim to reply to every enquiry within 12 hours on business days.</p>
           <div class="contact-socials">
-            <a href="https://www.linkedin.com/company/avyxon-ai/about" target="_blank" rel="noopener" class="s-btn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.linkedin.com/company/avyxon-ai/" target="_blank" rel="noopener" class="s-btn"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://x.com/AvyxonAi" target="_blank" rel="noopener" class="s-btn"><i class="fab fa-x-twitter"></i></a>
             <a href="https://www.youtube.com/@AvyxonAILabs" target="_blank" rel="noopener" class="s-btn"><i class="fab fa-youtube"></i></a>
           </div>
@@ -3292,7 +3281,7 @@ footer {
           </div>
           <div class="contact-resp">
             <i class="fas fa-clock"></i>
-            <span>Typical response: <strong style="color:rgba(255,255,255,0.7)">under 12 hours</strong>. No red tape — just engineering depth and a clear path forward.</span>
+            <span>Typical response: <strong style="color:rgba(255,255,255,0.7)">under 12 hours on business days</strong>. No red tape — just engineering depth and a clear path forward.</span>
           </div>
         </div>
 
@@ -3636,7 +3625,7 @@ footer {
         btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
         showMsg('success',
           '<i class="fas fa-check-circle"></i>' +
-          '<span>Message received \u2014 we\'ll be in touch within <strong>12 hours</strong>. Looking forward to building together.</span>'
+          '<span>Message received \u2014 we aim to reply within <strong>12 hours on business days</strong>. Looking forward to building together.</span>'
         );
         form.reset();
         setTimeout(() => {

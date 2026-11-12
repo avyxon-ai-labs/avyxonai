@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{
+    background:#0A0A0B;
+    font-family:'Plus Jakarta Sans',-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:#fff;position:relative;
+  }
+  .orb{position:absolute;border-radius:50%;filter:blur(0.5px)}
+  .orb-v{width:420px;height:420px;background:#4C1D95;right:-190px;top:-230px;opacity:.9}
+  .orb-c{width:340px;height:340px;background:#0E8DA8;left:-205px;bottom:-215px;opacity:.9}
+  .wrap{position:relative;z-index:2;display:flex;height:100%;padding:58px 62px}
+  .left{width:560px;display:flex;flex-direction:column}
+  .logo svg{display:block}
+  .brand{font-size:44px;font-weight:800;letter-spacing:-.02em;margin-top:30px;line-height:1}
+  .brand .c{color:#22B8D4}
+  .tag{font-size:17px;color:#9CA3AF;margin-top:12px;letter-spacing:.01em}
+  .rule{width:420px;height:1px;background:rgba(255,255,255,.17);margin:22px 0 26px}
+  .head{font-size:33px;font-weight:700;line-height:1.26;letter-spacing:-.015em}
+  .head .c{color:#22B8D4}
+  .sub{font-size:16px;color:#9CA3AF;margin-top:20px;line-height:1.5}
+  .right{flex:1;display:flex;flex-direction:column;justify-content:center;padding-left:48px}
+  .card{
+    background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.085);
+    border-left:3px solid #22B8D4;border-radius:11px;
+    padding:13px 18px;margin-bottom:11px;
+  }
+  .v{font-size:26px;font-weight:800;color:#22B8D4;letter-spacing:-.01em;line-height:1.15}
+  .l{font-size:13px;color:#A8AEB8;margin-top:3px;line-height:1.35}
+  .foot{position:absolute;left:62px;bottom:40px;display:flex;align-items:center;gap:10px;z-index:3}
+  .pill{
+    font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:11px;letter-spacing:.04em;color:#CBD5E1;
+    border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 13px;
+    background:rgba(255,255,255,.04);white-space:nowrap;
+  }
+  .url{position:absolute;right:62px;top:40px;font-size:14px;color:#8B93A1;z-index:3}
+</style>
+</head>
+<body>
+  <div class="orb orb-v"></div>
+  <div class="orb orb-c"></div>
+  <div class="url">avyxon.ai</div>
+
+  <div class="wrap">
+    <div class="left">
+      <div class="logo">
+        <svg width="46" height="46" viewBox="0 0 500 500" fill="none"><path d="M196.056 114.199C208.952 113.551 218.425 114.901 230.443 120.394C243.882 126.536 258.49 141.666 263.312 155.794C262.105 158.656 259.395 162.165 257.682 164.977C253.602 171.665 249.445 178.305 245.21 184.897C243.151 188.142 239.395 194.291 237.123 197.065C233.833 192.272 230.91 184.245 227.802 179.118C224.271 173.194 218.336 167.039 211.503 165.363C200.674 162.669 189.067 166.659 182.786 176.056C179.092 181.583 175.811 188.891 172.737 194.988L155.795 228.633L139.543 260.276C131.193 276.649 122.854 290.356 131.844 308.786C132.435 309.996 132.999 311.081 133.717 312.229C138.239 319.526 145.509 324.694 153.886 326.569C182.583 332.981 192.709 305.584 204.263 286.129L273.965 166.946C276.892 161.936 279.72 156.34 283.022 151.618C295.672 133.542 321.527 134.041 333.285 153.03C335.002 155.689 336.402 160.045 336.637 163.197C337.11 169.511 336.56 174.296 333.79 180.035C330.01 187.866 325.045 195.179 320.615 202.628L250.812 320.261L238.82 340.564C235.495 346.126 231.512 352.941 227.234 357.889C215.859 371.049 199.792 380.066 182.925 384.026C179.003 384.949 174.255 385.286 170.294 385.621C145.94 387.691 122.261 379.974 103.783 363.714C86.7253 348.559 77.5371 326.319 75.5748 303.864C74.5886 292.576 76.3148 279.101 79.5986 268.261C82.5456 258.531 88.2638 248.07 92.8818 238.96L110.976 203.531L128.228 169.303C131.352 163.103 134.361 156.827 137.754 150.769C149.569 129.67 171.912 115.717 196.056 114.199Z" fill="#0891B2"/><path d="M329.052 222.644C332.17 222.375 335.402 223.026 337.42 225.64C340.862 230.096 343.53 235.539 346.25 240.508C349.96 247.256 353.722 253.975 357.537 260.664L411.63 355.846C415.31 362.399 419.322 368.819 422.99 375.384C424.28 377.696 425.92 381.564 423.33 383.681C422.407 384.446 421.292 384.941 420.107 385.111C415.787 385.719 408.167 385.111 403.612 385.186C399.367 385.259 394.26 385.679 390.145 385.341C381.135 385.164 372.582 386.634 363.632 384.609C354.005 382.431 351.037 376.156 346.617 368.401L338.21 353.724L312.385 308.356C306.6 298.041 299.857 285.676 293.632 275.694C293.945 274.934 294.35 273.981 294.755 273.266C299.565 264.776 304.977 256.474 309.965 248.115L318.152 234.574C321.425 229.111 322.515 224.696 329.052 222.644Z" fill="#ffffff" opacity="0.72"/></svg>
+      </div>
+      <div class="brand">Avyxon <span class="c">AI Labs</span></div>
+      <div class="tag">Agent-First Engineering</div>
+      <div class="rule"></div>
+      <div class="head">Ship faster. Automate deeper.<br><span class="c">Lead with AI.</span></div>
+      <div class="sub">Production-ready systems in 1&ndash;4 weeks, on terms<br>agreed before the work starts.</div>
+    </div>
+
+    <div class="right">
+      <div class="card"><div class="v">Fixed</div><div class="l">Price per milestone, agreed up front</div></div>
+      <div class="card"><div class="v">45&ndash;60 days</div><div class="l">Defect warranty from go-live</div></div>
+      <div class="card"><div class="v">Yours</div><div class="l">Cloud accounts, keys, infrastructure</div></div>
+      <div class="card"><div class="v">1&ndash;4 weeks</div><div class="l">Scoped build to production</div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="pill">DPDP COMPLIANT</span>
+    <span class="pill">CONTROLS MODELLED ON SOC&nbsp;2 &amp; ISO&nbsp;27001 &mdash; NOT CERTIFIED</span>
+  </div>
+</body>
+</html>

@@ -92,6 +92,36 @@ footer {
 footer a { color: var(--muted); }
 footer a:hover { color: var(--cyan); }
 </style>
+<style>
+.footer-nap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;
+  margin-top:18px;font-size:13px;line-height:1.6;opacity:.72;text-align:center}
+.footer-nap a{color:inherit;text-decoration:none}
+.footer-nap a:hover{text-decoration:underline}
+/* Wide data tables scroll inside themselves rather than the page (mobile) */
+@media(max-width:760px){
+  table{display:block;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+@media(max-width:600px){.footer-nap{font-size:12px;gap:6px}}
+</style>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Avyxon AI Labs">
+<meta property="og:url" content="https://avyxon.ai/terms.html">
+<meta property="og:title" content="Terms of Service — Avyxon AI Labs">
+<meta property="og:description" content="Terms of Service for Avyxon AI Labs LLP — the governing rules for use of avyxon.ai and Avyxon’s services.">
+<meta property="og:image" content="https://avyxon.ai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Avyxon AI Labs — agent-first engineering studio">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@AvyxonAi">
+<meta name="twitter:title" content="Terms of Service — Avyxon AI Labs">
+<meta name="twitter:description" content="Terms of Service for Avyxon AI Labs LLP — the governing rules for use of avyxon.ai and Avyxon’s services.">
+<meta name="twitter:image" content="https://avyxon.ai/og-image.png">
+<meta name="twitter:image:alt" content="Avyxon AI Labs — agent-first engineering studio">
 </head>
 <body>
 
@@ -154,7 +184,7 @@ footer a:hover { color: var(--cyan); }
 
   <h2>6. Disclaimer of warranties</h2>
   <p>The Site and all content are provided on an <strong>"as is" and "as available" basis</strong> without warranties of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, completeness, or non-infringement.</p>
-  <p>We do not warrant that the Site will be uninterrupted, error-free, or free of viruses or other harmful components. Metrics and statistics cited on the Site (e.g., delivery timelines, performance figures) represent outcomes from specific past engagements and are not guarantees of future results.</p>
+  <p>We do not warrant that the Site will be uninterrupted, error-free, or free of viruses or other harmful components. Figures and timelines cited on the Site describe the commercial terms we offer and the scopes we undertake. They are illustrative of our engagement model, are not drawn from any specific client engagement, and are not guarantees of future results. Binding commitments arise only from a signed Statement of Work.</p>
 
   <h2>7. Limitation of liability</h2>
   <p>To the fullest extent permitted by applicable law, Avyxon AI Labs LLP and its directors, employees, and contractors shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of (or inability to use) the Site, even if we have been advised of the possibility of such damages.</p>
@@ -193,6 +223,13 @@ footer a:hover { color: var(--cyan); }
   <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
   <a href="terms.html">Terms</a> &nbsp;·&nbsp;
   <a href="/">avyxon.ai</a>
+  <div class="footer-nap">
+    <span>Avyxon AI Labs LLP</span>
+    <span aria-hidden="true">&middot;</span>
+    <span>Sangam Vihar, New Delhi &mdash; 110080, India</span>
+    <span aria-hidden="true">&middot;</span>
+    <a href="tel:+917899874613">+91 78998 74613</a>
+  </div>
 </footer>
 
 </body>

@@ -6,7 +6,7 @@
 <title>Field Notes — Agentic Engineering | Avyxon AI Labs</title>
 <meta name="description" content="A calm, friendly field guide to the 30 core ideas behind AI agents — one idea per screen, with diagrams, analogies, code and self-tests.">
 
-<!-- Hidden learning page: reachable by direct link, kept out of the index -->
+<!-- Field Notes: indexable reference page, linked from the footer of every page -->
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://avyxon.ai/learn.html">
 
@@ -298,11 +298,13 @@ pre.code code { font-family:'JetBrains Mono',monospace; font-size:12.5px; line-h
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Field Notes: the 30 core concepts behind AI agents",
+  "headline": "Field Notes — Agentic Engineering",
   "description": "A reference guide to the 30 core ideas behind AI agents \u2014 one idea per screen, with diagrams, analogies, code snippets and curated sources.",
   "url": "https://avyxon.ai/learn.html",
   "inLanguage": "en",
-  "dateModified": "2026-11-11",
+  "datePublished": "2026-11-11",
+  "dateModified": "2026-11-12",
+  "image": "https://avyxon.ai/og-image.png",
   "learningResourceType": "Reference guide",
   "educationalLevel": "Intermediate",
   "about": ["AI agents", "agentic engineering", "LLM orchestration", "retrieval augmented generation", "tool use", "evaluation"],
@@ -333,6 +335,32 @@ pre.code code { font-family:'JetBrains Mono',monospace; font-size:12.5px; line-h
   ]
 }
 </script>
+<style>
+.footer-nap{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;
+  margin-top:18px;font-size:13px;line-height:1.6;opacity:.72;text-align:center}
+.footer-nap a{color:inherit;text-decoration:none}
+.footer-nap a:hover{text-decoration:underline}
+@media(max-width:600px){.footer-nap{font-size:12px;gap:6px}}
+</style>
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Avyxon AI Labs">
+<meta property="og:url" content="https://avyxon.ai/learn.html">
+<meta property="og:title" content="Field Notes — Agentic Engineering | Avyxon AI Labs">
+<meta property="og:description" content="A calm, friendly field guide to the 30 core ideas behind AI agents — one idea per screen, with diagrams, analogies, code and self-tests.">
+<meta property="og:image" content="https://avyxon.ai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Avyxon AI Labs — agent-first engineering studio">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@AvyxonAi">
+<meta name="twitter:title" content="Field Notes — Agentic Engineering | Avyxon AI Labs">
+<meta name="twitter:description" content="A calm, friendly field guide to the 30 core ideas behind AI agents — one idea per screen, with diagrams, analogies, code and self-tests.">
+<meta name="twitter:image" content="https://avyxon.ai/og-image.png">
+<meta name="twitter:image:alt" content="Avyxon AI Labs — agent-first engineering studio">
 </head>
 <body>
 
@@ -407,7 +435,7 @@ pre.code code { font-family:'JetBrains Mono',monospace; font-size:12.5px; line-h
         <div class="about-card"><b><i class="fas fa-eye"></i>One screen, one idea</b><p>Each concept gets its own focused page: hook, picture, diagram, story, code, quiz. Nothing else competing for your attention.</p></div>
         <div class="about-card"><b><i class="fas fa-circle-question"></i>Answer before you peek</b><p>Reading feels like learning; recalling <em>is</em> learning. Try each quiz in your head first — that little effort is what writes the memory.</p></div>
       </div>
-      <p class="credit">The 30-concept spine is adapted from the community explainer <em>"30 Core Agentic Engineering Concepts Every Developer Should Know"</em> — rewritten in our own words, with diagrams, examples, self-tests and current resources added, plus two 2026 additions (output validation, evals). External links are curated starting points, not endorsements. This page is unlisted: only people with the link find it.</p>
+      <p class="credit">The 30-concept spine is adapted from the community explainer <em>"30 Core Agentic Engineering Concepts Every Developer Should Know"</em> — rewritten in our own words, with diagrams, examples, self-tests and current resources added, plus two 2026 additions (output validation, evals). External links are curated starting points, not endorsements.</p>
     </div>
   </section>
 </main>
@@ -438,8 +466,16 @@ pre.code code { font-family:'JetBrains Mono',monospace; font-size:12.5px; line-h
       <a href="consulting.html">Consulting</a>
       <a href="fde.html">FDE</a>
       <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
       <a href="mailto:info@avyxon.ai">info@avyxon.ai</a>
     </div>
+  </div>
+  <div class="footer-nap">
+    <span>Avyxon AI Labs LLP</span>
+    <span aria-hidden="true">&middot;</span>
+    <span>Sangam Vihar, New Delhi &mdash; 110080, India</span>
+    <span aria-hidden="true">&middot;</span>
+    <a href="tel:+917899874613">+91 78998 74613</a>
   </div>
 </footer>
 
@@ -1340,7 +1376,7 @@ function renderStudy(n){
 
   $('study').innerHTML =
     '<div class="s-num">CONCEPT '+String(n).padStart(2,'0')+' · '+l.tag.toUpperCase()+'</div>'
-   +'<h1 class="s-title">'+esc(c.title)+(c.isNew?'<span class="badge-new">New 2026</span>':'')+'</h1>'
+   +'<h2 class="s-title">'+esc(c.title)+(c.isNew?'<span class="badge-new">New 2026</span>':'')+'</h2>'
    +'<p class="s-one">'+esc(c.one)+'</p>'
    +'<div class="s-sec s-hook"><p>'+esc(c.hook)+'</p></div>'
    +'<div class="s-sec s-analogy"><div class="s-label"><i class="fas fa-lightbulb"></i> Picture it</div><p>'+esc(c.ana)+'</p></div>'
