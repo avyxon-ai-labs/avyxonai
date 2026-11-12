@@ -380,8 +380,8 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 .spec-i .n { font-size:12.5px; color:rgba(255,255,255,0.42); line-height:1.5; }
 @media (max-width:860px) { .spec { grid-template-columns:1fr 1fr; }
   .spec-i:nth-child(2) { border-right:none; } .spec-i:nth-child(1), .spec-i:nth-child(2) { border-bottom:1px solid rgba(255,255,255,0.1); } }
-@media (max-width:460px) { .spec { grid-template-columns:1fr; } .spec-i { border-right:none; border-bottom:1px solid rgba(255,255,255,0.1); padding:20px 0 22px; }
-  .spec-i:last-child { border-bottom:none; } }
+@media (max-width:560px) { .spec-i { padding:18px 16px 20px; } .spec-i .v { font-size:21px; } .spec-i .n { font-size:11.5px; } .spec-i .k { font-size:9.5px; letter-spacing:0.08em; } }
+@media (max-width:360px) { .spec-i .v { font-size:19px; } }
 
 /* ── Rules: compact numbered list ── */
 .rules { display:grid; grid-template-columns:repeat(2,1fr); gap:14px 44px; }
@@ -392,8 +392,10 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
 .rule p b { font-weight:700; color:var(--ink); }
 
 /* ── Choice cards ── */
-.choices { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
-@media (max-width:880px) { .choices { grid-template-columns:1fr; } }
+.choices { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:stretch; }
+.choice { display:flex; flex-direction:column; }
+.choice .choice-for { margin-top:auto; }
+@media (max-width:760px) { .choices { grid-template-columns:1fr; } }
 .choice { position:relative; background:var(--white); border:1px solid var(--border); border-radius:var(--r-xl); padding:38px 34px 34px; overflow:hidden;
   transition:transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.4s var(--ease-out); }
 .choice::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--cyan), var(--violet-mid)); opacity:0; transition:opacity 0.4s var(--ease-out); }
@@ -487,6 +489,26 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   .choice-letter { width:54px; height:54px; font-size:34px; border-radius:15px; }
   .as-i { padding:26px 24px 28px; }
 }
+
+/* ── Compact pass: tighter rhythm, scannable blocks ── */
+@media (min-width:769px) { :root { --section-v:88px; } }
+.sec-head { margin-bottom:38px; }
+.rule { padding:13px 0; }
+.rules { gap:4px 44px; }
+.notebar { display:flex; gap:26px; flex-wrap:wrap; padding:24px 0 30px; border-top:1px solid rgba(255,255,255,0.1); }
+.notebar > div { display:flex; gap:12px; align-items:flex-start; font-size:14px; color:rgba(255,255,255,0.6); flex:1 1 320px; line-height:1.55; }
+.notebar i { color:var(--cyan-bright); margin-top:4px; font-size:13px; flex-shrink:0; }
+.notebar b { color:#fff; font-weight:600; }
+.spec-i .k .sn { color:var(--gold); }
+.choice { padding:30px 28px 28px; }
+.brief { padding:15px 18px; margin-bottom:18px; }
+.brief p { font-size:15.5px; }
+.choice-meta li { font-size:13.5px; }
+.choice-for { margin-top:18px; padding-top:16px; font-size:12.5px; }
+.as-i { padding:26px 24px 28px; }
+.as-i p { font-size:13px; }
+.faq-btn { padding:19px 0; }
+.faq-ans-inner { padding-bottom:20px; }
 </style>
 
 <script type="application/ld+json">
@@ -534,19 +556,15 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   "@type": "FAQPage",
   "mainEntity": [
     { "@type": "Question", "name": "Can I really use AI, or is this a trap?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Really. Use it as much as you want, and you don't need to tell us how. The 10-minute call is where we find out whether you understood what you submitted. People who use AI well do noticeably better here, not worse." } },
+      "acceptedAnswer": { "@type": "Answer", "text": "Really — use as much as you want, and don't bother disclosing it. The 10-minute call is where we check you understood what you sent. People who use AI well do better here, not worse." } },
     { "@type": "Question", "name": "What if I don't finish in 30 minutes?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Send what you have. Add two lines on where you got stuck and what you'd try next. A half-done submission with clear thinking regularly beats a polished one the candidate can't explain." } },
-    { "@type": "Question", "name": "Which choice is better — A or B?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Neither. They're scored on the same six things and we hire from both. Pick the one you'd actually enjoy for half an hour." } },
-    { "@type": "Question", "name": "Do I need a degree, a CGPA or prior internships?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Send what you have and add two lines on where you got stuck. Half-done with clear thinking beats polished-but-unexplainable." } },
+    { "@type": "Question", "name": "A or B — which one is better?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Neither. Same scoring, and we hire from both. Pick the one you'd actually enjoy for half an hour." } },
+    { "@type": "Question", "name": "Do I need a degree, CGPA or prior internships?",
       "acceptedAnswer": { "@type": "Answer", "text": "No. We don't filter on college, branch, CGPA or backlogs, and self-taught applicants are welcome. The repo is the application." } },
     { "@type": "Question", "name": "I've never used GitHub. Is that disqualifying?",
-      "acceptedAnswer": { "@type": "Answer", "text": "No, but learning it is part of the exercise. Creating a repo and pushing one file takes about ten minutes with any AI assistant walking you through it. If you're genuinely stuck, email us and we'll help rather than reject you." } },
-    { "@type": "Question", "name": "Can I submit both exercises, or resubmit a better version?",
-      "acceptedAnswer": { "@type": "Answer", "text": "One exercise, one submission. If you spot a bug in your own work after sending it, push a fix and mention it on the call — noticing it yourself is a point in your favour." } },
-    { "@type": "Question", "name": "What language or stack should I use?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Choice A is plain HTML, CSS and JavaScript, with no libraries. Choice B is JavaScript, but you may explain your reasoning in whatever terms you think in." } }
+      "acceptedAnswer": { "@type": "Answer", "text": "No — it takes about ten minutes with any AI walking you through it. If you're genuinely stuck, email us and we'll help rather than reject you." } }
   ]
 }
 </script>
@@ -607,141 +625,112 @@ footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:
   <div class="wrap">
     <a class="back" href="index.html"><i class="fas fa-arrow-left"></i> Back to home</a>
     <div class="ahero-eyebrow"><span class="dot"></span> Internships · Open for freshers</div>
-    <h1>A 30-minute assessment. <em>Use any AI you like.</em></h1>
-    <p class="lede">We're not interested in whether you can memorise syntax — the machine does that now. We want to see <b>how you think</b>, whether the fundamentals are there, and how you work <b>with</b> AI rather than hiding behind it.</p>
+    <h1>30 minutes. <em>Use any AI you like.</em></h1>
+    <p class="lede">Pick one of two problems below. We grade <b>how you think</b>, not what the model typed.</p>
   </div>
+
+  <!-- How it works — horizontal, four steps -->
   <div class="wrap">
     <div class="spec">
       <div class="spec-i">
-        <div class="k">Time</div>
+        <div class="k"><span class="sn">01</span> &nbsp;Choose</div>
+        <div class="v">A or B</div>
+        <div class="n">Build something, or fix something.</div>
+      </div>
+      <div class="spec-i">
+        <div class="k"><span class="sn">02</span> &nbsp;Make</div>
         <div class="v">30 minutes</div>
-        <div class="n">One sitting. Don't spend your weekend on it.</div>
+        <div class="n">Any AI tool. One file. No libraries.</div>
       </div>
       <div class="spec-i">
-        <div class="k">AI tools</div>
-        <div class="v">All allowed</div>
-        <div class="n">Claude, ChatGPT, Copilot, Cursor — encouraged.</div>
+        <div class="k"><span class="sn">03</span> &nbsp;Push</div>
+        <div class="v">To GitHub</div>
+        <div class="n">One repo, one README, email us the link.</div>
       </div>
       <div class="spec-i">
-        <div class="k">Exercise</div>
-        <div class="v">Pick one</div>
-        <div class="n">Build something, or fix something. Your call.</div>
-      </div>
-      <div class="spec-i">
-        <div class="k">Then</div>
-        <div class="v">10-min call</div>
+        <div class="k"><span class="sn">04</span> &nbsp;Call</div>
+        <div class="v">10 minutes</div>
         <div class="n">Share your screen, change one thing live.</div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ══════════ GROUND RULES ══════════ -->
-<section class="sec sec-dark" style="padding-top:72px">
-  <div class="wrap section-reveal">
-    <div class="honest">
-      <div class="hl">Read this first</div>
-      <p><b>Yes, AI is genuinely allowed.</b> This is not a trap and there is no hidden penalty for using it. We use these tools every day and we expect you to. What we care about is the part the model can't do for you: noticing it got something wrong, knowing why your fix works, and having the taste to not ship the first thing that appeared on screen.</p>
-      <p>Which is why there's a <b>10-minute call at the end where you change something live</b>. If you can't, the submission wasn't really yours — and that's the only thing here that will actually cost you.</p>
+    <div class="notebar">
+      <div><i class="fas fa-circle-check"></i><span><b>AI is genuinely allowed.</b> No trap, no penalty, nothing to disclose.</span></div>
+      <div><i class="fas fa-video"></i><span><b>The call is the real check.</b> If you can't change it live, it wasn't yours.</span></div>
+      <div><i class="fas fa-reply"></i><span><b>Everyone gets a reply</b> — including the ones we don't take forward.</span></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ GUIDELINES ══════════ -->
-<section class="sec sec-white">
-  <div class="wrap">
-    <div class="sec-head section-reveal">
-      <div class="section-label">Guidelines</div>
-      <h2 class="section-h2">The <em>whole</em> rulebook</h2>
-      <p class="section-body">Eight lines. There is no fine print, no proctoring software and no lockdown browser.</p>
-    </div>
-    <div class="rules section-reveal">
-      <div class="rule"><div class="rn">01</div><p><b>Thirty minutes.</b> We're not timing you, but it shows. A four-hour submission reads worse than a focused half hour.</p></div>
-      <div class="rule"><div class="rn">02</div><p><b>Pick one exercise.</b> A or B, not both. Which one you choose tells us something too.</p></div>
-      <div class="rule"><div class="rn">03</div><p><b>Any AI tool, any amount.</b> You never have to disclose a prompt or justify asking for help.</p></div>
-      <div class="rule"><div class="rn">04</div><p><b>No libraries.</b> Plain HTML, CSS and JavaScript in a single file. No React, no Tailwind CDN, no p5.js.</p></div>
-      <div class="rule"><div class="rn">05</div><p><b>It must run.</b> Double-click the file, it works. If it only runs on your machine, it doesn't run.</p></div>
-      <div class="rule"><div class="rn">06</div><p><b>Push it to a public GitHub repo.</b> One repo, one file, one README. That's a complete submission.</p></div>
-      <div class="rule"><div class="rn">07</div><p><b>Three lines in the README.</b> What you'd improve with another hour. Honest beats impressive.</p></div>
-      <div class="rule"><div class="rn">08</div><p><b>Unfinished is fine.</b> Send what you have and tell us where you got stuck. We read that generously.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ THE TWO CHOICES ══════════ -->
-<section class="sec sec-cream">
+<!-- ══════════ THE TWO PROBLEMS ══════════ -->
+<section class="sec sec-cream" style="padding-top:64px">
   <div class="wrap">
     <div class="sec-head center section-reveal">
-      <div class="section-label">The exercise</div>
-      <h2 class="section-h2">Choose <em>one</em></h2>
-      <p class="section-body" style="margin-left:auto;margin-right:auto">Builders tend to pick A. People who like puzzles pick B. Both are a fair route in — there is no "serious" option.</p>
+      <div class="section-label">Pick one</div>
+      <h2 class="section-h2">Two problems. <em>Your choice.</em></h2>
     </div>
 
     <div class="choices section-reveal">
-      <!-- Choice A -->
+      <!-- A -->
       <article class="choice">
         <div class="choice-top">
           <div class="choice-letter">A</div>
           <div>
-            <div class="ct">Choice A · Build it</div>
+            <div class="ct">Build it</div>
             <h3>Make something small, make it good</h3>
           </div>
         </div>
         <div class="brief">
           <div class="bl">The brief</div>
-          <p>A page with one button. Every click sets a new random background colour and shows the colour code on screen. Make it look good.</p>
+          <p>One button. Every click sets a new random background colour and shows the colour code. Make it look good.</p>
         </div>
         <ul class="choice-meta">
-          <li><i class="fas fa-file-code"></i><span><b>One file.</b> <code style="font-family:'JetBrains Mono',monospace;font-size:12.5px">index.html</code> — markup, styles and script all inside it.</span></li>
-          <li><i class="fas fa-ban"></i><span><b>Vanilla only.</b> No libraries or frameworks of any kind.</span></li>
-          <li><i class="fas fa-mobile-screen"></i><span><b>Must survive</b> a refresh and a phone-sized window.</span></li>
-          <li><i class="fas fa-pen-nib"></i><span><b>"Make it look good"</b> is part of the task, not a bonus.</span></li>
+          <li><i class="fas fa-file-code"></i><span>Single <b>index.html</b> — no libraries</span></li>
+          <li><i class="fas fa-mobile-screen"></i><span>Survives a refresh and a phone screen</span></li>
+          <li><i class="fas fa-pen-nib"></i><span>"Looks good" is the task, not a bonus</span></li>
         </ul>
         <div class="choice-for">
           <b>Pick this if</b>
-          You'd rather start from a blank file than read someone else's. We'll be looking at whether you stopped at the model's first draft or pushed it until it actually looked right.
+          You'd rather start from a blank file than read someone else's.
         </div>
       </article>
 
-      <!-- Choice B -->
+      <!-- B -->
       <article class="choice">
         <div class="choice-top">
           <div class="choice-letter">B</div>
           <div>
-            <div class="ct">Choice B · Fix it</div>
+            <div class="ct">Fix it</div>
             <h3>Find what's wrong and prove it</h3>
           </div>
         </div>
         <div class="brief">
           <div class="bl">The brief</div>
-          <p>The file below runs without error and prints confident, wrong numbers. Find what's wrong, fix it, and tell us how you knew.</p>
+          <p>The file below runs clean and prints numbers you shouldn't trust. Find what's wrong, fix it, say how you knew.</p>
         </div>
         <ul class="choice-meta">
-          <li><i class="fas fa-magnifying-glass"></i><span><b>List every bug</b> you find, worst first, one line of reasoning each.</span></li>
-          <li><i class="fas fa-wrench"></i><span><b>Fix them</b> and commit the corrected file.</span></li>
-          <li><i class="fas fa-circle-check"></i><span><b>Show the right output</b> — paste the corrected numbers in your README.</span></li>
-          <li><i class="fas fa-shield-halved"></i><span><b>One line</b> on how you'd stop this class of bug happening again.</span></li>
+          <li><i class="fas fa-list-ol"></i><span>List every bug, <b>worst first</b>, one line each</span></li>
+          <li><i class="fas fa-wrench"></i><span>Commit the fix + the corrected output</span></li>
+          <li><i class="fas fa-shield-halved"></i><span>One line: how you'd stop it recurring</span></li>
         </ul>
         <div class="choice-for">
           <b>Pick this if</b>
-          You like being the person who finds it. Fair warning: hand this file straight to an AI and it will find some of the bugs, miss others, and invent one that isn't there. Check everything it tells you.
+          You like being the person who finds it. Hand this file straight to an AI and it will miss some and invent one.
         </div>
       </article>
     </div>
 
     <!-- Choice B file -->
-    <div style="margin-top:56px" class="section-reveal">
-      <div class="sec-head" style="margin-bottom:24px;max-width:760px">
-        <div class="section-label">Choice B · the file</div>
-        <p class="section-body" style="max-width:700px">Copy this into a file and run it with <code style="font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--bg-warm);padding:2px 7px;border-radius:5px;color:var(--violet-mid)">node orders.js</code>, or paste it into your browser console. It prints three numbers. Two of them are provably wrong. The third depends on what you think &ldquo;top selling&rdquo; actually means &mdash; so tell us what you&rsquo;d ask before you change that one.</p>
-      </div>
+    <div style="margin-top:44px" class="section-reveal">
+      <div class="section-label" style="margin-bottom:14px">Choice B · the file</div>
+      <p class="section-body" style="max-width:720px;margin-bottom:20px;font-size:15px">Three numbers come out. <b style="color:var(--ink)">Two are provably wrong.</b> The third depends on what "top selling" means — tell us what you'd ask before changing it.</p>
       <div class="term">
         <div class="term-bar">
           <div class="term-dots"><span></span><span></span><span></span></div>
           <div class="term-name">orders.js</div>
           <button class="term-copy" id="copy-code" type="button">Copy</button>
         </div>
-        <pre><code id="code-body"><span class="c">// orders.js — prints today's order summary.</span>
+        <pre><code id="code-body"><span class="c">// orders.js — today's order summary.</span>
 <span class="c">// It runs clean. Do not trust what it prints.</span>
 
 <span class="k">const</span> orders = [
@@ -780,131 +769,74 @@ console.<span class="f">log</span>(<span class="s">"Top item:"</span>, <span cla
   </div>
 </section>
 
+<!-- ══════════ RULES ══════════ -->
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="sec-head section-reveal">
+      <div class="section-label">Rules</div>
+      <h2 class="section-h2">All <em>eight</em> of them</h2>
+    </div>
+    <div class="rules section-reveal">
+      <div class="rule"><div class="rn">01</div><p><b>30 minutes.</b> Not timed, but it shows.</p></div>
+      <div class="rule"><div class="rn">02</div><p><b>One exercise.</b> A or B, not both.</p></div>
+      <div class="rule"><div class="rn">03</div><p><b>Any AI tool.</b> Nothing to disclose.</p></div>
+      <div class="rule"><div class="rn">04</div><p><b>No libraries.</b> Plain HTML, CSS, JS.</p></div>
+      <div class="rule"><div class="rn">05</div><p><b>It must run.</b> Double-click, it works.</p></div>
+      <div class="rule"><div class="rn">06</div><p><b>Public repo.</b> One file, one README.</p></div>
+      <div class="rule"><div class="rn">07</div><p><b>Three README lines.</b> What you'd fix next.</p></div>
+      <div class="rule"><div class="rn">08</div><p><b>Unfinished is fine.</b> Say where you got stuck.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════ WHAT WE ASSESS ══════════ -->
 <section class="sec sec-dark">
   <div class="wrap">
     <div class="sec-head section-reveal">
-      <div class="section-label">What we're actually reading</div>
-      <h2 class="section-h2">Six things, and <em>none</em> of them is "did it work"</h2>
-      <p class="section-body">Anyone with a model open can produce something that works. So that isn't the signal — these are.</p>
+      <div class="section-label">What we read</div>
+      <h2 class="section-h2">Six things — and <em>none</em> is "did it work"</h2>
     </div>
     <div class="assess section-reveal">
-      <div class="as-i">
-        <div class="ai"><i class="fas fa-cube"></i></div>
-        <h4>Fundamentals</h4>
-        <p>Does the code do what you think it does? Loops, state, types, the DOM. We'll ask you to explain one line you didn't write.</p>
-      </div>
-      <div class="as-i">
-        <div class="ai"><i class="fas fa-bug-slash"></i></div>
-        <h4>Debugging instinct</h4>
-        <p>Finding a crash is easy — the error tells you. Finding a <em>wrong answer</em> that runs clean is the actual skill.</p>
-      </div>
-      <div class="as-i">
-        <div class="ai"><i class="fas fa-border-none"></i></div>
-        <h4>Edge cases</h4>
-        <p>Empty input, a refresh, a 360px screen, a double click. Did you try to break your own thing before we did?</p>
-      </div>
-      <div class="as-i">
-        <div class="ai"><i class="fas fa-compass-drafting"></i></div>
-        <h4>Craft &amp; taste</h4>
-        <p>Did you stop at the first output, or keep going until the spacing, the colours and the motion felt right?</p>
-      </div>
-      <div class="as-i">
-        <div class="ai"><i class="fas fa-code-branch"></i></div>
-        <h4>Judgment with AI</h4>
-        <p>Where you delegated, where you overrode it, and what you threw away. Rejecting a bad suggestion counts for more than getting a good one.</p>
-      </div>
-      <div class="as-i">
-        <div class="ai"><i class="fas fa-comments"></i></div>
-        <h4>Can you explain it</h4>
-        <p>Ten minutes, your screen, no tool open. Walk us through it, then change one small thing. That's the whole interview.</p>
-      </div>
+      <div class="as-i"><div class="ai"><i class="fas fa-cube"></i></div><h4>Fundamentals</h4><p>Does the code do what you think it does?</p></div>
+      <div class="as-i"><div class="ai"><i class="fas fa-bug-slash"></i></div><h4>Debugging</h4><p>Spotting a wrong answer that runs clean.</p></div>
+      <div class="as-i"><div class="ai"><i class="fas fa-border-none"></i></div><h4>Edge cases</h4><p>Empty input, refresh, 360px, double click.</p></div>
+      <div class="as-i"><div class="ai"><i class="fas fa-compass-drafting"></i></div><h4>Craft</h4><p>Did you stop at the model's first output?</p></div>
+      <div class="as-i"><div class="ai"><i class="fas fa-code-branch"></i></div><h4>AI judgment</h4><p>What you overrode, not what you asked for.</p></div>
+      <div class="as-i"><div class="ai"><i class="fas fa-comments"></i></div><h4>Explaining it</h4><p>Ten minutes, your screen, no tool open.</p></div>
     </div>
-    <p class="assess-note">Scored on all six, not averaged. <b>Strong on four and honest about the other two</b> beats bland competence everywhere.</p>
   </div>
 </section>
 
-<!-- ══════════ HOW TO SUBMIT ══════════ -->
+<!-- ══════════ SUBMIT ══════════ -->
 <section class="sec sec-white">
   <div class="wrap">
     <div class="sec-head section-reveal">
-      <div class="section-label">Submitting</div>
-      <h2 class="section-h2">Push it, then <em>email us the link</em></h2>
-      <p class="section-body">No application portal, no login, no 40-field form. A GitHub link in an email is the entire process.</p>
+      <div class="section-label">Submit</div>
+      <h2 class="section-h2">One email. <em>That's it.</em></h2>
     </div>
     <div class="submit-grid section-reveal">
       <div>
         <ol class="tl">
-          <li>
-            <span class="tm">Step 01</span>
-            <div class="tt">Make a public GitHub repo</div>
-            <div class="td">Any name. Push your single file plus a README. If you've never pushed to GitHub before, that's part of the exercise — figure it out, your AI will help.</div>
-          </li>
-          <li>
-            <span class="tm">Step 02</span>
-            <div class="tt">Write three lines in the README</div>
-            <div class="td">What you'd improve with another hour. For Choice B, also paste the corrected output and your bug list.</div>
-          </li>
-          <li>
-            <span class="tm">Step 03</span>
-            <div class="tt">Email the link</div>
-            <div class="td">Subject line exactly as shown opposite, so it reaches the right pile. One email, nothing attached.</div>
-          </li>
+          <li><span class="tm">Step 01</span><div class="tt">Public GitHub repo</div><div class="td">Your single file plus a README.</div></li>
+          <li><span class="tm">Step 02</span><div class="tt">Three lines in the README</div><div class="td">What you'd fix next. Choice B: add your bug list and corrected output.</div></li>
+          <li><span class="tm">Step 03</span><div class="tt">Email the link</div><div class="td">Subject exactly as shown. Reply within 3 working days.</div></li>
         </ol>
-        <a class="btn btn-primary" style="margin-top:30px" href="mailto:info@avyxon.ai?subject=Internship%20%E2%80%94%20Your%20Name%20%E2%80%94%20Choice%20A">Email your submission <i class="fas fa-arrow-right arrow"></i></a>
+        <a class="btn btn-primary" style="margin-top:26px" href="mailto:info@avyxon.ai?subject=Internship%20%E2%80%94%20Your%20Name%20%E2%80%94%20Choice%20A">Email your submission <i class="fas fa-arrow-right arrow"></i></a>
       </div>
-
       <div class="mailcard">
-        <div class="mailcard-h"><i class="fas fa-envelope"></i> What the email looks like</div>
+        <div class="mailcard-h"><i class="fas fa-envelope"></i> The email</div>
         <div class="mrow"><span class="ml">To</span><span class="mv"><a href="mailto:info@avyxon.ai">info@avyxon.ai</a></span></div>
         <div class="mrow"><span class="ml">Subject</span><span class="mv">Internship — Your Name — Choice A</span></div>
         <div class="mbody">
           <ul>
-            <li><i class="fas fa-link"></i><span>Your public repo link</span></li>
-            <li><i class="fas fa-robot"></i><span>One line: which AI tools you used</span></li>
-            <li><i class="fas fa-graduation-cap"></i><span>One line: college, year, and city</span></li>
-            <li><i class="fas fa-phone"></i><span>A phone number or WhatsApp we can reach you on</span></li>
-            <li><i class="fas fa-clock"></i><span>Two time windows that suit you for the 10-minute call</span></li>
+            <li><i class="fas fa-link"></i><span>Repo link</span></li>
+            <li><i class="fas fa-robot"></i><span>Which AI tools you used</span></li>
+            <li><i class="fas fa-graduation-cap"></i><span>College, year, city</span></li>
+            <li><i class="fas fa-phone"></i><span>Phone or WhatsApp</span></li>
+            <li><i class="fas fa-clock"></i><span>Two slots for the 10-minute call</span></li>
           </ul>
-          <p style="margin-top:18px;font-size:13px;color:var(--muted);line-height:1.65">Swap <code>Choice A</code> for <code>Choice B</code> if you took the debugging one. No cover letter, no CV required — send one if you want to, we'll read it.</p>
+          <p style="margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.6">Swap <code>Choice A</code> for <code>Choice B</code> if you took the debugging one. No CV needed.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ WHAT HAPPENS NEXT ══════════ -->
-<section class="sec sec-cream">
-  <div class="wrap">
-    <div class="split">
-      <div class="section-reveal">
-        <div class="section-label">After you send it</div>
-        <h2 class="section-h2">Every submission gets <em>a reply</em></h2>
-        <p class="section-body mt-6">Including the ones we don't take forward. You spent half an hour on this; silence would be rude.</p>
-      </div>
-      <div class="section-reveal">
-        <ol class="tl">
-          <li>
-            <span class="tm">Within 3 working days</span>
-            <div class="tt">A human reads your repo</div>
-            <div class="td">Actual commits, actual code. Not a keyword filter.</div>
-          </li>
-          <li>
-            <span class="tm">If it's a yes</span>
-            <div class="tt">A 10-minute call</div>
-            <div class="td">Share your screen, walk us through it, change one small thing live. No whiteboard, no DSA, no trick questions.</div>
-          </li>
-          <li>
-            <span class="tm">Same week</span>
-            <div class="tt">A straight answer</div>
-            <div class="td">Yes, no, or "come back in three months and here's exactly what to work on."</div>
-          </li>
-          <li>
-            <span class="tm">If you join</span>
-            <div class="tt">You ship real work</div>
-            <div class="td">Interns here work on live client systems with an engineer beside them. Not a sandbox project nobody deploys.</div>
-          </li>
-        </ol>
       </div>
     </div>
   </div>
@@ -921,31 +853,23 @@ console.<span class="f">log</span>(<span class="s">"Top item:"</span>, <span cla
       <div class="faq-list section-reveal">
         <div class="faq-item">
           <button class="faq-btn">Can I really use AI, or is this a trap?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
-          <div class="faq-ans"><div class="faq-ans-inner">Really. Use it as much as you want, and you don't need to tell us how. The 10-minute call is where we find out whether you understood what you submitted — and that's a conversation, not a gotcha. People who use AI well do noticeably better here, not worse.</div></div>
+          <div class="faq-ans"><div class="faq-ans-inner">Really — use as much as you want, and don't bother disclosing it. The 10-minute call is where we check you understood what you sent. People who use AI well do better here, not worse.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-btn">What if I don't finish in 30 minutes?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
-          <div class="faq-ans"><div class="faq-ans-inner">Send what you have. Add two lines on where you got stuck and what you'd try next. A half-done submission with clear thinking regularly beats a polished one the candidate can't explain.</div></div>
+          <div class="faq-ans"><div class="faq-ans-inner">Send what you have and add two lines on where you got stuck. Half-done with clear thinking beats polished-but-unexplainable.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-btn">Which choice is better — A or B?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
-          <div class="faq-ans"><div class="faq-ans-inner">Neither. They're scored on the same six things and we hire from both. Pick the one you'd actually enjoy for half an hour — that version of you writes better code.</div></div>
+          <button class="faq-btn">A or B — which one is better?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">Neither. Same scoring, and we hire from both. Pick the one you'd actually enjoy for half an hour.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-btn">Do I need a degree, a CGPA or prior internships?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
-          <div class="faq-ans"><div class="faq-ans-inner">No. We don't filter on college, branch, CGPA or backlogs, and self-taught applicants are welcome. The repo is the application. If you can think clearly and explain your own code, the rest is negotiable.</div></div>
+          <button class="faq-btn">Do I need a degree, CGPA or prior internships?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">No. We don't filter on college, branch, CGPA or backlogs, and self-taught applicants are welcome. The repo is the application.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-btn">I've never used GitHub. Is that disqualifying?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
-          <div class="faq-ans"><div class="faq-ans-inner">No — but learning it is now part of the exercise. Creating a repo and pushing one file takes about ten minutes with any AI assistant walking you through it. If you're genuinely stuck, email us and we'll help rather than reject you.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-btn">Can I submit both exercises, or resubmit a better version?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
-          <div class="faq-ans"><div class="faq-ans-inner">One exercise, one submission — picking and committing is part of what we're reading. If you spot a bug in your own work after sending it, don't start over: push a fix and mention it on the call. Noticing it yourself is a point in your favour.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-btn">What language or stack should I use?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
-          <div class="faq-ans"><div class="faq-ans-inner">Choice A is plain HTML, CSS and JavaScript — that's fixed, because it's the only way to see whether you can do it without a framework carrying you. Choice B is JavaScript, but you may explain your reasoning in whatever terms you think in.</div></div>
+          <div class="faq-ans"><div class="faq-ans-inner">No — it takes about ten minutes with any AI walking you through it. If you're genuinely stuck, email us and we'll help rather than reject you.</div></div>
         </div>
       </div>
     </div>
@@ -956,10 +880,11 @@ console.<span class="f">log</span>(<span class="s">"Top item:"</span>, <span cla
 <section class="ctaband sec-dark section-reveal">
   <div class="wrap">
     <h2>Half an hour. <em>One repo.</em></h2>
-    <p>That's the whole bar. Pick A or B, build it tonight, and send us the link.</p>
+    <p>Pick A or B, build it tonight, send the link.</p>
     <a class="btn btn-white" href="mailto:info@avyxon.ai?subject=Internship%20%E2%80%94%20Your%20Name%20%E2%80%94%20Choice%20A">Email your submission <i class="fas fa-arrow-right arrow"></i></a>
   </div>
 </section>
+
 <footer>
   <div class="footer-inner">
     <span class="footer-copy">© 2026 Avyxon AI Labs LLP — Agentic Enterprise Automation &amp; AI-Native Engineering</span>
