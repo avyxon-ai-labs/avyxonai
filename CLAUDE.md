@@ -13,8 +13,10 @@ Hosted on **Vercel**, deployed by Vercel's own Git integration on every push to
 after each push (and weekly) to confirm production serves the current build:
 all public URLs return 200 and the live HTML carries the expected markers. A red
 run means the live site is wrong, not that a credential is missing.
-`vercel.json` sets cache headers only (HTML revalidates every request), no URL
-rewriting.
+`vercel.json` sets cache headers (HTML revalidates every request) plus one
+rewrite: `/intern-assessment` serves `intern-assessment.html`. This project does
+**not** resolve extensionless URLs on its own, so any future clean URL needs its
+own rewrite entry and a matching cache-header rule.
 
 The contact form backend is **deployed separately** to Google Apps Script and is
 not touched by a site deploy — see `apps-script/README.md`.
