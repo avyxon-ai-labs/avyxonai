@@ -29,6 +29,7 @@ Key facts:
 - [About](https://avyxon.ai/about.html): Who runs Avyxon, how the studio works, and the registered company facts (LLP, incorporation, GSTIN, office)
 - [Engagement FAQ](https://avyxon.ai/about.html#faq): Pricing model, warranty, infrastructure ownership, timelines, exclusions and change control
 - [Field Notes](https://avyxon.ai/learn.html): A reference guide to the 30 core concepts behind AI agents — one idea per screen, with diagrams and curated sources
+- [Internship Assessment](https://avyxon.ai/intern-assessment): The 30-minute fresher internship exercise — two choices (build or debug), AI tools allowed, what is assessed, and how to submit a GitHub link
 
 ## Legal
 

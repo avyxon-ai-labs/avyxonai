@@ -43,6 +43,7 @@ jobs:
           fail=0
           for path in "" "about.html" "consulting.html" "fde.html" "learn.html" \
                       "brochure.html" "privacy.html" "terms.html" \
+                      "intern-assessment" "intern-assessment.html" \
                       "llms.txt" "robots.txt" "sitemap.xml" "sitemap-pages.xml" \
                       "logo-email.png"; do
             code=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' "https://avyxon.ai/${path}" || echo 000)

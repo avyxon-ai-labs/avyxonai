@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Skill Assessment | Avyxon AI Labs</title>
+<meta name="description" content="A 30-minute internship assessment for freshers. Pick one exercise, use any AI tool you like, send us a GitHub link. We grade thinking, fundamentals and craft — not output.">
+
+<!-- SEO: Canonical + Robots -->
+<link rel="canonical" href="https://avyxon.ai/intern-assessment">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://avyxon.ai/intern-assessment">
+<meta property="og:site_name" content="Avyxon AI Labs">
+<meta property="og:title" content="Internship Skill Assessment — 30 minutes, any AI allowed | Avyxon AI Labs">
+<meta property="og:description" content="Pick one of two exercises. 30 minutes. Use Claude, ChatGPT, Cursor — whatever you like. We grade how you think, not what the model typed.">
+<meta property="og:image" content="https://avyxon.ai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Avyxon AI Labs — internship skill assessment">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@AvyxonAi">
+<meta name="twitter:title" content="Internship Skill Assessment — 30 minutes, any AI allowed">
+<meta name="twitter:description" content="Pick one of two exercises. 30 minutes. Any AI tool allowed. We grade how you think, not what the model typed.">
+<meta name="twitter:image" content="https://avyxon.ai/og-image.png">
+
+<!-- Google Analytics — loads only after cookie consent -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  function loadGA4() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-SE80MF8YGV';
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', 'G-SE80MF8YGV');
+  }
+  if (localStorage.getItem('avyxon_consent') === 'accepted') { loadGA4(); }
+</script>
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ============================================================
+   DESIGN TOKENS — mirrored from index.html (single source)
+   ============================================================ */
+:root {
+  --bg:#F7F6F2; --bg-warm:#EFEDE7; --white:#FFFFFF;
+  --ink:#0E0F11; --ink-2:#1C1E23; --ink-soft:#3A3D45; --muted:#72767F; --subtle:#A8ABB3;
+  --border:rgba(0,0,0,0.08); --border-med:rgba(0,0,0,0.13);
+  --cyan:#0891B2; --cyan-bright:#06B6D4; --cyan-glass:rgba(8,145,178,0.10); --cyan-glow:rgba(8,145,178,0.20);
+  --violet:#2E1065; --violet-mid:#4C1D95; --gold:#B8966A;
+  --dk-bg:#0E0F11; --dk-surface:#16181D; --dk-border:rgba(255,255,255,0.08);
+  --dk-muted:rgba(255,255,255,0.45); --dk-subtle:rgba(255,255,255,0.22);
+  --text-xs:13px; --text-sm:15px; --text-base:17px; --text-lg:20px; --text-xl:24px;
+  --text-2xl:30px; --text-3xl:38px; --text-4xl:48px; --text-5xl:60px;
+  --section-v:120px; --container:1200px; --gutter:48px;
+  --ease-out:cubic-bezier(0.22,1,0.36,1); --ease-spring:cubic-bezier(0.34,1.4,0.64,1);
+  --r-sm:8px; --r-md:14px; --r-lg:20px; --r-xl:28px; --r-2xl:40px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body { font-family:'Plus Jakarta Sans', sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+.wrap { max-width:var(--container); margin:0 auto; padding:0 var(--gutter); }
+@media (max-width:768px) { .wrap { padding:0 24px; } }
+
+/* Buttons */
+.btn { display:inline-flex; align-items:center; gap:7px; padding:11px 22px; border-radius:100px; font-size:13.5px; font-weight:600; letter-spacing:-0.01em; transition:background 0.25s var(--ease-out), color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), transform 0.25s var(--ease-out); white-space:nowrap; border:1.5px solid transparent; }
+.btn-primary { background:var(--violet); color:var(--white); }
+.btn-primary:hover { background:var(--cyan); transform:translateY(-1px); box-shadow:0 8px 22px rgba(8,145,178,0.28); }
+.btn-outline { background:transparent; color:var(--ink-soft); border-color:var(--border-med); }
+.btn-outline:hover { border-color:var(--ink); color:var(--ink); transform:translateY(-1px); }
+.btn-white { background:#fff; color:var(--ink); }
+.btn-white:hover { background:var(--cyan); color:#fff; transform:translateY(-1px); }
+.btn-outline-dk { background:transparent; color:rgba(255,255,255,0.82); border-color:rgba(255,255,255,0.22); }
+.btn-outline-dk:hover { border-color:var(--cyan-bright); color:#fff; transform:translateY(-1px); }
+.btn i { flex-shrink:0; line-height:1; color:inherit; opacity:0.85; }
+.btn-primary i { opacity:1; }
+.btn .arrow { transition:transform 0.25s var(--ease-out); opacity:1 !important; }
+.btn:hover .arrow { transform:translateX(3px); }
+
+/* Nav (fixed, always solid on detail pages) */
+#nav { position:fixed; top:0; left:0; right:0; z-index:800; background:rgba(247,246,242,0.86); backdrop-filter:blur(24px) saturate(1.8); -webkit-backdrop-filter:blur(24px) saturate(1.8); border-bottom:1px solid var(--border); box-shadow:0 1px 0 var(--border), 0 4px 24px rgba(0,0,0,0.04); }
+.nav-wrap { display:flex; align-items:center; justify-content:space-between; max-width:var(--container); margin:0 auto; padding:0 var(--gutter); height:60px; }
+@media (max-width:768px) { .nav-wrap { padding:0 24px; } }
+.nav-logo { display:flex; align-items:center; gap:11px; flex-shrink:0; }
+.nav-logo-svg { width:32px; height:32px; flex-shrink:0; }
+.nav-brand { display:flex; flex-direction:column; gap:0; border-left:1.5px solid var(--border-med); padding-left:12px; margin-left:-2px; }
+.nav-brand-name { font-size:16px; font-weight:800; letter-spacing:-0.03em; line-height:1.15; color:var(--ink); }
+.nav-brand-name .c { color:var(--cyan); }
+.nav-brand-name .cv { color:var(--violet); }
+.nav-brand-sub { font-family:'JetBrains Mono', monospace; font-size:9px; font-weight:500; letter-spacing:0.03em; color:var(--ink-soft); line-height:1.1; margin-top:2px; opacity:0.7; }
+@media (max-width:768px) { .nav-brand-sub { display:none; } }
+.nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+.nav-links a { font-size:14px; font-weight:500; color:var(--muted); transition:color 0.2s; position:relative; }
+.nav-links a:hover, .nav-links a.active { color:var(--ink); }
+.nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1.5px; background:var(--cyan); transition:width 0.3s var(--ease-out); }
+.nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+@media (max-width:900px) { .nav-links { display:none; } }
+
+/* Mobile menu — hamburger + full-screen overlay */
+.nav-burger { display:none; flex-direction:column; align-items:center; justify-content:center; gap:5px; width:40px; height:40px; padding:0; border:none; background:transparent; cursor:pointer; flex-shrink:0; }
+.nav-burger span { display:block; width:20px; height:2px; background:var(--ink); border-radius:2px; transition:transform 0.3s var(--ease-out), opacity 0.25s; }
+.nav-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity:0; }
+.nav-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+@media (max-width:900px) { .nav-burger { display:flex; } }
+#mobile-menu { position:fixed; inset:0; z-index:790; background:rgba(247,246,242,0.98); -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px); display:flex; flex-direction:column; justify-content:center; padding:84px 32px 40px; opacity:0; pointer-events:none; transition:opacity 0.3s var(--ease-out); }
+#mobile-menu.open { opacity:1; pointer-events:auto; }
+.mm-label { font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin:22px 0 6px; }
+.mm-label:first-child { margin-top:0; }
+a.mm-link { font-family:'Instrument Serif', serif; font-size:26px; line-height:1.25; color:var(--ink); padding:9px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+a.mm-link i { font-size:14px; color:var(--subtle); }
+a.mm-link:active, a.mm-link:hover { color:var(--cyan); }
+#mobile-menu .btn { margin-top:28px; justify-content:center; }
+body.menu-lock { overflow:hidden; }
+.pillar[id] { scroll-margin-top: 84px; }
+
+/* Section primitives */
+.section-label { display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:20px; }
+.section-label::before { content:''; width:24px; height:1.5px; background:currentColor; flex-shrink:0; }
+.section-h2 { font-family:'Instrument Serif', serif; font-size:clamp(38px,4.5vw,58px); font-weight:400; line-height:1.12; letter-spacing:-0.02em; color:var(--ink); }
+.section-h2 em { font-style:italic; color:var(--cyan); }
+.section-body { font-size:var(--text-base); font-weight:400; line-height:1.75; color:var(--muted); max-width:520px; }
+.mt-6 { margin-top:24px; }
+
+/* FAQ */
+#faq { padding:var(--section-v) 0; background:var(--white); }
+.faq-narrow { max-width:760px; margin:0 auto; }
+.faq-list { display:flex; flex-direction:column; }
+.faq-item { border-bottom:1px solid var(--border-med); }
+.faq-item:first-child { border-top:1px solid var(--border-med); }
+.faq-btn { width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px 0; text-align:left; font-size:var(--text-base); font-weight:600; color:var(--ink); cursor:pointer; transition:color 0.2s; background:none; border:none; font-family:inherit; }
+.faq-btn:hover { color:var(--cyan); }
+.faq-toggle { width:30px; height:30px; border-radius:50%; border:1.5px solid var(--border-med); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background 0.3s, border-color 0.3s, transform 0.4s var(--ease-out); }
+.faq-toggle i { font-size:10px; color:var(--muted); transition:color 0.3s; }
+.faq-item.open .faq-toggle { background:var(--cyan); border-color:var(--cyan); transform:rotate(45deg); }
+.faq-item.open .faq-toggle i { color:#fff; }
+.faq-item.open .faq-btn { color:var(--cyan); }
+.faq-ans { max-height:0; overflow:hidden; transition:max-height 0.55s var(--ease-out); font-size:var(--text-sm); color:var(--muted); line-height:1.75; }
+.faq-item.open .faq-ans { max-height:320px; }
+.faq-ans-inner { padding-bottom:24px; }
+
+/* Footer */
+footer { background:var(--bg-warm); border-top:1px solid var(--border); padding:36px 0; }
+.footer-inner { max-width:var(--container); margin:0 auto; padding:0 var(--gutter); display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+@media (max-width:768px) { .footer-inner { padding:0 24px; } }
+.footer-copy { font-size:13px; color:var(--muted); }
+.footer-links { display:flex; gap:22px; flex-wrap:wrap; }
+.footer-links a { font-size:13px; color:var(--muted); transition:color 0.2s; }
+.footer-links a:hover { color:var(--cyan); }
+/* NAP — name, address, phone. Keep identical across pages and directories. */
+.footer-nap { max-width:var(--container); margin:0 auto; padding:14px var(--gutter) 28px; border-top:1px solid var(--border); display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:12.5px; color:var(--subtle); }
+.footer-nap a { color:var(--subtle); transition:color 0.2s; }
+.footer-nap a:hover { color:var(--cyan); }
+@media (max-width:768px) { .footer-nap { padding:14px 24px 28px; } }
+
+/* Cookie banner */
+#cookie-banner { position:fixed; bottom:0; left:0; right:0; z-index:9000; background:var(--dk-surface); border-top:1px solid rgba(8,145,178,0.25); padding:18px 40px; display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+.cookie-text { flex:1; font-size:14px; color:var(--dk-muted); line-height:1.5; min-width:240px; }
+.cookie-text a { color:var(--cyan-bright); text-decoration:underline; text-underline-offset:2px; }
+.cookie-btns { display:flex; gap:10px; flex-shrink:0; }
+.cookie-btn-accept { background:var(--cyan); color:#fff; border:none; border-radius:var(--r-sm); padding:9px 22px; font-size:14px; font-weight:600; cursor:pointer; transition:background 0.2s; }
+.cookie-btn-accept:hover { background:var(--cyan-bright); }
+.cookie-btn-decline { background:transparent; color:var(--dk-muted); border:1px solid var(--dk-border); border-radius:var(--r-sm); padding:9px 22px; font-size:14px; cursor:pointer; transition:color 0.2s, border-color 0.2s; }
+.cookie-btn-decline:hover { color:#fff; border-color:rgba(255,255,255,0.25); }
+@media (max-width:768px) { #cookie-banner { padding:16px 20px; } .cookie-btns { width:100%; } .cookie-btn-accept, .cookie-btn-decline { flex:1; text-align:center; } }
+
+/* ============================================================
+   OFFERINGS — shared components (Consulting + FDE)
+   ============================================================ */
+.sec { padding:var(--section-v) 0; }
+.sec-white { background:var(--white); border-top:1px solid var(--border); }
+.sec-cream { background:var(--bg); }
+.sec-dark { background:var(--dk-bg); color:#fff; }
+.sec-dark .section-h2 { color:#fff; }
+.sec-dark .section-label { color:var(--cyan-bright); }
+.sec-dark .section-body { color:var(--dk-muted); }
+.sec-head { max-width:680px; margin-bottom:52px; }
+.sec-head.center { margin-left:auto; margin-right:auto; text-align:center; }
+.sec-head.center .section-label { justify-content:center; }
+.sec-head.center .section-label::before { display:none; }
+.sec-head .section-body { margin-top:16px; }
+
+.pillars { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+@media (max-width:900px) { .pillars { grid-template-columns:1fr 1fr; } }
+@media (max-width:560px) { .pillars { grid-template-columns:1fr; } }
+.pillar { background:var(--white); border:1px solid var(--border); border-radius:var(--r-lg); padding:28px 24px; transition:transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s var(--ease-out); }
+.pillar:hover { transform:translateY(-5px); box-shadow:0 20px 48px rgba(0,0,0,0.08); border-color:rgba(8,145,178,0.3); }
+.pillar-ico { width:46px; height:46px; border-radius:12px; background:var(--cyan-glass); color:var(--cyan); display:flex; align-items:center; justify-content:center; font-size:19px; margin-bottom:20px; }
+.pillar h3 { font-size:var(--text-lg); font-weight:700; letter-spacing:-0.01em; margin-bottom:8px; color:var(--ink); }
+.pillar p { font-size:var(--text-sm); color:var(--muted); line-height:1.6; }
+.pillar .tag { display:inline-block; margin-top:16px; font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--cyan); letter-spacing:0.04em; }
+
+.split { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center; }
+@media (max-width:860px) { .split { grid-template-columns:1fr; gap:36px; } }
+.split-list { list-style:none; margin-top:26px; display:flex; flex-direction:column; gap:16px; }
+.split-list li { display:flex; gap:14px; align-items:flex-start; }
+.split-list i { color:var(--cyan); margin-top:4px; font-size:14px; flex-shrink:0; }
+.split-list b { font-weight:700; }
+.split-list span { font-size:var(--text-sm); color:var(--ink-soft); line-height:1.55; }
+.split-visual { background:var(--dk-surface); border:1px solid var(--dk-border); border-radius:var(--r-lg); padding:32px; color:#fff; }
+.split-visual .section-label { color:var(--cyan-bright); }
+
+.contrast { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+@media (max-width:700px) { .contrast { grid-template-columns:1fr; } }
+.contrast-col { border-radius:var(--r-lg); padding:30px 28px; }
+.contrast-bad { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); }
+.contrast-good { background:rgba(8,145,178,0.09); border:1px solid rgba(8,145,178,0.3); }
+.contrast-col h4 { font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:18px; }
+.contrast-bad h4 { color:#F0997B; }
+.contrast-good h4 { color:var(--cyan-bright); }
+.contrast-col ul { list-style:none; display:flex; flex-direction:column; gap:13px; }
+.contrast-col li { font-size:14px; color:rgba(255,255,255,0.7); display:flex; gap:11px; line-height:1.5; }
+.contrast-col li i { margin-top:3px; font-size:12px; flex-shrink:0; }
+.contrast-bad li i { color:#F0997B; }
+.contrast-good li i { color:var(--cyan-bright); }
+
+.steps { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+@media (max-width:820px) { .steps { grid-template-columns:1fr 1fr; } }
+@media (max-width:480px) { .steps { grid-template-columns:1fr; } }
+.step { border:1px solid var(--border); border-radius:var(--r-lg); padding:26px 22px; background:var(--white); }
+.sec-dark .step, .split-visual .step { background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.08); }
+.step .n { font-family:'Instrument Serif', serif; font-size:34px; color:var(--cyan); line-height:1; margin-bottom:12px; }
+.sec-dark .step .n, .split-visual .step .n { color:var(--cyan-bright); }
+.step h4 { font-size:var(--text-sm); font-weight:700; margin-bottom:6px; color:var(--ink); }
+.sec-dark .step h4, .split-visual .step h4 { color:#fff; }
+.step p { font-size:var(--text-xs); color:var(--muted); line-height:1.55; }
+.split-visual .step p { color:var(--dk-muted); }
+
+.chips { display:flex; flex-wrap:wrap; gap:9px; }
+.chip { font-family:'JetBrains Mono', monospace; font-size:12px; padding:7px 14px; border-radius:100px; background:var(--cyan-glass); color:var(--cyan); border:1px solid rgba(8,145,178,0.2); }
+.sec-dark .chip, .split-visual .chip { background:rgba(8,145,178,0.15); color:var(--cyan-bright); border-color:rgba(8,145,178,0.25); }
+
+.metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+@media (max-width:700px) { .metrics { grid-template-columns:1fr; } }
+.metric { background:var(--dk-surface); border:1px solid var(--dk-border); border-radius:var(--r-lg); padding:30px 28px; }
+.metric .v { font-family:'Instrument Serif', serif; font-size:44px; color:#fff; line-height:1; margin-bottom:10px; }
+.metric .v em { font-style:italic; color:var(--cyan-bright); }
+.metric .l { font-size:var(--text-sm); color:var(--dk-muted); line-height:1.55; }
+
+.bridge { background:var(--dk-bg); border-radius:var(--r-lg); padding:48px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap; position:relative; overflow:hidden; }
+.bridge::before { content:''; position:absolute; right:-120px; top:50%; transform:translateY(-50%); width:400px; height:400px; background:radial-gradient(circle,rgba(8,145,178,0.12),transparent 65%); }
+.bridge-l { position:relative; max-width:560px; }
+.bridge .lbl { font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--cyan-bright); margin-bottom:14px; }
+.bridge h3 { font-family:'Instrument Serif', serif; font-size:var(--text-2xl); color:#fff; font-weight:400; line-height:1.15; margin-bottom:12px; }
+.bridge p { font-size:var(--text-sm); color:rgba(255,255,255,0.6); line-height:1.6; }
+.bridge .btn { position:relative; flex-shrink:0; }
+
+.dhero { padding:128px 0 72px; }
+.dhero.dark { background:var(--dk-bg); color:#fff; }
+.dhero .back { font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--muted); display:inline-flex; gap:7px; align-items:center; margin-bottom:26px; transition:color 0.2s; }
+.dhero .back:hover { color:var(--cyan); }
+.dhero.dark .back { color:var(--dk-subtle); }
+.dhero.dark .back:hover { color:var(--cyan-bright); }
+.dhero h1 { font-family:'Instrument Serif', serif; font-size:clamp(38px,5.6vw,60px); font-weight:400; line-height:1.08; letter-spacing:-0.02em; max-width:840px; margin-bottom:22px; }
+.dhero h1 em { font-style:italic; color:var(--cyan); }
+.dhero.dark h1 em { color:var(--cyan-bright); }
+.dhero p { font-size:var(--text-lg); max-width:620px; margin-bottom:32px; line-height:1.6; }
+.dhero.dark p { color:rgba(255,255,255,0.62); }
+.dhero:not(.dark) p { color:var(--ink-soft); }
+.dhero-ctas { display:flex; gap:14px; flex-wrap:wrap; }
+
+.ctaband { text-align:center; padding:var(--section-v) 0; }
+.ctaband h2 { font-family:'Instrument Serif', serif; font-size:clamp(32px,5vw,52px); font-weight:400; line-height:1.1; margin-bottom:18px; }
+.ctaband h2 em { font-style:italic; color:var(--cyan); }
+.sec-dark.ctaband h2 em { color:var(--cyan-bright); }
+.ctaband p { font-size:var(--text-base); color:var(--muted); max-width:520px; margin:0 auto 30px; }
+.sec-dark.ctaband p { color:var(--dk-muted); }
+
+
+/* ============================================================
+   MOTION — scroll reveal + progress (mirrors index.html)
+   ============================================================ */
+.section-reveal { opacity:0; transform:translateY(36px); transition:opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+.section-reveal.visible { opacity:1; transform:translateY(0); }
+.section-reveal.hidden { opacity:0; transform:translateY(36px); }
+.stagger > * { opacity:0; transform:translateY(20px); transition:opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+.stagger.go > *:nth-child(1) { transition-delay:0.00s; }
+.stagger.go > *:nth-child(2) { transition-delay:0.07s; }
+.stagger.go > *:nth-child(3) { transition-delay:0.14s; }
+.stagger.go > *:nth-child(4) { transition-delay:0.21s; }
+.stagger.go > *:nth-child(5) { transition-delay:0.28s; }
+.stagger.go > *:nth-child(6) { transition-delay:0.35s; }
+.stagger.go > * { opacity:1; transform:translateY(0); }
+.stagger.hide > * { opacity:0; transform:translateY(20px); transition-delay:0s !important; }
+#scroll-progress { position:fixed; top:0; left:0; height:2px; width:0; background:linear-gradient(90deg, var(--cyan), var(--violet-mid)); z-index:900; pointer-events:none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  .section-reveal, .stagger > * { opacity:1 !important; transform:none !important; transition:none !important; animation:none !important; }
+}
+
+
+/* ── Mobile usability: 44px tap targets + legible label sizes ── */
+@media (max-width:768px) {
+  .footer-links a { padding:12px 0; display:inline-block; }
+  .footer-nap a { padding:10px 0; display:inline-block; }
+  .nav-burger { width:44px; height:44px; }
+  .dhero .back { padding:12px 0; }
+  .section-label { font-size:12px; }
+  .pillar .tag { font-size:11.5px; }
+  .step p, .metric .l { font-size:13.5px; }
+  .mm-label { font-size:12px; }
+  .nav-logo { min-height:44px; }
+  a.mm-link { padding:12px 0; }
+}
+
+/* ============================================================
+   RESPONSIVE — tighten vertical rhythm + offering components on
+   tablet/mobile. Consistent with the site's #hero / .hero-ctas
+   conventions (reduced padding, CTAs stack full-width ≤480px).
+   ============================================================ */
+@media (max-width: 768px) {
+  :root { --section-v: 84px; }
+  .dhero { padding: 100px 0 56px; }
+  .bridge { padding: 32px 26px; }
+  .sec-head { margin-bottom: 40px; }
+}
+@media (max-width: 560px) {
+  .pillar { padding: 24px 22px; }
+  .contrast-col { padding: 26px 22px; }
+  .split-visual { padding: 26px 22px; }
+  .metric { padding: 26px 24px; }
+  .metric .v { font-size: 40px; }
+}
+@media (max-width: 480px) {
+  .dhero-ctas { flex-direction: column; align-items: stretch; }
+  .dhero-ctas .btn { width: 100%; justify-content: center; }
+  .bridge { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .bridge .btn { width: 100%; justify-content: center; }
+}
+
+
+/* ============================================================
+   INTERN ASSESSMENT — page-specific premium layer
+   ============================================================ */
+
+/* ── Hero: dark, lit from behind, editorial ── */
+.ahero { position:relative; background:var(--dk-bg); color:#fff; padding:136px 0 0; overflow:hidden; }
+.ahero::before { content:''; position:absolute; inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+  background-size:64px 64px; mask-image:radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 75%); pointer-events:none; }
+.ahero::after { content:''; position:absolute; top:-320px; left:50%; transform:translateX(-50%); width:1100px; height:760px;
+  background:radial-gradient(ellipse at center, rgba(8,145,178,0.22), rgba(46,16,101,0.16) 42%, transparent 70%); pointer-events:none; }
+.ahero .wrap { position:relative; z-index:2; }
+.ahero .back { font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--dk-subtle); display:flex; width:fit-content; gap:7px; align-items:center; margin-bottom:30px; transition:color 0.2s; }
+.ahero .back:hover { color:var(--cyan-bright); }
+.ahero-eyebrow { display:inline-flex; align-items:center; gap:10px; font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan-bright);
+  background:rgba(8,145,178,0.12); border:1px solid rgba(8,145,178,0.28); border-radius:100px; padding:7px 16px; margin-bottom:26px; }
+.ahero-eyebrow .dot { width:6px; height:6px; border-radius:50%; background:var(--cyan-bright); box-shadow:0 0 0 0 rgba(6,182,212,0.7); animation:ping 2.4s var(--ease-out) infinite; }
+@keyframes ping { 0% { box-shadow:0 0 0 0 rgba(6,182,212,0.55); } 70% { box-shadow:0 0 0 9px rgba(6,182,212,0); } 100% { box-shadow:0 0 0 0 rgba(6,182,212,0); } }
+.ahero h1 { font-family:'Instrument Serif', serif; font-size:clamp(40px,6vw,68px); font-weight:400; line-height:1.04; letter-spacing:-0.025em; max-width:880px; margin-bottom:24px; }
+.ahero h1 em { font-style:italic; color:var(--cyan-bright); display:block; }
+.ahero .lede { font-size:var(--text-lg); color:rgba(255,255,255,0.64); max-width:620px; line-height:1.62; margin-bottom:36px; }
+.ahero .lede b { color:#fff; font-weight:600; }
+
+/* Spec strip — the four facts, mono, divided */
+.spec { position:relative; z-index:2; display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid rgba(255,255,255,0.1); margin-top:14px; }
+.spec-i { padding:26px 28px 30px; border-right:1px solid rgba(255,255,255,0.1); }
+.spec-i:last-child { border-right:none; }
+.spec-i .k { font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan-bright); margin-bottom:9px; }
+.spec-i .v { font-family:'Instrument Serif', serif; font-size:27px; line-height:1.1; color:#fff; margin-bottom:5px; }
+.spec-i .n { font-size:12.5px; color:rgba(255,255,255,0.42); line-height:1.5; }
+@media (max-width:860px) { .spec { grid-template-columns:1fr 1fr; }
+  .spec-i:nth-child(2) { border-right:none; } .spec-i:nth-child(1), .spec-i:nth-child(2) { border-bottom:1px solid rgba(255,255,255,0.1); } }
+@media (max-width:460px) { .spec { grid-template-columns:1fr; } .spec-i { border-right:none; border-bottom:1px solid rgba(255,255,255,0.1); padding:20px 0 22px; }
+  .spec-i:last-child { border-bottom:none; } }
+
+/* ── Rules: compact numbered list ── */
+.rules { display:grid; grid-template-columns:repeat(2,1fr); gap:14px 44px; }
+@media (max-width:760px) { .rules { grid-template-columns:1fr; } }
+.rule { display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-bottom:1px solid var(--border); }
+.rule .rn { font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--cyan); padding-top:4px; flex-shrink:0; width:20px; }
+.rule p { font-size:var(--text-sm); color:var(--ink-soft); line-height:1.62; }
+.rule p b { font-weight:700; color:var(--ink); }
+
+/* ── Choice cards ── */
+.choices { display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:start; }
+@media (max-width:880px) { .choices { grid-template-columns:1fr; } }
+.choice { position:relative; background:var(--white); border:1px solid var(--border); border-radius:var(--r-xl); padding:38px 34px 34px; overflow:hidden;
+  transition:transform 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), border-color 0.4s var(--ease-out); }
+.choice::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--cyan), var(--violet-mid)); opacity:0; transition:opacity 0.4s var(--ease-out); }
+.choice:hover { transform:translateY(-6px); box-shadow:0 28px 64px rgba(14,15,17,0.11); border-color:rgba(8,145,178,0.32); }
+.choice:hover::before { opacity:1; }
+.choice-top { display:flex; align-items:center; gap:14px; margin-bottom:22px; }
+.choice-letter { font-family:'Instrument Serif', serif; font-size:40px; line-height:1; color:var(--cyan); width:62px; height:62px; border-radius:18px;
+  background:var(--cyan-glass); display:flex; align-items:center; justify-content:center; flex-shrink:0; border:1px solid rgba(8,145,178,0.2); }
+.choice-top .ct { font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+.choice-top h3 { font-family:'Instrument Serif', serif; font-size:var(--text-2xl); font-weight:400; line-height:1.1; color:var(--ink); letter-spacing:-0.015em; }
+.brief { background:var(--bg); border-left:2px solid var(--cyan); border-radius:0 var(--r-sm) var(--r-sm) 0; padding:18px 22px; margin-bottom:22px; }
+.brief .bl { font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:9px; }
+.brief p { font-size:16px; color:var(--ink); line-height:1.6; font-weight:500; }
+.choice-meta { list-style:none; display:flex; flex-direction:column; gap:11px; margin-bottom:4px; }
+.choice-meta li { display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--muted); line-height:1.55; }
+.choice-meta i { color:var(--cyan); font-size:12px; margin-top:4px; flex-shrink:0; }
+.choice-meta b { color:var(--ink-soft); font-weight:700; }
+.choice-for { margin-top:24px; padding-top:20px; border-top:1px solid var(--border); font-size:13px; color:var(--muted); }
+.choice-for b { font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:7px; font-weight:500; }
+
+/* ── Terminal code block ── */
+.term { background:#0B0C0E; border:1px solid rgba(255,255,255,0.1); border-radius:var(--r-md); overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.3); }
+.term-bar { display:flex; align-items:center; gap:9px; padding:12px 16px; background:rgba(255,255,255,0.035); border-bottom:1px solid rgba(255,255,255,0.08); }
+.term-dots { display:flex; gap:6px; }
+.term-dots span { width:10px; height:10px; border-radius:50%; display:block; }
+.term-dots span:nth-child(1) { background:#FF5F57; } .term-dots span:nth-child(2) { background:#FEBC2E; } .term-dots span:nth-child(3) { background:#28C840; }
+.term-name { font-family:'JetBrains Mono', monospace; font-size:11.5px; color:rgba(255,255,255,0.46); margin-left:4px; }
+.term-copy { margin-left:auto; font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.5);
+  background:transparent; border:1px solid rgba(255,255,255,0.14); border-radius:100px; padding:5px 13px; cursor:pointer; transition:color 0.2s, border-color 0.2s, background 0.2s; }
+.term-copy:hover { color:#fff; border-color:rgba(8,145,178,0.6); background:rgba(8,145,178,0.14); }
+.term-copy.done { color:var(--cyan-bright); border-color:rgba(8,145,178,0.6); }
+.term pre { margin:0; padding:24px 26px 28px; overflow-x:auto; }
+.term code { font-family:'JetBrains Mono', monospace; font-size:13px; line-height:1.78; color:rgba(255,255,255,0.8); white-space:pre; display:block; }
+.term code .c { color:rgba(255,255,255,0.3); font-style:italic; }
+.term code .k { color:#C792EA; }
+.term code .s { color:#A8E6A0; }
+.term code .n { color:#F7C967; }
+.term code .f { color:var(--cyan-bright); }
+@media (max-width:560px) { .term code { font-size:11.5px; } .term pre { padding:18px 18px 22px; } }
+
+/* ── What we assess ── */
+.assess { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.09); border:1px solid rgba(255,255,255,0.09); border-radius:var(--r-lg); overflow:hidden; }
+@media (max-width:880px) { .assess { grid-template-columns:1fr 1fr; } }
+@media (max-width:540px) { .assess { grid-template-columns:1fr; } }
+.as-i { background:var(--dk-bg); padding:32px 28px 34px; transition:background 0.35s var(--ease-out); }
+.as-i:hover { background:var(--dk-surface); }
+.as-i .ai { width:40px; height:40px; border-radius:11px; background:rgba(8,145,178,0.14); color:var(--cyan-bright); display:flex; align-items:center; justify-content:center; font-size:16px; margin-bottom:18px; }
+.as-i h4 { font-size:var(--text-base); font-weight:700; color:#fff; letter-spacing:-0.01em; margin-bottom:8px; }
+.as-i p { font-size:13.5px; color:rgba(255,255,255,0.46); line-height:1.65; }
+.assess-note { margin-top:26px; font-family:'JetBrains Mono', monospace; font-size:12px; color:rgba(255,255,255,0.4); line-height:1.7; }
+.assess-note b { color:var(--cyan-bright); font-weight:500; }
+
+/* ── Submit: email card ── */
+.submit-grid { display:grid; grid-template-columns:0.95fr 1.05fr; gap:48px; align-items:start; }
+@media (max-width:900px) { .submit-grid { grid-template-columns:1fr; gap:36px; } }
+.mailcard { background:var(--white); border:1px solid var(--border-med); border-radius:var(--r-lg); overflow:hidden; box-shadow:0 18px 44px rgba(14,15,17,0.07); }
+.mailcard-h { padding:14px 20px; background:var(--bg-warm); border-bottom:1px solid var(--border); font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:9px; }
+.mailcard-h i { color:var(--cyan); }
+.mrow { display:flex; gap:14px; padding:14px 20px; border-bottom:1px solid var(--border); font-size:14px; align-items:baseline; }
+.mrow .ml { font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--subtle); width:60px; flex-shrink:0; }
+.mrow .mv { color:var(--ink); font-weight:500; word-break:break-word; }
+.mrow .mv a { color:var(--cyan); border-bottom:1px solid rgba(8,145,178,0.3); }
+.mbody { padding:20px; }
+.mbody ul { list-style:none; display:flex; flex-direction:column; gap:12px; }
+.mbody li { display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--ink-soft); line-height:1.6; }
+.mbody li i { color:var(--cyan); font-size:11px; margin-top:5px; flex-shrink:0; }
+.mbody code { font-family:'JetBrains Mono', monospace; font-size:12.5px; background:var(--bg-warm); padding:2px 7px; border-radius:5px; color:var(--violet-mid); }
+
+/* ── Timeline ── */
+.tl { list-style:none; position:relative; padding-left:34px; }
+.tl::before { content:''; position:absolute; left:9px; top:10px; bottom:14px; width:1px; background:linear-gradient(180deg, var(--cyan), rgba(8,145,178,0.12)); }
+.tl li { position:relative; padding-bottom:28px; }
+.tl li:last-child { padding-bottom:0; }
+.tl li::before { content:''; position:absolute; left:-30px; top:6px; width:9px; height:9px; border-radius:50%; background:var(--bg); border:2px solid var(--cyan); }
+.tl .tt { font-size:var(--text-base); font-weight:700; color:var(--ink); margin-bottom:5px; letter-spacing:-0.01em; }
+.tl .td { font-size:14px; color:var(--muted); line-height:1.62; }
+.tl .tm { font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--cyan); display:block; margin-bottom:6px; }
+
+/* ── Honesty note ── */
+.honest { background:var(--dk-surface); border:1px solid rgba(184,150,106,0.26); border-radius:var(--r-lg); padding:34px 36px; position:relative; overflow:hidden; }
+.honest::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--gold); }
+.honest .hl { font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+.honest p { font-size:var(--text-base); color:rgba(255,255,255,0.72); line-height:1.72; max-width:720px; }
+.honest p + p { margin-top:14px; }
+.honest p b { color:#fff; font-weight:600; }
+@media (max-width:560px) { .honest { padding:28px 24px; } }
+
+@media (max-width:768px) {
+  .ahero { padding:108px 0 0; }
+  .choice { padding:30px 26px 28px; }
+  .choice-letter { width:54px; height:54px; font-size:34px; border-radius:15px; }
+  .as-i { padding:26px 24px 28px; }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://avyxon.ai/intern-assessment",
+  "url": "https://avyxon.ai/intern-assessment",
+  "name": "Internship Skill Assessment — Avyxon AI Labs",
+  "description": "A 30-minute internship assessment for freshers. Pick one of two exercises, use any AI tool, send a GitHub link. Scored on thinking, fundamentals and craft.",
+  "inLanguage": "en",
+  "isPartOf": { "@type": "WebSite", "name": "Avyxon AI Labs", "url": "https://avyxon.ai/" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Avyxon AI Labs LLP",
+    "url": "https://avyxon.ai/",
+    "logo": "https://avyxon.ai/logo-full.png",
+    "email": "info@avyxon.ai",
+    "telephone": "+91 78998 74613",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sangam Vihar",
+      "addressLocality": "New Delhi",
+      "postalCode": "110080",
+      "addressCountry": "IN"
+    }
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://avyxon.ai/" },
+    { "@type": "ListItem", "position": 2, "name": "Internship Assessment", "item": "https://avyxon.ai/intern-assessment" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Can I really use AI, or is this a trap?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Really. Use it as much as you want, and you don't need to tell us how. The 10-minute call is where we find out whether you understood what you submitted. People who use AI well do noticeably better here, not worse." } },
+    { "@type": "Question", "name": "What if I don't finish in 30 minutes?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Send what you have. Add two lines on where you got stuck and what you'd try next. A half-done submission with clear thinking regularly beats a polished one the candidate can't explain." } },
+    { "@type": "Question", "name": "Which choice is better — A or B?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Neither. They're scored on the same six things and we hire from both. Pick the one you'd actually enjoy for half an hour." } },
+    { "@type": "Question", "name": "Do I need a degree, a CGPA or prior internships?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. We don't filter on college, branch, CGPA or backlogs, and self-taught applicants are welcome. The repo is the application." } },
+    { "@type": "Question", "name": "I've never used GitHub. Is that disqualifying?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No, but learning it is part of the exercise. Creating a repo and pushing one file takes about ten minutes with any AI assistant walking you through it. If you're genuinely stuck, email us and we'll help rather than reject you." } },
+    { "@type": "Question", "name": "Can I submit both exercises, or resubmit a better version?",
+      "acceptedAnswer": { "@type": "Answer", "text": "One exercise, one submission. If you spot a bug in your own work after sending it, push a fix and mention it on the call — noticing it yourself is a point in your favour." } },
+    { "@type": "Question", "name": "What language or stack should I use?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Choice A is plain HTML, CSS and JavaScript, with no libraries. Choice B is JavaScript, but you may explain your reasoning in whatever terms you think in." } }
+  ]
+}
+</script>
+</head>
+<body>
+<noscript><style>.section-reveal, .stagger > * { opacity:1 !important; transform:none !important; }</style></noscript>
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="nav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <svg class="nav-logo-svg" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M196.056 114.199C208.952 113.551 218.425 114.901 230.443 120.394C243.882 126.536 258.49 141.666 263.312 155.794C262.105 158.656 259.395 162.165 257.682 164.977C253.602 171.665 249.445 178.305 245.21 184.897C243.151 188.142 239.395 194.291 237.123 197.065C233.833 192.272 230.91 184.245 227.802 179.118C224.271 173.194 218.336 167.039 211.503 165.363C200.674 162.669 189.067 166.659 182.786 176.056C179.092 181.583 175.811 188.891 172.737 194.988L155.795 228.633L139.543 260.276C131.193 276.649 122.854 290.356 131.844 308.786C132.435 309.996 132.999 311.081 133.717 312.229C138.239 319.526 145.509 324.694 153.886 326.569C182.583 332.981 192.709 305.584 204.263 286.129L273.965 166.946C276.892 161.936 279.72 156.34 283.022 151.618C295.672 133.542 321.527 134.041 333.285 153.03C335.002 155.689 336.402 160.045 336.637 163.197C337.11 169.511 336.56 174.296 333.79 180.035C330.01 187.866 325.045 195.179 320.615 202.628L250.812 320.261L238.82 340.564C235.495 346.126 231.512 352.941 227.234 357.889C215.859 371.049 199.792 380.066 182.925 384.026C179.003 384.949 174.255 385.286 170.294 385.621C145.94 387.691 122.261 379.974 103.783 363.714C86.7253 348.559 77.5371 326.319 75.5748 303.864C74.5886 292.576 76.3148 279.101 79.5986 268.261C82.5456 258.531 88.2638 248.07 92.8818 238.96L110.976 203.531L128.228 169.303C131.352 163.103 134.361 156.827 137.754 150.769C149.569 129.67 171.912 115.717 196.056 114.199Z" fill="#0891B2"/>
+        <path d="M329.052 222.644C332.17 222.375 335.402 223.026 337.42 225.64C340.862 230.096 343.53 235.539 346.25 240.508C349.96 247.256 353.722 253.975 357.537 260.664L411.63 355.846C415.31 362.399 419.322 368.819 422.99 375.384C424.28 377.696 425.92 381.564 423.33 383.681C422.407 384.446 421.292 384.941 420.107 385.111C415.787 385.719 408.167 385.111 403.612 385.186C399.367 385.259 394.26 385.679 390.145 385.341C381.135 385.164 372.582 386.634 363.632 384.609C354.005 382.431 351.037 376.156 346.617 368.401L338.21 353.724L312.385 308.356C306.6 298.041 299.857 285.676 293.632 275.694C293.945 274.934 294.35 273.981 294.755 273.266C299.565 264.776 304.977 256.474 309.965 248.115L318.152 234.574C321.425 229.111 322.515 224.696 329.052 222.644Z" fill="#2E1065"/>
+      </svg>
+      <div class="nav-brand">
+        <div class="nav-brand-name"><span class="c">Avyxon</span> <span class="cv">AI Labs</span></div>
+        <div class="nav-brand-sub">Agent-First Engineering</div>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="consulting.html">Consulting</a></li>
+      <li><a href="fde.html">FDE</a></li>
+      <li><a href="index.html#capabilities">Capabilities</a></li>
+      <li><a href="index.html#platform">Platform</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <a href="index.html#contact" class="btn btn-primary">
+      Book a Call
+      <i class="fas fa-arrow-right arrow"></i>
+    </a>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" role="dialog" aria-label="Site menu">
+  <div class="mm-label">Services</div>
+  <a class="mm-link" href="consulting.html">AI Consulting <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="fde.html">Forward Deployed Engineers <i class="fas fa-arrow-right"></i></a>
+  <div class="mm-label">Explore</div>
+  <a class="mm-link" href="about.html">About <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="index.html#capabilities">Capabilities <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="index.html#mvp">1-Week MVPs <i class="fas fa-arrow-right"></i></a>
+  <a class="mm-link" href="#faq">FAQ <i class="fas fa-arrow-right"></i></a>
+  <a href="index.html#contact" class="btn btn-primary">Book a Call <i class="fas fa-arrow-right arrow"></i></a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="ahero">
+  <div class="wrap">
+    <a class="back" href="index.html"><i class="fas fa-arrow-left"></i> Back to home</a>
+    <div class="ahero-eyebrow"><span class="dot"></span> Internships · Open for freshers</div>
+    <h1>A 30-minute assessment. <em>Use any AI you like.</em></h1>
+    <p class="lede">We're not interested in whether you can memorise syntax — the machine does that now. We want to see <b>how you think</b>, whether the fundamentals are there, and how you work <b>with</b> AI rather than hiding behind it.</p>
+  </div>
+  <div class="wrap">
+    <div class="spec">
+      <div class="spec-i">
+        <div class="k">Time</div>
+        <div class="v">30 minutes</div>
+        <div class="n">One sitting. Don't spend your weekend on it.</div>
+      </div>
+      <div class="spec-i">
+        <div class="k">AI tools</div>
+        <div class="v">All allowed</div>
+        <div class="n">Claude, ChatGPT, Copilot, Cursor — encouraged.</div>
+      </div>
+      <div class="spec-i">
+        <div class="k">Exercise</div>
+        <div class="v">Pick one</div>
+        <div class="n">Build something, or fix something. Your call.</div>
+      </div>
+      <div class="spec-i">
+        <div class="k">Then</div>
+        <div class="v">10-min call</div>
+        <div class="n">Share your screen, change one thing live.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ GROUND RULES ══════════ -->
+<section class="sec sec-dark" style="padding-top:72px">
+  <div class="wrap section-reveal">
+    <div class="honest">
+      <div class="hl">Read this first</div>
+      <p><b>Yes, AI is genuinely allowed.</b> This is not a trap and there is no hidden penalty for using it. We use these tools every day and we expect you to. What we care about is the part the model can't do for you: noticing it got something wrong, knowing why your fix works, and having the taste to not ship the first thing that appeared on screen.</p>
+      <p>Which is why there's a <b>10-minute call at the end where you change something live</b>. If you can't, the submission wasn't really yours — and that's the only thing here that will actually cost you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ GUIDELINES ══════════ -->
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="sec-head section-reveal">
+      <div class="section-label">Guidelines</div>
+      <h2 class="section-h2">The <em>whole</em> rulebook</h2>
+      <p class="section-body">Eight lines. There is no fine print, no proctoring software and no lockdown browser.</p>
+    </div>
+    <div class="rules section-reveal">
+      <div class="rule"><div class="rn">01</div><p><b>Thirty minutes.</b> We're not timing you, but it shows. A four-hour submission reads worse than a focused half hour.</p></div>
+      <div class="rule"><div class="rn">02</div><p><b>Pick one exercise.</b> A or B, not both. Which one you choose tells us something too.</p></div>
+      <div class="rule"><div class="rn">03</div><p><b>Any AI tool, any amount.</b> You never have to disclose a prompt or justify asking for help.</p></div>
+      <div class="rule"><div class="rn">04</div><p><b>No libraries.</b> Plain HTML, CSS and JavaScript in a single file. No React, no Tailwind CDN, no p5.js.</p></div>
+      <div class="rule"><div class="rn">05</div><p><b>It must run.</b> Double-click the file, it works. If it only runs on your machine, it doesn't run.</p></div>
+      <div class="rule"><div class="rn">06</div><p><b>Push it to a public GitHub repo.</b> One repo, one file, one README. That's a complete submission.</p></div>
+      <div class="rule"><div class="rn">07</div><p><b>Three lines in the README.</b> What you'd improve with another hour. Honest beats impressive.</p></div>
+      <div class="rule"><div class="rn">08</div><p><b>Unfinished is fine.</b> Send what you have and tell us where you got stuck. We read that generously.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE TWO CHOICES ══════════ -->
+<section class="sec sec-cream">
+  <div class="wrap">
+    <div class="sec-head center section-reveal">
+      <div class="section-label">The exercise</div>
+      <h2 class="section-h2">Choose <em>one</em></h2>
+      <p class="section-body" style="margin-left:auto;margin-right:auto">Builders tend to pick A. People who like puzzles pick B. Both are a fair route in — there is no "serious" option.</p>
+    </div>
+
+    <div class="choices section-reveal">
+      <!-- Choice A -->
+      <article class="choice">
+        <div class="choice-top">
+          <div class="choice-letter">A</div>
+          <div>
+            <div class="ct">Choice A · Build it</div>
+            <h3>Make something small, make it good</h3>
+          </div>
+        </div>
+        <div class="brief">
+          <div class="bl">The brief</div>
+          <p>A page with one button. Every click sets a new random background colour and shows the colour code on screen. Make it look good.</p>
+        </div>
+        <ul class="choice-meta">
+          <li><i class="fas fa-file-code"></i><span><b>One file.</b> <code style="font-family:'JetBrains Mono',monospace;font-size:12.5px">index.html</code> — markup, styles and script all inside it.</span></li>
+          <li><i class="fas fa-ban"></i><span><b>Vanilla only.</b> No libraries or frameworks of any kind.</span></li>
+          <li><i class="fas fa-mobile-screen"></i><span><b>Must survive</b> a refresh and a phone-sized window.</span></li>
+          <li><i class="fas fa-pen-nib"></i><span><b>"Make it look good"</b> is part of the task, not a bonus.</span></li>
+        </ul>
+        <div class="choice-for">
+          <b>Pick this if</b>
+          You'd rather start from a blank file than read someone else's. We'll be looking at whether you stopped at the model's first draft or pushed it until it actually looked right.
+        </div>
+      </article>
+
+      <!-- Choice B -->
+      <article class="choice">
+        <div class="choice-top">
+          <div class="choice-letter">B</div>
+          <div>
+            <div class="ct">Choice B · Fix it</div>
+            <h3>Find what's wrong and prove it</h3>
+          </div>
+        </div>
+        <div class="brief">
+          <div class="bl">The brief</div>
+          <p>The file below runs without error and prints confident, wrong numbers. Find what's wrong, fix it, and tell us how you knew.</p>
+        </div>
+        <ul class="choice-meta">
+          <li><i class="fas fa-magnifying-glass"></i><span><b>List every bug</b> you find, worst first, one line of reasoning each.</span></li>
+          <li><i class="fas fa-wrench"></i><span><b>Fix them</b> and commit the corrected file.</span></li>
+          <li><i class="fas fa-circle-check"></i><span><b>Show the right output</b> — paste the corrected numbers in your README.</span></li>
+          <li><i class="fas fa-shield-halved"></i><span><b>One line</b> on how you'd stop this class of bug happening again.</span></li>
+        </ul>
+        <div class="choice-for">
+          <b>Pick this if</b>
+          You like being the person who finds it. Fair warning: hand this file straight to an AI and it will find some of the bugs, miss others, and invent one that isn't there. Check everything it tells you.
+        </div>
+      </article>
+    </div>
+
+    <!-- Choice B file -->
+    <div style="margin-top:56px" class="section-reveal">
+      <div class="sec-head" style="margin-bottom:24px;max-width:760px">
+        <div class="section-label">Choice B · the file</div>
+        <p class="section-body" style="max-width:700px">Copy this into a file and run it with <code style="font-family:'JetBrains Mono',monospace;font-size:13px;background:var(--bg-warm);padding:2px 7px;border-radius:5px;color:var(--violet-mid)">node orders.js</code>, or paste it into your browser console. It prints three numbers. Two of them are provably wrong. The third depends on what you think &ldquo;top selling&rdquo; actually means &mdash; so tell us what you&rsquo;d ask before you change that one.</p>
+      </div>
+      <div class="term">
+        <div class="term-bar">
+          <div class="term-dots"><span></span><span></span><span></span></div>
+          <div class="term-name">orders.js</div>
+          <button class="term-copy" id="copy-code" type="button">Copy</button>
+        </div>
+        <pre><code id="code-body"><span class="c">// orders.js — prints today's order summary.</span>
+<span class="c">// It runs clean. Do not trust what it prints.</span>
+
+<span class="k">const</span> orders = [
+  { id: <span class="n">1</span>, item: <span class="s">"Keyboard"</span>,  qty: <span class="n">2</span>, price: <span class="n">1200</span>, status: <span class="s">"paid"</span>      },
+  { id: <span class="n">2</span>, item: <span class="s">"Mouse"</span>,     qty: <span class="n">1</span>, price: <span class="n">650</span>,  status: <span class="s">"cancelled"</span> },
+  { id: <span class="n">3</span>, item: <span class="s">"Monitor"</span>,   qty: <span class="n">1</span>, price: <span class="n">9800</span>, status: <span class="s">"paid"</span>      },
+  { id: <span class="n">4</span>, item: <span class="s">"USB Cable"</span>, qty: <span class="n">3</span>, price: <span class="n">199</span>,  status: <span class="s">"paid"</span>      },
+  { id: <span class="n">5</span>, item: <span class="s">"Headset"</span>,   qty: <span class="n">1</span>, price: <span class="n">2400</span>, status: <span class="s">"refunded"</span>  },
+];
+
+<span class="k">function</span> <span class="f">totalRevenue</span>(orders) {
+  <span class="k">let</span> total = <span class="n">0</span>;
+  <span class="k">for</span> (<span class="k">let</span> i = <span class="n">1</span>; i &lt; orders.length; i++) {
+    total += orders[i].price;
+  }
+  <span class="k">return</span> total;
+}
+
+<span class="k">function</span> <span class="f">averageOrderValue</span>(orders) {
+  <span class="k">return</span> <span class="f">totalRevenue</span>(orders) / orders.length;
+}
+
+<span class="k">function</span> <span class="f">topSellingItem</span>(orders) {
+  <span class="k">let</span> best = orders[<span class="n">0</span>];
+  <span class="k">for</span> (<span class="k">const</span> o <span class="k">of</span> orders) {
+    <span class="k">if</span> (o.price &gt; best.price) best = o;
+  }
+  <span class="k">return</span> best.item;
+}
+
+console.<span class="f">log</span>(<span class="s">"Revenue:"</span>, <span class="f">totalRevenue</span>(orders));
+console.<span class="f">log</span>(<span class="s">"Average:"</span>, <span class="f">averageOrderValue</span>(orders));
+console.<span class="f">log</span>(<span class="s">"Top item:"</span>, <span class="f">topSellingItem</span>(orders));</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHAT WE ASSESS ══════════ -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <div class="sec-head section-reveal">
+      <div class="section-label">What we're actually reading</div>
+      <h2 class="section-h2">Six things, and <em>none</em> of them is "did it work"</h2>
+      <p class="section-body">Anyone with a model open can produce something that works. So that isn't the signal — these are.</p>
+    </div>
+    <div class="assess section-reveal">
+      <div class="as-i">
+        <div class="ai"><i class="fas fa-cube"></i></div>
+        <h4>Fundamentals</h4>
+        <p>Does the code do what you think it does? Loops, state, types, the DOM. We'll ask you to explain one line you didn't write.</p>
+      </div>
+      <div class="as-i">
+        <div class="ai"><i class="fas fa-bug-slash"></i></div>
+        <h4>Debugging instinct</h4>
+        <p>Finding a crash is easy — the error tells you. Finding a <em>wrong answer</em> that runs clean is the actual skill.</p>
+      </div>
+      <div class="as-i">
+        <div class="ai"><i class="fas fa-border-none"></i></div>
+        <h4>Edge cases</h4>
+        <p>Empty input, a refresh, a 360px screen, a double click. Did you try to break your own thing before we did?</p>
+      </div>
+      <div class="as-i">
+        <div class="ai"><i class="fas fa-compass-drafting"></i></div>
+        <h4>Craft &amp; taste</h4>
+        <p>Did you stop at the first output, or keep going until the spacing, the colours and the motion felt right?</p>
+      </div>
+      <div class="as-i">
+        <div class="ai"><i class="fas fa-code-branch"></i></div>
+        <h4>Judgment with AI</h4>
+        <p>Where you delegated, where you overrode it, and what you threw away. Rejecting a bad suggestion counts for more than getting a good one.</p>
+      </div>
+      <div class="as-i">
+        <div class="ai"><i class="fas fa-comments"></i></div>
+        <h4>Can you explain it</h4>
+        <p>Ten minutes, your screen, no tool open. Walk us through it, then change one small thing. That's the whole interview.</p>
+      </div>
+    </div>
+    <p class="assess-note">Scored on all six, not averaged. <b>Strong on four and honest about the other two</b> beats bland competence everywhere.</p>
+  </div>
+</section>
+
+<!-- ══════════ HOW TO SUBMIT ══════════ -->
+<section class="sec sec-white">
+  <div class="wrap">
+    <div class="sec-head section-reveal">
+      <div class="section-label">Submitting</div>
+      <h2 class="section-h2">Push it, then <em>email us the link</em></h2>
+      <p class="section-body">No application portal, no login, no 40-field form. A GitHub link in an email is the entire process.</p>
+    </div>
+    <div class="submit-grid section-reveal">
+      <div>
+        <ol class="tl">
+          <li>
+            <span class="tm">Step 01</span>
+            <div class="tt">Make a public GitHub repo</div>
+            <div class="td">Any name. Push your single file plus a README. If you've never pushed to GitHub before, that's part of the exercise — figure it out, your AI will help.</div>
+          </li>
+          <li>
+            <span class="tm">Step 02</span>
+            <div class="tt">Write three lines in the README</div>
+            <div class="td">What you'd improve with another hour. For Choice B, also paste the corrected output and your bug list.</div>
+          </li>
+          <li>
+            <span class="tm">Step 03</span>
+            <div class="tt">Email the link</div>
+            <div class="td">Subject line exactly as shown opposite, so it reaches the right pile. One email, nothing attached.</div>
+          </li>
+        </ol>
+        <a class="btn btn-primary" style="margin-top:30px" href="mailto:info@avyxon.ai?subject=Internship%20%E2%80%94%20Your%20Name%20%E2%80%94%20Choice%20A">Email your submission <i class="fas fa-arrow-right arrow"></i></a>
+      </div>
+
+      <div class="mailcard">
+        <div class="mailcard-h"><i class="fas fa-envelope"></i> What the email looks like</div>
+        <div class="mrow"><span class="ml">To</span><span class="mv"><a href="mailto:info@avyxon.ai">info@avyxon.ai</a></span></div>
+        <div class="mrow"><span class="ml">Subject</span><span class="mv">Internship — Your Name — Choice A</span></div>
+        <div class="mbody">
+          <ul>
+            <li><i class="fas fa-link"></i><span>Your public repo link</span></li>
+            <li><i class="fas fa-robot"></i><span>One line: which AI tools you used</span></li>
+            <li><i class="fas fa-graduation-cap"></i><span>One line: college, year, and city</span></li>
+            <li><i class="fas fa-phone"></i><span>A phone number or WhatsApp we can reach you on</span></li>
+            <li><i class="fas fa-clock"></i><span>Two time windows that suit you for the 10-minute call</span></li>
+          </ul>
+          <p style="margin-top:18px;font-size:13px;color:var(--muted);line-height:1.65">Swap <code>Choice A</code> for <code>Choice B</code> if you took the debugging one. No cover letter, no CV required — send one if you want to, we'll read it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHAT HAPPENS NEXT ══════════ -->
+<section class="sec sec-cream">
+  <div class="wrap">
+    <div class="split">
+      <div class="section-reveal">
+        <div class="section-label">After you send it</div>
+        <h2 class="section-h2">Every submission gets <em>a reply</em></h2>
+        <p class="section-body mt-6">Including the ones we don't take forward. You spent half an hour on this; silence would be rude.</p>
+      </div>
+      <div class="section-reveal">
+        <ol class="tl">
+          <li>
+            <span class="tm">Within 3 working days</span>
+            <div class="tt">A human reads your repo</div>
+            <div class="td">Actual commits, actual code. Not a keyword filter.</div>
+          </li>
+          <li>
+            <span class="tm">If it's a yes</span>
+            <div class="tt">A 10-minute call</div>
+            <div class="td">Share your screen, walk us through it, change one small thing live. No whiteboard, no DSA, no trick questions.</div>
+          </li>
+          <li>
+            <span class="tm">Same week</span>
+            <div class="tt">A straight answer</div>
+            <div class="td">Yes, no, or "come back in three months and here's exactly what to work on."</div>
+          </li>
+          <li>
+            <span class="tm">If you join</span>
+            <div class="tt">You ship real work</div>
+            <div class="td">Interns here work on live client systems with an engineer beside them. Not a sandbox project nobody deploys.</div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="faq-narrow">
+      <div class="sec-head center section-reveal">
+        <div class="section-label">Questions</div>
+        <h2 class="section-h2">Asked <em>honestly</em></h2>
+      </div>
+      <div class="faq-list section-reveal">
+        <div class="faq-item">
+          <button class="faq-btn">Can I really use AI, or is this a trap?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">Really. Use it as much as you want, and you don't need to tell us how. The 10-minute call is where we find out whether you understood what you submitted — and that's a conversation, not a gotcha. People who use AI well do noticeably better here, not worse.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">What if I don't finish in 30 minutes?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">Send what you have. Add two lines on where you got stuck and what you'd try next. A half-done submission with clear thinking regularly beats a polished one the candidate can't explain.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">Which choice is better — A or B?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">Neither. They're scored on the same six things and we hire from both. Pick the one you'd actually enjoy for half an hour — that version of you writes better code.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">Do I need a degree, a CGPA or prior internships?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">No. We don't filter on college, branch, CGPA or backlogs, and self-taught applicants are welcome. The repo is the application. If you can think clearly and explain your own code, the rest is negotiable.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">I've never used GitHub. Is that disqualifying?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">No — but learning it is now part of the exercise. Creating a repo and pushing one file takes about ten minutes with any AI assistant walking you through it. If you're genuinely stuck, email us and we'll help rather than reject you.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">Can I submit both exercises, or resubmit a better version?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">One exercise, one submission — picking and committing is part of what we're reading. If you spot a bug in your own work after sending it, don't start over: push a fix and mention it on the call. Noticing it yourself is a point in your favour.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn">What language or stack should I use?<span class="faq-toggle"><i class="fas fa-plus"></i></span></button>
+          <div class="faq-ans"><div class="faq-ans-inner">Choice A is plain HTML, CSS and JavaScript — that's fixed, because it's the only way to see whether you can do it without a framework carrying you. Choice B is JavaScript, but you may explain your reasoning in whatever terms you think in.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="ctaband sec-dark section-reveal">
+  <div class="wrap">
+    <h2>Half an hour. <em>One repo.</em></h2>
+    <p>That's the whole bar. Pick A or B, build it tonight, and send us the link.</p>
+    <a class="btn btn-white" href="mailto:info@avyxon.ai?subject=Internship%20%E2%80%94%20Your%20Name%20%E2%80%94%20Choice%20A">Email your submission <i class="fas fa-arrow-right arrow"></i></a>
+  </div>
+</section>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Avyxon AI Labs LLP — Agentic Enterprise Automation &amp; AI-Native Engineering</span>
+    <div class="footer-links">
+      <a href="consulting.html">Consulting</a>
+      <a href="fde.html">Forward Deployed Engineers</a>
+      <a href="about.html">About</a>
+      <a href="learn.html">Field Notes</a>
+      <a href="intern-assessment">Internships</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="https://wa.me/917899874613" target="_blank" rel="noopener">WhatsApp +91 78998 74613</a>
+      <a href="mailto:info@avyxon.ai">info@avyxon.ai</a>
+    </div>
+  </div>
+  <div class="footer-nap">
+    <span>Avyxon AI Labs LLP</span>
+    <span aria-hidden="true">·</span>
+    <span>Sangam Vihar, New Delhi &mdash; 110080, India</span>
+    <span aria-hidden="true">·</span>
+    <a href="tel:+917899874613">+91 78998 74613</a>
+  </div>
+</footer>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" style="display:none" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <p class="cookie-text">
+    We use Google Analytics cookies to understand how visitors use this site. No cookies are set without your consent.
+    Read our <a href="privacy.html">Privacy Policy</a> for full details.
+  </p>
+  <div class="cookie-btns">
+    <button class="cookie-btn-decline" id="cookie-decline">Decline</button>
+    <button class="cookie-btn-accept" id="cookie-accept">Accept Analytics</button>
+  </div>
+</div>
+
+<script>
+'use strict';
+/* ── Mobile menu — hamburger toggle ── */
+(function() {
+  const burger = document.getElementById('nav-burger');
+  const menu   = document.getElementById('mobile-menu');
+  if (!burger || !menu) return;
+  function setOpen(open) {
+    burger.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    document.body.classList.toggle('menu-lock', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  burger.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+})();
+
+/* ── Scroll reveal — mirrors index.html behaviour ── */
+(function() {
+  const revealIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      if (entry.isIntersecting) {
+        el.classList.remove('hidden'); el.classList.add('visible');
+        if (el.classList.contains('stagger')) { el.classList.remove('hide'); setTimeout(() => el.classList.add('go'), 60); }
+      } else {
+        el.classList.remove('visible'); el.classList.add('hidden');
+        if (el.classList.contains('stagger')) { el.classList.remove('go'); el.classList.add('hide'); }
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+  document.querySelectorAll('.section-reveal').forEach(el => revealIO.observe(el));
+})();
+
+/* ── Scroll progress bar ── */
+(function() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  let ticking = false;
+  function update() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+})();
+
+/* ── Count-up numbers — animate [data-count] when scrolled into view ── */
+(function() {
+  const els = document.querySelectorAll('[data-count]');
+  if (!els.length) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      io.unobserve(el);
+      if (reduced) return;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const decimals = (el.dataset.count.split('.')[1] || '').length;
+      const dur = 1400, t0 = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    });
+  }, { threshold: 0.6 });
+  els.forEach(el => io.observe(el));
+})();
+
+/* ── FAQ accordion — one open at a time ── */
+(function() {
+  const items = document.querySelectorAll('.faq-item');
+  items.forEach(item => {
+    item.querySelector('.faq-btn').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      items.forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+})();
+
+/* ── Cookie Consent Banner ── */
+(function() {
+  // Runs on DOM ready: on index.html this block sits above the banner markup,
+  // so running it inline left getElementById null and threw before any
+  // listener was attached — the banner never appeared and consent could
+  // never be given, which also meant GA4 never loaded for a first-time
+  // visitor landing on the homepage.
+  function init() {
+    var KEY = 'avyxon_consent';
+    if (localStorage.getItem(KEY)) return;
+    var banner  = document.getElementById('cookie-banner');
+    var accept  = document.getElementById('cookie-accept');
+    var decline = document.getElementById('cookie-decline');
+    if (!banner || !accept || !decline) return;
+    banner.style.display = 'flex';
+    accept.addEventListener('click', function() {
+      localStorage.setItem(KEY, 'accepted');
+      banner.style.display = 'none';
+      loadGA4();
+    });
+    decline.addEventListener('click', function() {
+      localStorage.setItem(KEY, 'declined');
+      banner.style.display = 'none';
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+
+<script>
+/* ── Copy the Choice B file to clipboard ── */
+(function() {
+  var btn  = document.getElementById('copy-code');
+  var code = document.getElementById('code-body');
+  if (!btn || !code) return;
+  btn.addEventListener('click', function() {
+    var text = code.innerText;
+    function done() {
+      btn.textContent = 'Copied';
+      btn.classList.add('done');
+      setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 2000);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { btn.textContent = 'Select manually'; }
+      document.body.removeChild(ta);
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
