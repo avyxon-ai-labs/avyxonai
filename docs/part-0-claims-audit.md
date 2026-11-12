@@ -276,5 +276,16 @@ directories read the schema.
   model.
 - **Partner bios, photos and LinkedIn URLs** on `about.html` — still absent,
   on the page headed "Who is accountable".
-- **LLPIN `ACT-0061`** does not match the MCA format (`AAA-NNNN`). Worth
-  re-checking before procurement does.
+- ~~LLPIN `ACT-0061` does not match the MCA format~~ — **withdrawn 12 Nov 2026.
+  This finding was wrong.** `ACT-0061` is three letters, hyphen, four digits,
+  which is exactly the `AAA-NNNN` LLPIN format; the reviewer read "ACT" as a
+  word rather than a letter prefix. Confirmed correct by the owner. Published
+  in one place only (`about.html`), so there is no consistency risk.
+
+  **Noted as a process point, not a reproach:** this finding reached the owner
+  because a reviewer stated it confidently and it was relayed without an
+  independent check. The same reviews were right about the hero panel, the
+  social card and the FAQ schema — all verified before acting — so the lesson
+  is not to distrust review output, it is that *every* finding gets checked
+  before it is repeated, including the cheap ones. A regex would have settled
+  this in two seconds.
