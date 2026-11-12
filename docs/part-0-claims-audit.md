@@ -211,3 +211,65 @@ Row 8 (uptime "guaranteed") is recommended for action regardless of the rest.
 
 Partner 1: _______________ Date: _______
 Partner 2: _______________ Date: _______
+
+---
+
+## Round 2 — what the first execution missed (12 Nov 2026)
+
+Three independent reviewers (technical SEO, adversarial procurement, brand
+copy) were given the site cold. Two of them independently found that rows 5, 7
+and 10 above, marked "✅ done", were **not done** — and they were right.
+
+**The miss, and why it happened.** `index.html` carried a hero panel labelled
+**"Live metrics"** with the same four figures: 1wk Fastest MVP · 70% Faster
+than agencies · 10K+ Centers managed · 99.5% SLA adherence, animated as
+counters so they read as current instrument readings. Every text sweep missed
+them because the markup splits each number from its unit —
+`<span data-count="10">10</span>K+` — so no search for "10,000+" or "10K+"
+could ever match. Row 12 rewrote the sitemap caption *because* it quoted those
+strings; the citation was corrected and the source left standing.
+
+**Lesson for next time:** a claims audit by text search finds only claims that
+survive text search. Numbers in component markup, in image files, in `og:`
+tags, in JSON-LD values and in HTML comments all need separate passes. The
+image was the worst case — `og-image.png` carried the four figures *and*
+SOC2/DPDP/ISO 27001 as unqualified certification badges, contradicting the
+"not certified" wording added to six HTML locations the commit before. A
+reviewer who finds that split does not conclude "sloppy".
+
+| # | Claim | Where | Status |
+|---|---|---|---|
+| 13 | "Live metrics" hero panel: 1wk / 70% / 10K+ / 99.5%, animated | `index.html` hero | ✅ replaced with engagement terms |
+| 14 | Four figures + SOC2/DPDP/ISO 27001 badges on the social card | `og-image.png` | ✅ regenerated (source: `docs/og-image-source.html`) |
+| 15 | "Metrics… represent outcomes from specific past engagements" | `terms.html` | ✅ rewritten — it asserted in a contract document that the figures were measured on clients |
+| 16 | "Six production systems, built and operated by Avyxon" / "Production-Proven" / "Field record" | `index.html`, `brochure.html`, `llms.txt` | ✅ reframed as system patterns |
+| 17 | "thousands of daily delivery routes", "at global scale" | `index.html`, `brochure.html` | ✅ now architecture, not throughput |
+| 18 | "~70%" timeline compression | `consulting.html` | ✅ removed |
+| 19 | `<2s agent response`, 1wk tile, self-citing footnote | `brochure.html` | ✅ removed |
+| 20 | "References available on request" | `brochure.html` | ✅ replaced |
+| 21 | "Founders love us" | `index.html` ×2 | ✅ rewritten |
+| 22 | Absolutes: "ensures SLA compliance", "before customers notice", "24/7 monitoring", "Every enquiry within 12 hours" | several | ✅ aligned with what `terms.html` already says |
+| 23 | "deep experience" / "years of depth" by a one-year-old entity | several | ✅ attributed to the engineers |
+| 24 | "global compliance" | `privacy.html` | ✅ scoped to DPDP + GDPR |
+
+**Structured data, found by the SEO reviewer:** `about.html`'s FAQPage
+diverged from its visible copy on **7 of 7 answers**. The earlier claim that
+schema matched visible copy was verified on `index.html` alone. Regenerated
+from the DOM. `ProfessionalService` had no `address` (a hard required-field
+error for a LocalBusiness subtype) and `PostalAddress` omitted New Delhi
+entirely, which is the single worst place for a NAP inconsistency because
+directories read the schema.
+
+### Still open
+
+- The **named-competitor comparison table** (`index.html`, `brochure.html`):
+  Accenture, Deloitte, UiPath, Automation Anywhere, Upwork, Toptal, with ✕
+  marks and no source for any cell, under a heading reading "Honest
+  comparison". Asserting that two of the largest consultancies do not transfer
+  knowledge is unevidenced and gratuitous. Recommended: keep the table, rename
+  the columns to generic categories, replace every ✕ with a factual
+  descriptor, and footnote it as Avyxon's own view of typical delivery models.
+- **Partner bios, photos and LinkedIn URLs** on `about.html` — still absent,
+  on the page headed "Who is accountable".
+- **LLPIN `ACT-0061`** does not match the MCA format (`AAA-NNNN`). Worth
+  re-checking before procurement does.
